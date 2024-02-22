@@ -1,4 +1,4 @@
-# custom_tkinter_window.py
+# custom_window.py
 import tkinter as tk
 
 class AppWindow(tk.Tk):
