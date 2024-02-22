@@ -15,9 +15,9 @@ class AppWindow(tk.Tk):
         super().__init__()
         # Methods to initilize the window
         self.create_title(title)
-        self.window_settings(width, height, resizable)
+        self.set_window(width, height, resizable)
         
-    def window_settings(self, width: int, height: int, resizable: bool) -> None:
+    def set_window(self, width: int, height: int, resizable: bool) -> None:
         """Sets the window size and resizability settings.
 
         Args:
