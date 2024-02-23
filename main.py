@@ -3,7 +3,6 @@ from db.db_login import HOST, USER, PASSWORD, DATABASE
 import mysql.connector
 from views.custom_window import AppWindow
 from cook_book_app import CookBookApp
-from model.recipe import Recipe
 from model.recipe_manager import RecipeManager
 
 if __name__ == "__main__":
@@ -21,5 +20,6 @@ if __name__ == "__main__":
     app = CookBookApp(main_window, recipe_manager)
     # Run the tkinter window mainloop
     app.window.mainloop()
-    
-    #! Close the database connection? When?
+    # Close the database connection after the app is closed
+    db_connection.close()
+    print("Database connection closed.")
