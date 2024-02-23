@@ -1,3 +1,4 @@
+# cook_book_app.py
 import tkinter as tk
 from views.custom_window import AppWindow
 from views.home_page import HomePage
