@@ -13,6 +13,9 @@ class AppWindow(tk.Tk):
             resizable (bool): Flag to enable or disable resizability.
         """
         super().__init__()
+        # Properties
+        self.width = width
+        self.height = height
         # Methods to initilize the window
         self.create_title(title)
         self.set_window(width, height, resizable)
