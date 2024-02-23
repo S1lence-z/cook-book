@@ -1,25 +1,24 @@
 # main.py
-import tkinter as tk
-from views.custom_window import AppWindow
 from db.db_login import HOST, USER, PASSWORD, DATABASE
 import mysql.connector
+from views.custom_window import AppWindow
+from .cook_book_app import CookBookApp
+from .model.recipe_manager import RecipeManager
 
 if __name__ == "__main__":
-    # Create an instance of the app and run it
-    app = AppWindow("My App", 1280, 720, False)
-    
     # Connect to the database
     db_connection = mysql.connector.connect(
-        host=HOST,
-        user=USER,
-        password=PASSWORD,
-        database=DATABASE
+        host = HOST,
+        user = USER,
+        password = PASSWORD,
+        database = DATABASE
     )
-    # cursor = db_connection.cursor()
-    # cursor.execute("select * from recipes")
-    # rows = cursor.fetchall()
-    # for row in rows:
-    #     print(row)
-    
+    # Create the model
+    recipe_manager = RecipeManager(db_connection)
+    # Create an instance of the app and run it
+    main_window = AppWindow("My App", 1280, 720, False)
+    app = CookBookApp(main_window, recipe_manager)
     # Run the tkinter window mainloop
-    app.mainloop()
+    app.window.mainloop()
+    
+    #? Close the database connection? When?
