@@ -1,3 +1,5 @@
+CREATE database cookBook;
+
 CREATE TABLE IF NOT EXISTS recipes (
     recipe_id INTEGER PRIMARY KEY auto_increment,
     title TEXT not null,
