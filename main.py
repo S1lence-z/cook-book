@@ -19,7 +19,7 @@ if __name__ == "__main__":
     main_window = AppWindow("CookBook", 1280, 720, False)
     app = CookBookApp(main_window, recipe_manager)
     # Run the tkinter window mainloop
-    app.window.mainloop()
+    main_window.mainloop()
     # Close the database connection after the app is closed
     db_connection.close()
     print("Database connection closed.")
