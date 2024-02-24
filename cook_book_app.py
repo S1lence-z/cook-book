@@ -58,6 +58,9 @@ class CookBookApp:
             "HomePage": home_page,
             "AddRecipePage": add_recipe_page
         }
+        # Show all the pages on tom of each other
+        for page in self.all_pages.values():
+            page.grid(row=0, column=0, sticky="nsew")
         
     def raise_page(self, page_name: str) -> None:
         """ Takes the page name as an argument and shows the page in the window while hiding all others.
