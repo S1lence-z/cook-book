@@ -1,12 +1,16 @@
 # add_recipe_page.py
 import tkinter as tk
-from .custom_window import AppWindow
+from .page_abstract_class import Page
 
-
-class AddRecipePage:
-    def __init__(self, window: AppWindow) -> None:
-        self.window = window
+class AddRecipePage(tk.Frame, Page):
+    def __init__(self, parent: tk.Frame, controller) -> None:
+        tk.Frame.__init__(self, parent)
+        self.controller = controller
         self.create_ui()
         
     def create_ui(self):
-        return
+        # Add recipe button
+        button_list_frame = tk.Frame(self, bg="blue")
+        button_list_frame.pack()
+        button = tk.Button(button_list_frame, text="Save")
+        button.pack()
