@@ -9,6 +9,7 @@ class MainController:
         self.model = model
         self.view = view
         self.page_controllers = self._init_page_controllers()
+        self.start_app()
     
     def start_app(self) -> None:
         """ Start the tk.Tk mainloop (starts the tkinter application) """
