@@ -1,8 +1,9 @@
 # view_controller.py
 import tkinter as tk
 from views.custom_window import AppWindow
-from views.home_page import HomePage
-from views.edit_recipe_page import EditRecipePage
+from views.pages.home_page import HomePage
+from views.pages.edit_recipe_page import EditRecipePage
+from views.pages.add_recipe_page import AddRecipePage
 
 class ViewController:
     def __init__(self) -> None:
@@ -11,6 +12,7 @@ class ViewController:
         # Add pages
         self._add_page("home", HomePage)
         self._add_page("editRecipe", EditRecipePage)
+        self._add_page("addRecipe", AddRecipePage)
         
     def _add_page(self, name: str, page) -> None:
         """ Add a page to the pages dictionary.
