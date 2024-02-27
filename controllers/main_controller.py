@@ -9,13 +9,7 @@ class MainController:
         self.model = model
         self.view = view
         self.page_controllers = self._init_page_controllers()
-        self.start_app()
     
-    def start_app(self) -> None:
-        """ Start the tk.Tk mainloop (starts the tkinter application) """
-        self.view.raise_page("home")
-        self.view.container.mainloop()
-        
     def _init_page_controllers(self) -> list:
         """ Initialize all controllers.
 
@@ -25,3 +19,7 @@ class MainController:
         home_controller = HomeController(self.model, self.view)
         editation_controller = EditationController(self.model, self.view)
         return [home_controller, editation_controller]
+    
+    def start_app(self):
+        self.view.raise_page("home")
+        self.view.start_mainloop()
