@@ -30,6 +30,8 @@ class AppWindow(tk.Tk):
         """
         self.geometry(f"{width}x{height}")
         self.resizable(resizable, resizable)
+        self.grid_columnconfigure(0, weight=1)
+        self.grid_rowconfigure(0, weight=1)
         
     def create_title(self, name: str) -> None:
         """ Sets the window title.
