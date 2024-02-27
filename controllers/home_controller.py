@@ -2,7 +2,6 @@
 import tkinter as tk
 from models.database_manager import DatabaseManager
 from controllers.view_controller import ViewController
-from views.home_page import HomePage
 
 class HomeController:
     def __init__(self, model: DatabaseManager, view: ViewController) -> None:
