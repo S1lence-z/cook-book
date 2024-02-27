@@ -1,7 +1,6 @@
 # main.py
 from db.db_login import HOST, USER, PASSWORD, DATABASE
 import mysql.connector
-from views.custom_window import AppWindow
 from cook_book_app import CookBookApp
 from models.database_manager import DatabaseManager
 
