@@ -4,5 +4,5 @@ from abc import ABC, abstractmethod
 
 class Page(ABC):
     @abstractmethod
-    def create_ui(self) -> None:
+    def _create_ui(self) -> None:
         pass
