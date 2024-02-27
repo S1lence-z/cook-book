@@ -20,6 +20,7 @@ class HomeController(PageController):
         self.view.raise_page("addRecipe")
     
     def delete_recipe(self) -> None:
+        #! DELETE THE RECIPE FROM THE DB
         print("Recipe Deleted MOREEEEE")
     
     def edit_recipe(self):
