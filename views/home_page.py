@@ -1,21 +1,15 @@
 # home_page.py
 import tkinter as tk
-from .custom_window import AppWindow
 from .page_abstract_class import Page
 
 class HomePage(tk.Frame, Page):
-    def __init__(self, parent: tk.Frame, controller) -> None:
-        tk.Frame.__init__(self, parent)
-        self.controller = controller
+    def __init__(self, *args, **kwargs) -> None:
+        super().__init__(*args, **kwargs)
         self.create_ui()
         
     def create_ui(self):
-        self.config(bg="blue")
-        # List of recipes
-        recipes_frame = tk.Frame(self, bg="red")
-        recipes_frame.pack(pady=100)
-        recipes_list = tk.Listbox(recipes_frame, bg="green")
-        recipes_list.pack(fill=tk.BOTH, expand=True)
-        # Button
-        button = tk.Button(recipes_frame, text="Test More")
-        button.pack()
+        self.header = tk.Label(self, text="All Recipes")
+        self.header.grid(row=0, column=0, columnspan=2, padx=10, pady=10)
+
+        self.add_button = tk.Button(self, text="Add Recipe")
+        self.add_button.grid(row=3, column=1, padx=0, pady=10, sticky="w")
