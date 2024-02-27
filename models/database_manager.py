@@ -6,8 +6,10 @@ class DatabaseManager:
         self.db_connection = db_connection
         self.cursor = db_connection.cursor()
         self.queries = {
-            "GetAllRecipes": "SELECT * FROM recipes",
-            "DeleteRecipeById": "DELETE FROM recipes WHERE id = %s"
+            "GetAllRecipes": "SELECT * FROM recipes;",
+            "AddRecipe": "INSERT INTO recipes (title, _description, prep_time, cook_time, instructions) VALUES (%s, %s, %s, %s, %s);",
+            "DeleteRecipeById": "DELETE FROM recipes WHERE recipe_id = %s;",
+            "UpdateRecipe": "UPDATE recipes SET title = %s, _description = %s, prep_time = %s, cook_time = %s, instructions = %s WHERE recipe_id = %s;"
         }
         
     def get_all_recipes(self) -> list[Recipe]:
@@ -19,7 +21,19 @@ class DatabaseManager:
             all_recipes.append(Recipe(id, title, description, prep_time, cook_time, instructions))
         return all_recipes
             
+    def add_recipe(self, title: str, description: str, prep_time: str, cook_time: str, instructions: str):
+        recipe_data = (title, description, prep_time, cook_time, instructions)
+        self.cursor.execute(self.queries["AddRecipe"], recipe_data)
+        self.db_connection.commit()
+        print(f"{self.cursor.rowcount} row added.")
+        
     def delete_recipe_by_id(self, id: str):
-        self.cursor.execute(self.queries["DeleteRecipeById"], id)
-        self.cursor.commit()
-        print(f"{self.cursor.rowcount} row(s) deleted.")
+        self.cursor.execute(self.queries["DeleteRecipeById"], (id,))
+        self.db_connection.commit()
+        print(f"{self.cursor.rowcount} row deleted.")
+        
+    def update_recipe(self, title: str, description: str, prep_time: str, cook_time: str, instructions: str):
+        recipe_data = (title, description, prep_time, cook_time, instructions)
+        self.cursor.execute(self.queries["UpdateRecipe"], recipe_data)
+        self.db_connection.commit()
+        print(f"{self.cursor.rowcount} row updated.")
