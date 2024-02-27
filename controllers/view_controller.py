@@ -1,5 +1,6 @@
 # view_controller.py
 import tkinter as tk
+from turtle import window_width
 from views.custom_window import AppWindow
 from views.pages.home_page import HomePage
 from views.pages.edit_recipe_page import EditRecipePage
@@ -7,12 +8,15 @@ from views.pages.add_recipe_page import AddRecipePage
 
 class ViewController:
     def __init__(self) -> None:
-        self.window = AppWindow("CookBook", 1280, 720, False)
+        self.window = self._create_app_window("CookBook", 1280, 720, False)
         self.pages = {}
         # Add pages
         self._add_page("home", HomePage)
         self._add_page("editRecipe", EditRecipePage)
         self._add_page("addRecipe", AddRecipePage)
+        
+    def _create_app_window(self, title: str, width: int, height: int, resizability: bool):
+        return AppWindow(title, width, height, resizability)
         
     def _add_page(self, name: str, page) -> None:
         """ Add a page to the pages dictionary.
