@@ -1,5 +1,5 @@
 import mysql.connector
-from .recipe import Recipe
+from models.recipe import Recipe
 
 class DatabaseManager:
     def __init__(self, db_connection):
