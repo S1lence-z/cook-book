@@ -1,10 +1,7 @@
 # view_controller.py
 import tkinter as tk
-from turtle import window_width
 from views.custom_window import AppWindow
-from views.pages.home_page import HomePage
-from views.pages.edit_recipe_page import EditRecipePage
-from views.pages.add_recipe_page import AddRecipePage
+from pages import *
 
 class ViewController:
     def __init__(self) -> None:
