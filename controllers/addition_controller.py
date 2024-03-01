@@ -7,9 +7,12 @@ class AdditionController(PageController):
         self.model = model
         self.view = view
         self.frame = self.view.pages["addRecipe"]
-        self._add_functionality()
+        self._setup_page()
     
-    def _add_functionality(self):
+    def _setup_page(self):
+        self._bind_buttons()
+        
+    def _bind_buttons(self) -> None:
         self.frame.save_btn.config(command=self.save_added_recipe)
         self.frame.cancel_btn.config(command=self.cancel)
     

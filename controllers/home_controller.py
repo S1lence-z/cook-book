@@ -1,5 +1,4 @@
 # home_controller.py
-from sre_parse import State
 import tkinter as tk
 from models.database_manager import DatabaseManager
 from controllers import *
@@ -9,9 +8,9 @@ class HomeController(PageController):
         self.model = model
         self.view = view
         self.frame = self.view.pages["home"]
-        self._setup_home_page()
+        self._setup_page()
         
-    def _setup_home_page(self):
+    def _setup_page(self):
         self._bind_buttons()
         self._bind_recipe_list()
     
