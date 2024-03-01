@@ -1,4 +1,5 @@
 # home_controller.py
+from sre_parse import State
 import tkinter as tk
 from models.database_manager import DatabaseManager
 from controllers import *
@@ -8,19 +9,31 @@ class HomeController(PageController):
         self.model = model
         self.view = view
         self.frame = self.view.pages["home"]
-        self._add_functionality()
+        self._setup_home_page()
         
-    def _add_functionality(self):
-        self.frame.add_btn.config(command=self.add_recipe)
-        self.frame.delete_btn.config(command=self.delete_recipe)
-        self.frame.edit_btn.config(command=self.edit_recipe)
+    def _setup_home_page(self):
+        self._bind_buttons()
+        self._bind_recipe_list()
     
-    def add_recipe(self) -> None:
+    def _bind_buttons(self):
+        self.frame.add_btn.config(command=self._add_recipe)
+        self.frame.delete_btn.config(command=self._delete_recipe, state=tk.DISABLED)
+        self.frame.edit_btn.config(command=self._edit_recipe)
+        
+    def _bind_recipe_list(self):
+        setup_lst = self.model.get_all_recipes()
+        self.frame.update_recipe_list(setup_lst)
+        self.frame.recipe_list.bind("<<ListboxSelect>>", self.frame.update_delete_btn_state)
+        
+    def _add_recipe(self) -> None:
         self.view.raise_page("addRecipe")
     
-    def delete_recipe(self) -> None:
-        #! DELETE THE RECIPE FROM THE DB
-        print("Recipe Deleted MOREEEEE")
+    def _delete_recipe(self) -> None:
+        selected_recipe_id = self.frame.recipe_list.curselection()
+        self.model.delete_recipe_by_id(selected_recipe_id)
+        new_lst = self.model.get_all_recipes()
+        self.frame.update_recipe_list(new_lst)
+        print(f"Recipe with id={selected_recipe_id} deleted")
     
-    def edit_recipe(self):
+    def _edit_recipe(self):
         self.view.raise_page("editRecipe")
