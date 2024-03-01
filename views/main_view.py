@@ -3,7 +3,7 @@ import tkinter as tk
 from views.custom_window import AppWindow
 from pages import *
 
-class ViewController:
+class MainView:
     def __init__(self) -> None:
         self.window = self._create_app_window("CookBook", 1280, 720, False)
         self.pages = {}
