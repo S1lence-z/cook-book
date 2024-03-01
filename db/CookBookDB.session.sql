@@ -1,11 +1,11 @@
 CREATE database cookBook;
 
 CREATE TABLE IF NOT EXISTS recipes (
-    recipe_id INTEGER PRIMARY KEY auto_increment,
-    title TEXT not null,
+    recipe_id INTEGER PRIMARY KEY AUTO_INCREMENT,
+    title VARCHAR(255) NOT NULL UNIQUE,
     _description TEXT,
-    prep_time INTEGER not null,
-    cook_time INTEGER not null,
+    prep_time INTEGER NOT NULL,
+    cook_time INTEGER NOT NULL,
     instructions TEXT
 );
 
