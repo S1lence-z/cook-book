@@ -9,7 +9,6 @@ class RecipeList(tk.Listbox):
         
     def populate(self, list_of_items: list[Recipe]):
         self._db_recipes = list_of_items
-        
         for item in self._db_recipes:
             self.insert(tk.END, item.title)
             
