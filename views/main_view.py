@@ -1,6 +1,6 @@
 # view_controller.py
 import tkinter as tk
-from views.custom_window import AppWindow
+from custom.custom_window import AppWindow
 from pages import *
 
 class MainView:

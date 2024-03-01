@@ -1,7 +1,7 @@
 # home_page.py
 import tkinter as tk
-from views.page_abc import Page
-from views.recipe_list import RecipeList
+from custom.page_abc import Page
+from custom.recipe_list import RecipeList
 from models.recipe import Recipe
 
 class HomePage(tk.Frame, Page):

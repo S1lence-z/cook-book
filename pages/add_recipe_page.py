@@ -1,6 +1,6 @@
 # add_recipe_page.py
 import tkinter as tk
-from views.page_abc import Page
+from custom.page_abc import Page
 
 class AddRecipePage(tk.Frame, Page):
     def __init__(self, *args, **kwargs) -> None:
