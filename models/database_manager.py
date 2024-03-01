@@ -27,7 +27,7 @@ class DatabaseManager:
         self.db_connection.commit()
         print(f"{self.cursor.rowcount} row added.")
         
-    def delete_recipe_by_id(self, id: str):
+    def delete_recipe_by_id(self, id: int):
         self.cursor.execute(self.queries["DeleteRecipeById"], (id,))
         self.db_connection.commit()
         print(f"{self.cursor.rowcount} row deleted.")
