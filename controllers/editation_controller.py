@@ -1,10 +1,9 @@
 # editation_controller.py
 from models.database_manager import DatabaseManager
-from controllers.view_controller import ViewController
-from controllers.page_controller_abc import PageController
+from controllers import *
 
 class EditationController(PageController):
-    def __init__(self, model: DatabaseManager, view: ViewController) -> None:
+    def __init__(self, model: DatabaseManager, view: MainView) -> None:
         self.model = model
         self.view = view
         self.frame = self.view.pages["editRecipe"]

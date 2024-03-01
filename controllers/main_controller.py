@@ -3,7 +3,7 @@ from models.database_manager import DatabaseManager
 from controllers import *
 
 class MainController:
-    def __init__(self, model: DatabaseManager, view: ViewController) -> None:
+    def __init__(self, model: DatabaseManager, view: MainView) -> None:
         self.model = model
         self.view = view
         self.page_controllers = self._init_page_controllers()

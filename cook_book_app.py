@@ -2,7 +2,7 @@
 import tkinter as tk
 from models.database_manager import DatabaseManager
 from controllers.main_controller import MainController
-from controllers.view_controller import ViewController
+from views.main_view import MainView
 
 class CookBookApp:
     def __init__(self, model: DatabaseManager) -> None:
@@ -13,5 +13,5 @@ class CookBookApp:
             model (DatabaseManager): Instance of the DatabaseManager model class
         """
         self.model = model
-        self.view_controller = ViewController()
+        self.view_controller = MainView()
         self.main_controller = MainController(self.model, self.view_controller)
