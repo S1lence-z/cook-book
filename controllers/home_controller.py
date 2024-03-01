@@ -35,4 +35,8 @@ class HomeController(PageController):
         print(f"Recipe with id={selected_recipe_id} deleted")
     
     def _edit_recipe(self):
+        selected_recipe_id = self.frame.recipe_list.curselection()
+        recipe_to_edit = self.model.get_recipe_by_id(selected_recipe_id)
+        edit_page = self.view.pages["editRecipe"]
+        edit_page.set_recipe_to_edit(recipe_to_edit)
         self.view.raise_page("editRecipe")
