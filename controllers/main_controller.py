@@ -1,10 +1,6 @@
 # main_controller.py
 from models.database_manager import DatabaseManager
-from controllers.view_controller import ViewController
-from controllers.home_controller import HomeController
-from controllers.editation_controller import EditationController
-from controllers.addition_controller import AdditionController
-from controllers.page_controller_abc import PageController
+from controllers import *
 
 class MainController:
     def __init__(self, model: DatabaseManager, view: ViewController) -> None:
