@@ -7,7 +7,7 @@ class EditRecipePage(tk.Frame, Page):
         super().__init__(*args, **kwargs)
         self._create_ui()
     
-    def _create_ui(self):
+    def _create_ui(self) -> None:
         self.header = tk.Label(self, text="Edit Recipe Page")
         self.header.pack()
         self.save_btn = tk.Button(self, text="Save and go Home")
