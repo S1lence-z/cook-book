@@ -17,3 +17,7 @@ class HomePage(tk.Frame, Page):
         self.delete_btn.pack()
         self.edit_btn = tk.Button(self, text="Edit Recipe")
         self.edit_btn.pack()
+        # LIST THE EXISTING RECIPES
+        self.recipe_list = tk.Listbox(self)
+        self.recipe_list.insert(0, "AHOJ")
+        self.recipe_list.pack()
