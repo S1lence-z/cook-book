@@ -19,7 +19,7 @@ class MainView:
         """ Add a page to the pages dictionary.
 
         Args:
-            name (str): The ID of the page.
+            name (str): The name of the page.
             page (str): The name of the class of the page.
         """
         self.pages[name] = page(self.window)
