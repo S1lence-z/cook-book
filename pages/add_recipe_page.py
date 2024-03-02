@@ -40,7 +40,7 @@ class AddRecipePage(tk.Frame, Page):
         self.cancel_btn = tk.Button(self, text="Cancel")
         self.cancel_btn.pack()
         
-    def clear_add_page(self):
+    def _clear_add_page(self):
         # Clear the title entry
         self.title_entry.delete(0, tk.END)
         # Clear the description text.
@@ -58,5 +58,5 @@ class AddRecipePage(tk.Frame, Page):
         prep_time = self.prep_time_entry.get()
         cook_time = self.cook_time_entry.get()
         instructions = self.instructions_text.get("1.0")
-        self.clear_add_page()
+        self._clear_add_page()
         return [title, description, prep_time, cook_time, instructions]
