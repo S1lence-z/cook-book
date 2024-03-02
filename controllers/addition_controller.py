@@ -17,9 +17,11 @@ class AdditionController(PageController):
         self.frame.cancel_btn.config(command=self.cancel)
     
     def save_added_recipe(self):
-        #! SAVE THE RECIPE TO THE DB
-        print("RECIPE ADDED")
+        added_recipe = self.frame.get_added_recipe()
+        self.model.add_recipe(added_recipe[0], added_recipe[1], added_recipe[2], added_recipe[3], added_recipe[4])
+        new_model = self.model.get_all_recipes()
         self.view.raise_page("home")
+        self.view.pages["home"].update_recipe_list(new_model)
     
     def cancel(self):
         self.view.raise_page("home")
