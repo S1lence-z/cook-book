@@ -18,7 +18,7 @@ class EditRecipePage(tk.Frame, Page):
         # Description
         self.description_label = tk.Label(self, text="Description")
         self.description_label.pack()
-        self.description_text = tk.Text(self)
+        self.description_text = tk.Text(self, height=10)
         self.description_text.pack()
         # Prep Time
         self.prep_time_label = tk.Label(self, text="Prep Time (minutes)")
@@ -33,7 +33,7 @@ class EditRecipePage(tk.Frame, Page):
         # Instructions
         self.instructions_label = tk.Label(self, text="Instructions")
         self.instructions_label.pack()
-        self.instructions_text = tk.Text(self)
+        self.instructions_text = tk.Text(self, height=10)
         self.instructions_text.pack()
         # Buttons
         self.save_btn = tk.Button(self, text="Save")
