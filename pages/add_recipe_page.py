@@ -54,9 +54,9 @@ class AddRecipePage(tk.Frame, Page):
         
     def get_added_recipe(self) -> list:
         title = self.title_entry.get()
-        description = self.description_text.get("1.0")
+        description = self.description_text.get("1.0", "end-1c")
         prep_time = self.prep_time_entry.get()
         cook_time = self.cook_time_entry.get()
-        instructions = self.instructions_text.get("1.0")
+        instructions = self.instructions_text.get("1.0", "end-1c")
         self._clear_add_page()
         return [title, description, prep_time, cook_time, instructions]
