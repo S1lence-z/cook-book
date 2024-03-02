@@ -39,8 +39,8 @@ class DatabaseManager:
         self.db_connection.commit()
         print(f"{self.cursor.rowcount} row deleted.")
         
-    def update_recipe(self, title: str, description: str, prep_time: str, cook_time: str, instructions: str):
-        recipe_data = (title, description, prep_time, cook_time, instructions)
+    def update_recipe(self, id: int, title: str, description: str, prep_time: str, cook_time: str, instructions: str):
+        recipe_data = (title, description, prep_time, cook_time, instructions, id)
         self.cursor.execute(self.queries["UpdateRecipe"], recipe_data)
         self.db_connection.commit()
         print(f"{self.cursor.rowcount} row updated.")
