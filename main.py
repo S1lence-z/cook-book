@@ -17,7 +17,7 @@ if __name__ == "__main__":
     # Create the CookBookApp
     app = CookBookApp(recipe_manager)
     # Start the app
-    app.main_controller.start_app()
+    app.start_app()
     # Close the database connection after the app is closed
     db_connection.close()
     print("Database connection closed.")

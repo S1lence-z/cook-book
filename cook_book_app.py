@@ -12,6 +12,9 @@ class CookBookApp:
             window (AppWindow): Instance of the tk.Tk
             model (DatabaseManager): Instance of the DatabaseManager model class
         """
-        self.model = model
-        self.view_controller = MainView()
-        self.main_controller = MainController(self.model, self.view_controller)
+        self._model = model
+        self._view_controller = MainView()
+        self._main_controller = MainController(self._model, self._view_controller)
+        
+    def start_app(self):
+        self._main_controller.start_app()
