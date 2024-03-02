@@ -3,11 +3,27 @@ import tkinter as tk
 from custom import *
 
 class AddRecipePage(tk.Frame, Page):
+    """
+    A class representing the Add Recipe Page.
+
+    This class inherits from tk.Frame and Page classes.
+    """
+
     def __init__(self, *args, **kwargs) -> None:
+        """
+        Initialize the AddRecipePage object.
+
+        Args:
+            *args: Variable length argument list.
+            **kwargs: Arbitrary keyword arguments.
+        """
         super().__init__(*args, **kwargs)
         self._create_ui()
     
     def _create_ui(self) -> None:
+        """
+        Create the user interface for the Add Recipe Page.
+        """
         self.header = tk.Label(self, text="Add Recipe Page")
         # Title
         self.title_label = tk.Label(self, text="Title")
@@ -41,6 +57,9 @@ class AddRecipePage(tk.Frame, Page):
         self.cancel_btn.pack()
         
     def _clear_add_page(self):
+        """
+        Clear the input fields on the Add Recipe Page.
+        """
         # Clear the title entry
         self.title_entry.delete(0, tk.END)
         # Clear the description text.
@@ -53,6 +72,12 @@ class AddRecipePage(tk.Frame, Page):
         self.instructions_text.delete('1.0', tk.END)
         
     def get_added_recipe(self) -> list:
+        """
+        Get the added recipe details from the input fields.
+
+        Returns:
+            list: A list containing the title, description, prep time, cook time, and instructions.
+        """
         title = self.title_entry.get()
         description = self.description_text.get("1.0", "end-1c")
         prep_time = self.prep_time_entry.get()
