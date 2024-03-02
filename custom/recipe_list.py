@@ -1,6 +1,6 @@
 # recipe_list.py
 import tkinter as tk
-from models.recipe import Recipe
+from custom.recipe import Recipe
 
 class RecipeList(tk.Listbox):
     def __init__(self, *args, **kwargs) -> None:

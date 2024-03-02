@@ -17,9 +17,11 @@ class EditationController(PageController):
         self.frame.cancel_btn.config(command=self.cancel)
     
     def save_edited_recipe(self):
-        #! SAVE THE RECIPE TO THE DB
-        print("RECIPE EDITED")
+        edited_recipe = self.frame.get_edited_recipe()
+        self.model.update_recipe(edited_recipe[0], edited_recipe[1], edited_recipe[2], edited_recipe[3], edited_recipe[4], edited_recipe[5])
+        new_model = self.model.get_all_recipes()
         self.view.raise_page("home")
+        self.view.pages["home"].update_recipe_list(new_model)
     
     def cancel(self):
         self.view.raise_page("home")

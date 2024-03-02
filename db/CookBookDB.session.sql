@@ -18,3 +18,5 @@ VALUES
 ('Chicken Caesar Salad', 'Classic Caesar salad with grilled chicken, romaine lettuce, croutons, and Caesar dressing.', 20, 10, 'Grill chicken. Toss lettuce with dressing and croutons. Top with chicken.');
 
 SELECT * from recipes;
+
+DROP TABLE recipes;

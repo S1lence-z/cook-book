@@ -2,7 +2,7 @@
 import tkinter as tk
 from custom.page_abc import Page
 from custom.recipe_list import RecipeList
-from models.recipe import Recipe
+from custom.recipe import Recipe
 
 class HomePage(tk.Frame, Page):
     def __init__(self, *args, **kwargs) -> None:
