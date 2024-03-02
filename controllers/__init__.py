@@ -1,4 +1,3 @@
-from views.main_view import MainView
 from custom.page_controller_abc import PageController
 from controllers.home_controller import HomeController
 from controllers.editation_controller import EditationController

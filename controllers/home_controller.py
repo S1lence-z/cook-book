@@ -1,6 +1,7 @@
 # home_controller.py
 import tkinter as tk
 from models.database_manager import DatabaseManager
+from views.main_view import MainView
 from controllers import *
 
 class HomeController(PageController):
