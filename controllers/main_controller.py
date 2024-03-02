@@ -19,6 +19,6 @@ class MainController:
         addition_controller = AdditionController(self.model, self.view)
         return [home_controller, editation_controller, addition_controller]
     
-    def start_app(self):
+    def start_mainloop(self):
         self.view.raise_page("home")
         self.view.start_mainloop()

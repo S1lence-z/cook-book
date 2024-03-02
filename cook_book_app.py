@@ -17,4 +17,4 @@ class CookBookApp:
         self._main_controller = MainController(self._model, self._view_controller)
         
     def start_app(self):
-        self._main_controller.start_app()
+        self._main_controller.start_mainloop()
