@@ -1,8 +1,6 @@
 # home_page.py
 import tkinter as tk
-from custom.page_abc import Page
-from custom.recipe_list import RecipeList
-from custom.recipe import Recipe
+from custom import *
 
 class HomePage(tk.Frame, Page):
     def __init__(self, *args, **kwargs) -> None:

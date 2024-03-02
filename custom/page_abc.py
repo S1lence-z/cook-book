@@ -1,5 +1,4 @@
 # page_abstract_class.py
-import tkinter as tk
 from abc import ABC, abstractmethod
 
 class Page(ABC):

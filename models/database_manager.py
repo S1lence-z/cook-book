@@ -1,5 +1,4 @@
-import mysql.connector
-from custom.recipe import Recipe
+from custom import *
 
 class DatabaseManager:
     def __init__(self, db_connection):
