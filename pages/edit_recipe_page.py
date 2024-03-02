@@ -48,13 +48,13 @@ class EditRecipePage(tk.Frame, Page):
     def _clear_edit_page(self):
         # Clear the title entry
         self.title_entry.delete(0, tk.END)
-        # Clear the description text. Note the starting index is '1.0' for Text widgets.
+        # Clear the description text.
         self.description_text.delete('1.0', tk.END)
         # Clear the prep time entry
         self.prep_time_entry.delete(0, tk.END)
         # Clear the cook time entry
         self.cook_time_entry.delete(0, tk.END)
-        # Clear the instructions text. Again, '1.0' is the correct starting index.
+        # Clear the instructions text.
         self.instructions_text.delete('1.0', tk.END)
             
     def _fill_the_edit_page(self) -> None:
