@@ -9,14 +9,14 @@ class MainView:
 
         Creates an application window, initializes the pages dictionary, and adds pages to it.
         """
-        self.window = self._create_app_window("CookBook", 1280, 720, False)
+        self.window = self._create_app_window("CookBook", 1280, 720, False, "superhero")
         self.pages = {}
         # Add pages
         self._add_page("home", HomePage)
         self._add_page("editRecipe", EditRecipePage)
         self._add_page("addRecipe", AddRecipePage)
         
-    def _create_app_window(self, title: str, width: int, height: int, resizability: bool):
+    def _create_app_window(self, title: str, width: int, height: int, resizability: bool, theme: str) -> AppWindow:
         """
         Creates an application window.
 
@@ -29,7 +29,7 @@ class MainView:
         Returns:
             AppWindow: The created application window.
         """
-        return AppWindow(title, width, height, resizability)
+        return AppWindow(title, width, height, resizability, theme)
         
     def _add_page(self, name: str, page) -> None:
         """ 

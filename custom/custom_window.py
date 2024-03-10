@@ -1,9 +1,9 @@
 # custom_window.py
-import tkinter as tk
+import ttkbootstrap as tkb
 
-class AppWindow(tk.Tk):
+class AppWindow(tkb.Window):
     """ AppWindow is a customizable Tkinter window. """
-    def __init__(self, title: str, width: int, height: int, resizable: bool) -> None:
+    def __init__(self, title: str, width: int, height: int, resizable: bool, theme: str) -> None:
         """ Initializes the AppWindow class with given params.
 
         Args:
@@ -12,7 +12,7 @@ class AppWindow(tk.Tk):
             height (int): Sets the Tkinter window height.
             resizable (bool): Flag to enable or disable resizability.
         """
-        super().__init__()
+        super().__init__(themename=theme)
         # Properties
         self.width = width
         self.height = height
