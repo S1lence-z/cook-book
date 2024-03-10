@@ -18,9 +18,9 @@ class AppWindow(tkb.Window):
         self.height = height
         # Methods to initilize the window
         self.create_title(title)
-        self.set_window(width, height, resizable)
+        self.set_window(width, height, resizable, theme)
         
-    def set_window(self, width: int, height: int, resizable: bool) -> None:
+    def set_window(self, width: int, height: int, resizable: bool, theme: str) -> None:
         """ Sets the window size and resizability settings.
 
         Args:

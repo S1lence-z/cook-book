@@ -9,7 +9,7 @@ class MainView:
 
         Creates an application window, initializes the pages dictionary, and adds pages to it.
         """
-        self.window = self._create_app_window("CookBook", 1280, 720, False, "superhero")
+        self.window = self._create_app_window("CookBook", 1280, 720, False, "darkly")
         self.pages = {}
         # Add pages
         self._add_page("home", HomePage)
