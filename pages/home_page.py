@@ -1,33 +1,46 @@
-# home_page.py
+from ensurepip import bootstrap
 import tkinter as tk
+from tkinter import font
+import ttkbootstrap as tkb
 from custom import *
 
-class HomePage(tk.Frame, Page):
+class HomePage(tk.Frame):
     def __init__(self, *args, **kwargs) -> None:
         super().__init__(*args, **kwargs)
+        self._format_frame()
         self._create_ui()
         
-    def _create_ui(self):
-        self.header = tk.Label(self, text="Home Page")
-        self.header.pack()
-        # LIST THE EXISTING RECIPES
-        self.recipe_list = RecipeList(self)
-        self.recipe_list.pack()
-        # ALL PAGE BUTTONS
-        self.add_btn = tk.Button(self, text="Add Recipe")
-        self.add_btn.pack()
-        self.delete_btn = tk.Button(self, text="Delete Recipe")
-        self.delete_btn.pack()
-        self.edit_btn = tk.Button(self, text="Edit Recipe")
-        self.edit_btn.pack()
+    def _format_frame(self) -> None:
+        # Center the content
+        self.grid_rowconfigure(0, weight=1)
+        self.grid_columnconfigure(0, weight=1)
+
+    def _create_ui(self) -> None:
+        self.header = tkb.Label(self, text="Home Page", font=("Arial", 24), bootstyle=tkb.ACTIVE, anchor="center") # type: ignore
+        self.header.grid(row=0, column=0, columnspan=2, sticky="nsew", padx=10, pady=5)
+
+        self.recipe_list = RecipeList(self, font=("Arial", 26))
+        self.recipe_list.grid(row=1, column=0, columnspan=2, sticky="nsew", padx=10, pady=5)
+
+        self.add_btn = tkb.Button(self, text="Add Recipe", bootstyle=tkb.SUCCESS) # type: ignore
+        self.add_btn.grid(row=2, column=0, sticky="nsew", padx=10, pady=5)
+
+        self.delete_btn = tkb.Button(self, text="Delete Recipe", bootstyle=tkb.DANGER) # type: ignore
+        self.delete_btn.grid(row=3, column=0, sticky="nsew", padx=10, pady=5)
         
-    def update_delete_btn_state(self, event: str):
-        #? SHOULD THIS BE HERE
+        self.edit_btn = tkb.Button(self, text="Edit Recipe", bootstyle=tkb.PRIMARY) # type: ignore
+        self.edit_btn.grid(row=4, column=0, sticky="nsew", padx=10, pady=5)
+
+    def update_delete_btn_state(self, event: str) -> None:
         delete_btn = self.delete_btn
         recipe_list = self.recipe_list
-        delete_btn.config(state=tk.NORMAL) if recipe_list.curselection() else delete_btn.config(state=tk.DISABLED)
-        
-    def update_recipe_list(self, new_list: list[Recipe]):
-        #? SHOULD THIS BE HERE
+        # Enable the delete button if a recipe is selected, else disable it
+        try:
+            delete_btn.config(state=tk.NORMAL) if recipe_list.curselection() else delete_btn.config(state=tk.DISABLED)
+        except IndexError:
+            delete_btn.config(state=tk.DISABLED)
+            recipe_list.selection_clear(0, tk.END)
+
+    def update_recipe_list(self, new_list: list[Recipe]) -> None:
         self.recipe_list.clear()
         self.recipe_list.populate(new_list)

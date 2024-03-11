@@ -9,9 +9,9 @@ class HomeController(PageController):
         self.model = model
         self.view = view
         self.frame = self.view.pages["home"]
-        self._setup_page()
+        self.__setup_page()
         
-    def _setup_page(self):
+    def __setup_page(self):
         self._bind_buttons()
         self._bind_recipe_list()
     
@@ -34,6 +34,7 @@ class HomeController(PageController):
         new_lst = self.model.get_all_recipes()
         self.frame.update_recipe_list(new_lst)
         print(f"Recipe with id={selected_recipe_id} deleted")
+        self.frame.update_delete_btn_state("<<ListboxSelect>>")
     
     def _edit_recipe(self):
         selected_recipe_id = self.frame.recipe_list.curselection()
