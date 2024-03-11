@@ -3,7 +3,7 @@ from abc import ABC, abstractmethod
 
 class PageController:
     @abstractmethod
-    def _setup_page(self) -> None:
+    def __setup_page(self) -> None:
         """ Sets up the whole page. """
         pass
     

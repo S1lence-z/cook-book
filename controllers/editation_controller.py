@@ -8,9 +8,9 @@ class EditationController(PageController):
         self.model = model
         self.view = view
         self.frame = self.view.pages["editRecipe"]
-        self._setup_page()
+        self.__setup_page()
         
-    def _setup_page(self):
+    def __setup_page(self):
         self._bind_buttons()
         
     def _bind_buttons(self) -> None:
