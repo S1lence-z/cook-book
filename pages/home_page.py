@@ -1,6 +1,5 @@
 from ensurepip import bootstrap
 import tkinter as tk
-from tkinter import font
 import ttkbootstrap as tkb
 from custom import *
 
