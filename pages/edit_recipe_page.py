@@ -3,6 +3,14 @@ import ttkbootstrap as tkb
 from custom import *
 
 class EditRecipePage(tk.Frame, Page):
+    """A class representing the Edit Recipe Page.
+
+    This page allows the user to edit a recipe's details such as title, description, prep time, cook time, and instructions.
+
+    Attributes:
+        _recipe_to_edit (Recipe): The recipe object to be edited.
+    """
+
     def __init__(self, *args, **kwargs) -> None:
         super().__init__(*args, **kwargs)
         self._recipe_to_edit: Recipe
@@ -10,6 +18,7 @@ class EditRecipePage(tk.Frame, Page):
         self._create_ui()
         
     def _format_frame(self) -> None:
+        """Formats the frame by configuring row and column weights."""
         # Center the content
         self.grid_rowconfigure(0, weight=1)
         self.grid_rowconfigure(6, weight=1)
@@ -21,6 +30,7 @@ class EditRecipePage(tk.Frame, Page):
         self.grid_columnconfigure(3, weight=1)
 
     def _create_ui(self) -> None:
+        """Creates the user interface elements for the Edit Recipe Page."""
         self.header = tkb.Label(self, text="Edit Recipe Page", font=("Arial", 24), bootstyle=tkb.ACTIVE, anchor="center") # type: ignore
         self.header.grid(row=0, column=0, columnspan=4, sticky="nsew", padx=10, pady=5)
 
@@ -62,10 +72,16 @@ class EditRecipePage(tk.Frame, Page):
         self.cancel_btn.grid(row=6, column=3, sticky="nsew", padx=10, pady=5, ipady=15)
 
     def set_recipe_to_edit(self, recipe: Recipe):
+        """Sets the recipe to be edited.
+
+        Args:
+            recipe (Recipe): The recipe object to be edited.
+        """
         self._recipe_to_edit = recipe
         self._fill_the_edit_page()
         
     def _clear_edit_page(self):
+        """Clears the edit page by resetting the input fields."""
         # Clear the title entry
         self.title_entry.delete(0, tk.END)
         # Clear the description text.
@@ -78,6 +94,7 @@ class EditRecipePage(tk.Frame, Page):
         self.instructions_text.delete('1.0', tk.END)
             
     def _fill_the_edit_page(self) -> None:
+        """Fills the edit page with the recipe's current values."""
         self._clear_edit_page()
         # Fill the form with the recipe's current values
         self.title_entry.insert(0, self._recipe_to_edit.title)
@@ -87,6 +104,12 @@ class EditRecipePage(tk.Frame, Page):
         self.instructions_text.insert(tk.END, self._recipe_to_edit.instructions)
         
     def get_edited_recipe(self):
+        """Gets the edited recipe details from the input fields.
+
+        Returns:
+            list: A list containing the edited recipe details in the following order:
+                [recipe_id, title, description, prep_time, cook_time, instructions]
+        """
         recipe_id = self._recipe_to_edit.id
         title = self.title_entry.get()
         description = self.description_text.get("1.0", "end-1c")

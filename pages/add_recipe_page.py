@@ -1,7 +1,8 @@
-# add_recipe_page.py
 import tkinter as tk
 import ttkbootstrap as tkb
 from custom import *
+
+# add_recipe_page.py
 
 class AddRecipePage(tk.Frame, Page):
     """
@@ -23,6 +24,9 @@ class AddRecipePage(tk.Frame, Page):
         self._create_ui()
         
     def _format_frame(self) -> None:
+        """
+        Format the frame layout.
+        """
         # Center the content
         self.grid_rowconfigure(0, weight=1)
         self.grid_rowconfigure(6, weight=1)
@@ -34,6 +38,9 @@ class AddRecipePage(tk.Frame, Page):
         self.grid_columnconfigure(3, weight=1)
     
     def _create_ui(self) -> None:
+        """
+        Create the user interface elements.
+        """
         self.header = tkb.Label(self, text="Add Recipe Page", font=("Arial", 24), bootstyle=tkb.ACTIVE, anchor="center") # type: ignore
         self.header.grid(row=0, column=0, columnspan=4, sticky="nsew", padx=10, pady=5)
 
