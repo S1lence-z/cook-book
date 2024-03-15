@@ -14,15 +14,17 @@ class AdditionController(PageController):
         self._bind_buttons()
         
     def _bind_buttons(self) -> None:
-        self.frame.save_btn.config(command=self.save_added_recipe)
+        self.frame.add_btn.config(command=self.edit_added_recipe)
         self.frame.cancel_btn.config(command=self.cancel)
     
-    def save_added_recipe(self):
-        added_recipe = self.frame.get_added_recipe()
-        self.model.add_recipe(added_recipe[0], added_recipe[1], added_recipe[2], added_recipe[3], added_recipe[4])
-        new_model = self.model.get_all_recipes()
-        self.view.raise_page("home")
-        self.view.pages["home"].update_recipe_list(new_model)
+    def edit_added_recipe(self):
+        added_recipe_title = self.frame.get_added_recipe()
+        self.model.add_recipe(added_recipe_title)
+        added_recipe_id = self.model.get_last_inserted_recipe_id()
+        recipe_to_edit = self.model.get_recipe_by_id(added_recipe_id)
+        edit_page = self.view.pages["editRecipe"]
+        edit_page.set_recipe_to_edit(recipe_to_edit)
+        self.view.raise_page("editRecipe")
     
     def cancel(self):
         self.view.raise_page("home")
