@@ -26,4 +26,3 @@ class AdditionController(PageController):
     
     def cancel(self):
         self.view.raise_page("home")
-        return
