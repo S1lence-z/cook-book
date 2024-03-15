@@ -1,9 +1,8 @@
-from ensurepip import bootstrap
 import tkinter as tk
 import ttkbootstrap as tkb
 from custom import *
 
-class HomePage(tk.Frame):
+class HomePage(tk.Frame, Page):
     def __init__(self, *args, **kwargs) -> None:
         super().__init__(*args, **kwargs)
         self._format_frame()
@@ -57,6 +56,10 @@ class HomePage(tk.Frame):
                 button.config(state=tk.DISABLED)
                 recipe_list.selection_clear(0, tk.END)
 
-    def update_recipe_list(self, new_list: list[Recipe]) -> None:
+    def _update_recipe_list(self, new_list: list[Recipe]) -> None:
         self.recipe_list.clear()
         self.recipe_list.populate(new_list)
+        
+    def refresh_page(self, all_recipes: list[Recipe]) -> None:
+        self._update_recipe_list(all_recipes)
+        self.update_buttons_visibility("<<ListboxSelect>>")

@@ -24,4 +24,6 @@ class DetailController(PageController):
         self.frame.back_btn.config(command=self._go_back)
         
     def _go_back(self) -> None:
+        self.frame.clear_page()
+        self.view.pages["home"].refresh_page(self.model.get_all_recipes())
         self.view.raise_page("home")

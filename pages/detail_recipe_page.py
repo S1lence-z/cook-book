@@ -59,6 +59,13 @@ class DetailRecipePage(tk.Frame, Page):
         self._recipe_to_display = recipe
         self._fill_the_display_page()
         
+    def clear_page(self):
+        self.title_value.config(text="")
+        self.description_value.config(text="")
+        self.prep_time_value.config(text="")
+        self.cook_time_value.config(text="")
+        self.instructions_value.config(text="")
+        
     def _fill_the_display_page(self):
         self.title_value.config(text=self._recipe_to_display.title)
         self.description_value.config(text=self._recipe_to_display.description)
