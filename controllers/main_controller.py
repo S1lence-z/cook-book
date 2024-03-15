@@ -18,7 +18,8 @@ class MainController:
         home_controller = HomeController(self.model, self.view)
         editation_controller = EditationController(self.model, self.view)
         addition_controller = AdditionController(self.model, self.view)
-        return [home_controller, editation_controller, addition_controller]
+        detail_controller = DetailController(self.model, self.view)
+        return [home_controller, editation_controller, addition_controller, detail_controller]
     
     def start_mainloop(self):
         self.view.raise_page("home")

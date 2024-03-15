@@ -15,6 +15,7 @@ class MainView:
         self._add_page("home", HomePage)
         self._add_page("editRecipe", EditRecipePage)
         self._add_page("addRecipe", AddRecipePage)
+        self._add_page("detailRecipe", DetailRecipePage)
         
     def _create_app_window(self, title: str, width: int, height: int, resizability: bool, theme: str) -> AppWindow:
         """
