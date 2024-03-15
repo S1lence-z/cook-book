@@ -23,6 +23,7 @@ class EditationController(PageController):
         new_model = self.model.get_all_recipes()
         self.view.raise_page("home")
         self.view.pages["home"].update_recipe_list(new_model)
+        self.view.pages["home"].update_buttons_visibility("<<ListboxSelect>>")
     
     def cancel(self):
         self.view.raise_page("home")

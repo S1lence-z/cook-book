@@ -39,15 +39,18 @@ class HomePage(tk.Frame):
         self.edit_btn = tkb.Button(self, text="Edit Recipe", bootstyle=tkb.PRIMARY) # type: ignore
         self.edit_btn.grid(row=2, column=2, sticky="nsew", padx=10, pady=5, ipady=15)
 
-    def update_delete_btn_state(self, event: str) -> None:
+    def update_buttons_visibility(self, event: str) -> None:
         delete_btn = self.delete_btn
+        edit_btn = self.edit_btn
         recipe_list = self.recipe_list
-        # Enable the delete button if a recipe is selected, else disable it
-        try:
-            delete_btn.config(state=tk.NORMAL) if recipe_list.curselection() else delete_btn.config(state=tk.DISABLED)
-        except IndexError:
-            delete_btn.config(state=tk.DISABLED)
-            recipe_list.selection_clear(0, tk.END)
+        buttons_to_update = [delete_btn, edit_btn]
+        # Enable selected buttons if a recipe is selected, else disable it
+        for button in buttons_to_update:
+            try:
+                button.config(state=tk.NORMAL) if recipe_list.curselection() else button.config(state=tk.DISABLED)
+            except IndexError:
+                button.config(state=tk.DISABLED)
+                recipe_list.selection_clear(0, tk.END)
 
     def update_recipe_list(self, new_list: list[Recipe]) -> None:
         self.recipe_list.clear()

@@ -18,12 +18,16 @@ class HomeController(PageController):
     def _bind_buttons(self):
         self.frame.add_btn.config(command=self._add_recipe)
         self.frame.delete_btn.config(command=self._delete_recipe, state=tk.DISABLED)
-        self.frame.edit_btn.config(command=self._edit_recipe)
+        self.frame.edit_btn.config(command=self._edit_recipe, state=tk.DISABLED)
         
     def _bind_recipe_list(self):
         setup_lst = self.model.get_all_recipes()
         self.frame.update_recipe_list(setup_lst)
-        self.frame.recipe_list.bind("<<ListboxSelect>>", self.frame.update_delete_btn_state)
+        self._update_buttons_visibility()
+        
+    def _update_buttons_visibility(self):
+        self.frame.recipe_list.bind("<<ListboxSelect>>", self.frame.update_buttons_visibility)
+        self.frame.recipe_list.bind("<<ListboxSelect>>", self.frame.update_buttons_visibility)
         
     def _add_recipe(self) -> None:
         self.view.raise_page("addRecipe")
@@ -34,7 +38,7 @@ class HomeController(PageController):
         new_lst = self.model.get_all_recipes()
         self.frame.update_recipe_list(new_lst)
         print(f"Recipe with id={selected_recipe_id} deleted")
-        self.frame.update_delete_btn_state("<<ListboxSelect>>")
+        self.frame.update_buttons_visibility("<<ListboxSelect>>")
     
     def _edit_recipe(self):
         selected_recipe_id = self.frame.recipe_list.curselection()
@@ -42,3 +46,4 @@ class HomeController(PageController):
         edit_page = self.view.pages["editRecipe"]
         edit_page.set_recipe_to_edit(recipe_to_edit)
         self.view.raise_page("editRecipe")
+        self.frame.update_buttons_visibility("<<ListboxSelect>>")
