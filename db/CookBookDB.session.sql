@@ -4,8 +4,8 @@ CREATE TABLE IF NOT EXISTS recipes (
     recipe_id INTEGER PRIMARY KEY AUTO_INCREMENT,
     title VARCHAR(255) NOT NULL UNIQUE,
     _description TEXT,
-    prep_time INTEGER NOT NULL,
-    cook_time INTEGER NOT NULL,
+    prep_time INTEGER NOT NULL DEFAULT 0,
+    cook_time INTEGER NOT NULL DEFAULT 0,
     instructions TEXT
 );
 
