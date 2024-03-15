@@ -38,12 +38,17 @@ class HomePage(tk.Frame):
         # Edit Recipe button
         self.edit_btn = tkb.Button(self, text="Edit Recipe", bootstyle=tkb.PRIMARY) # type: ignore
         self.edit_btn.grid(row=2, column=2, sticky="nsew", padx=10, pady=5, ipady=15)
+        
+        # Show Recipe button
+        self.detail_btn = tkb.Button(self, text="Show Recipe", bootstyle=tkb.INFO) #type: ignore
+        self.detail_btn.grid(row=3, column=0, columnspan=3, sticky="nsew", padx=10, pady=5, ipady=15)
 
     def update_buttons_visibility(self, event: str) -> None:
         delete_btn = self.delete_btn
         edit_btn = self.edit_btn
+        detail_btn = self.detail_btn
         recipe_list = self.recipe_list
-        buttons_to_update = [delete_btn, edit_btn]
+        buttons_to_update = [delete_btn, edit_btn, detail_btn]
         # Enable selected buttons if a recipe is selected, else disable it
         for button in buttons_to_update:
             try:
