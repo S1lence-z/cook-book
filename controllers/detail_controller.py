@@ -14,8 +14,14 @@ class DetailController(PageController):
     def __init__(self, model: DatabaseManager, view: MainView) -> None:
         self.model = model
         self.view = view
-        self.frame = self.view.pages["addRecipe"]
+        self.frame = self.view.pages["detailRecipe"]
         self.__setup_page()
         
     def __setup_page(self) -> None:
-        pass
+        self._bind_buttons()
+    
+    def _bind_buttons(self) -> None:
+        self.frame.back_btn.config(command=self._go_back)
+        
+    def _go_back(self) -> None:
+        self.view.raise_page("home")
