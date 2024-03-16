@@ -21,6 +21,8 @@ class HomeController(PageController):
         self.frame.edit_btn.config(command=self._edit_recipe, state=tk.DISABLED)
         self.frame.detail_btn.config(command=self._show_detail_recipe, state=tk.DISABLED)
         self.frame.recipe_list.bind("<<ListboxSelect>>", self.frame.update_buttons_visibility)
+        # Bind search bar
+        self.frame.search_bar.bind("<KeyRelease>", self._search_recipes)
         
     def _add_recipe(self) -> None:
         self.view.raise_page("addRecipe")
@@ -44,3 +46,8 @@ class HomeController(PageController):
         detail_page = self.view.pages["detailRecipe"]
         detail_page.set_recipe_to_display(recipe_to_display)
         self.view.raise_page("detailRecipe")
+        
+    def _search_recipes(self, event) -> None:
+        search_query = self.frame.search_bar.get_query()
+        self.frame.recipe_list.filter_recipes(search_query)
+        self.frame.update_buttons_visibility("<<ListboxSelect>>")

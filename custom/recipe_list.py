@@ -19,3 +19,12 @@ class RecipeList(tk.Listbox):
         index_of_select_item = super().curselection()
         recipe = self._db_recipes[index_of_select_item[0]]
         return recipe.id
+    
+    def filter_recipes(self, search_query: str) -> None:
+        self.clear()
+        if search_query == "":
+            self.populate(self._db_recipes)
+            return
+        for recipe in self._db_recipes:
+            if search_query.lower() in recipe.title.lower():
+                self.insert(tk.END, recipe.title)
