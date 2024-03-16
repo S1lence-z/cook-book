@@ -11,11 +11,16 @@ CREATE TABLE IF NOT EXISTS recipes (
 
 INSERT INTO recipes (title, _description, prep_time, cook_time, instructions)
 VALUES
-('Classic Spaghetti Carbonara', 'A quick and easy Italian pasta dish using eggs, cheese, and bacon.', 15, 20, 'Cook pasta. Fry bacon. Mix eggs and cheese. Combine all with pasta.'),
-('Homemade Margherita Pizza', 'Simple pizza with tomatoes, mozzarella cheese, and fresh basil.', 20, 15, 'Prepare dough. Add toppings. Bake until crust is golden.'),
-('Vegetarian Chili', 'Hearty and spicy chili made with beans, tomatoes, and various vegetables.', 25, 35, 'Saute vegetables. Add tomatoes and beans. Simmer.'),
-('Banana Bread', 'Moist and delicious bread made with overripe bananas, flour, sugar, and eggs.', 15, 60, 'Mix ingredients. Pour into loaf pan. Bake.'),
-('Chicken Caesar Salad', 'Classic Caesar salad with grilled chicken, romaine lettuce, croutons, and Caesar dressing.', 20, 10, 'Grill chicken. Toss lettuce with dressing and croutons. Top with chicken.');
+('Spaghetti Carbonara', 'Classic Italian pasta dish with eggs, cheese, pancetta, and pepper', 15, 20, 'Cook pasta, fry pancetta, mix with beaten eggs and cheese, combine with pasta, season with pepper.'),
+('Penne Arrabbiata', 'Spicy tomato-based sauce with garlic and red chili peppers', 10, 25, 'Sauté garlic and chili, add tomato sauce, simmer, then toss with cooked penne.'),
+('Fettuccine Alfredo', 'Creamy pasta dish with butter and Parmesan cheese', 10, 15, 'Cook fettuccine, mix with melted butter and Parmesan until creamy, serve immediately.'),
+('Lasagna Bolognese', 'Layered pasta with Bolognese sauce, béchamel, and cheese', 30, 45, 'Prepare Bolognese and béchamel sauce, layer with lasagna noodles and cheese, bake until golden.'),
+('Pesto Pasta', 'Pasta with a sauce of basil, garlic, pine nuts, Parmesan, and olive oil', 15, 10, 'Blend basil, garlic, pine nuts, Parmesan, and oil to make pesto, toss with cooked pasta.'),
+('Caesar Salad', 'Classic salad with romaine lettuce, croutons, Parmesan cheese, and Caesar dressing', 20, 0, 'Toss romaine lettuce with croutons, Parmesan cheese, and Caesar dressing.'),
+('Greek Salad', 'Refreshing salad with tomatoes, cucumber, red onion, feta cheese, and olives', 15, 0, 'Combine tomatoes, cucumber, red onion, feta cheese, and olives, dress with olive oil and vinegar.'),
+('Quinoa Salad', 'Healthy salad with quinoa, mixed vegetables, and a lemon vinaigrette', 20, 15, 'Cook quinoa, let cool, then mix with vegetables and dress with lemon vinaigrette.'),
+('Tiramisu', 'Popular Italian coffee-flavored dessert with layers of ladyfingers and mascarpone cheese', 30, 0, 'Layer coffee-soaked ladyfingers with a mixture of mascarpone cheese and sugar, dust with cocoa powder.'),
+('Chocolate Mousse', 'Rich and creamy dessert made with chocolate, eggs, and whipped cream', 20, 0, 'Melt chocolate, mix with beaten eggs, fold in whipped cream, chill until set.');
 
 SELECT * from recipes;
 
