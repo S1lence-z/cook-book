@@ -66,6 +66,10 @@ class HomePage(tk.Frame, Page):
         self.recipe_list.clear()
         self.recipe_list.populate(new_list)
         
+    def _clear_search_bar(self) -> None:
+        self.search_bar.delete(0, tk.END)
+        
     def refresh_page(self, all_recipes: list[Recipe]) -> None:
+        self._clear_search_bar()
         self._update_recipe_list(all_recipes)
         self.update_buttons_visibility("<<ListboxSelect>>")
