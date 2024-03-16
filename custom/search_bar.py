@@ -1,15 +1,26 @@
-# search_bar.py
 import tkinter as tk
 import ttkbootstrap as tkb
 
+# search_bar.py
+
 class SearchBar(tk.Entry):
+    """A custom search bar widget."""
+
     def __init__(self, *args, **kwargs) -> None:
+        """
+        Initialize the SearchBar widget.
+
+        Args:
+            *args: Variable length argument list.
+            **kwargs: Arbitrary keyword arguments.
+        """
         super().__init__(*args, **kwargs)
-        self.search_query = self._create_search_query()
-        
-    def _create_search_query(self) -> tk.StringVar:
-        search_query = tk.StringVar()
-        return search_query
-    
+
     def get_query(self) -> str:
+        """
+        Get the current search query.
+
+        Returns:
+            str: The current search query.
+        """
         return self.get()
