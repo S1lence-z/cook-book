@@ -18,11 +18,12 @@ class DetailRecipePage(tk.Frame, Page):
         # Configure column weights to make buttons split equally
         self.grid_columnconfigure(0, weight=1)
         self.grid_columnconfigure(1, weight=1)
+        self.grid_columnconfigure(2, weight=1)
         
     def _create_ui(self) -> None:
         self.font = ("Arial", 16)
         self.header = tk.Label(self, text="Recipe Detail Page", font=self.font + ("bold",))
-        self.header.grid(row=0, column=0, columnspan=2, pady=10)
+        self.header.grid(row=0, column=0, columnspan=3, pady=10)
         # Title
         self.title_label = tk.Label(self, text="Title", font=self.font + ("bold",))
         self.title_label.grid(row=1, column=0, sticky="nsew", padx=10, pady=5)
@@ -54,6 +55,9 @@ class DetailRecipePage(tk.Frame, Page):
         # Show ingredients button
         self.show_ingredients_btn = tkb.Button(self, text="Show Ingredients", bootstyle=tkb.INFO) # type: ignore
         self.show_ingredients_btn.grid(row=6, column=1, pady=10, padx=10, sticky="nsew")
+        # Edit button
+        self.edit_btn = tkb.Button(self, text="Edit", bootstyle=tkb.SUCCESS) # type: ignore
+        self.edit_btn.grid(row=6, column=2, pady=10, padx=10, sticky="nsew")
         
     def set_recipe_to_display(self, recipe: Recipe):
         self._recipe_to_display = recipe
