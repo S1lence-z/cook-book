@@ -15,18 +15,23 @@ class HomePage(tk.Frame, Page):
             self.grid_rowconfigure(i, weight=1)
 
     def _create_ui(self) -> None:
+        # Font settings
+        font_family = "Arial"
+        font_size = 22
+        font_settings = (font_family, font_size)
+        
         # Header label
-        self.header = tkb.Label(self, text="Home Page", font=("Arial", 24), bootstyle=tkb.ACTIVE, anchor="center") # type: ignore
+        self.header = tkb.Label(self, text="Home Page", font=(font_family, 24), bootstyle=tkb.ACTIVE, anchor="center") # type: ignore
         self.header.grid(row=0, column=0, columnspan=3, sticky="nsew", padx=10, pady=5)
         
         # Search bar
-        self.search_bar_label = tkb.Label(self, text="Search by title:", font=("Arial", 26), bootstyle=tkb.ACTIVE) # type: ignore
+        self.search_bar_label = tkb.Label(self, text="Search by title:", font=font_settings, bootstyle=tkb.ACTIVE) # type: ignore
         self.search_bar_label.grid(row=1, column=0, padx=10, pady=5)
-        self.search_bar = SearchBar(self, font=("Arial", 26))
+        self.search_bar = SearchBar(self, font=font_settings)
         self.search_bar.grid(row=1, column=1, columnspan=2, sticky="nsew", padx=10, pady=5)
         
         # Recipe list
-        self.recipe_list = RecipeList(self, font=("Arial", 26))
+        self.recipe_list = RecipeList(self, font=(font_family, 18))
         self.recipe_list.grid(row=2, column=0, columnspan=3, sticky="nsew", padx=10, pady=5)
         
         # Add Recipe button
