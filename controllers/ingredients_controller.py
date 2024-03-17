@@ -16,6 +16,6 @@ class IngredientsController(PageController):
         self.frame.cancel_btn.config(command=self._cancel)
         
     def _cancel(self) -> None:
-        # This cannot be done because it would require the database manager
+        self.frame.clear_page()
         self.view.pages["recipesPage"].refresh_page(self.model.get_all_recipes())
         self.view.raise_page("recipesPage")

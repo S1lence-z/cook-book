@@ -38,4 +38,8 @@ class DetailController(PageController):
         self.view.raise_page("editRecipe")
         
     def _show_ingredients(self) -> None:
-        print("Showing ingredients")
+        current_recipe_id = self.frame._recipe_to_display.id
+        current_recipe_title = self.frame._recipe_to_display.title
+        recipe_ingredients = self.model.get_ingredients_by_recipe_id(current_recipe_id)
+        self.view.pages["ingredientsPage"].set_ingredients_to_display(recipe_ingredients, current_recipe_title)
+        self.view.raise_page("ingredientsPage")
