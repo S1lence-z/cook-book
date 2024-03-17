@@ -9,7 +9,6 @@ class CookBookApp:
         """ Initializes the CookBookApp class.
 
         Args:
-            window (AppWindow): Instance of the tk.Tk
             model (DatabaseManager): Instance of the DatabaseManager model class
         """
         self._model = model
@@ -18,6 +17,7 @@ class CookBookApp:
         self._main_controller = MainController(self._model, self._view_controller)
         
     def start_app(self):
+        """ Starts the application. """
         self._main_controller.start_mainloop()
         
     def _create_app_window(self, title: str, width: int, height: int, resizability: bool, theme: str) -> AppWindow:
@@ -29,6 +29,7 @@ class CookBookApp:
             width (int): The width of the window.
             height (int): The height of the window.
             resizability (bool): Whether the window can be resized or not.
+            theme (str): The theme of the window.
 
         Returns:
             AppWindow: The created application window.
