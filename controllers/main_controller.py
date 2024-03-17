@@ -4,9 +4,8 @@ from views.main_view import MainView
 from controllers import *
 
 class MainController:
-    def __init__(self, models: list, view: MainView) -> None:
-        self.database_manager = models[0]
-        self.ingredients_manager = models[1]
+    def __init__(self, model: DatabaseManager, view: MainView) -> None:
+        self.database_manager = model
         self.view = view
         self.page_controllers = self._init_page_controllers()
     
@@ -20,7 +19,7 @@ class MainController:
         editation_controller = EditationController(self.database_manager, self.view)
         addition_controller = AdditionController(self.database_manager, self.view)
         detail_controller = DetailController(self.database_manager, self.view)
-        ingredients_controller = IngredientsController(self.ingredients_manager, self.view)
+        ingredients_controller = IngredientsController(self.database_manager, self.view)
         return [home_controller, editation_controller, addition_controller, detail_controller, ingredients_controller]
     
     def start_mainloop(self):

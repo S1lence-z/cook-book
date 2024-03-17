@@ -1,9 +1,9 @@
-from models.ingredients_manager import IngredientsManager
+from models.database_manager import DatabaseManager
 from views.main_view import MainView
 from controllers import *
 
 class IngredientsController(PageController):
-    def __init__(self, model: IngredientsManager, view: MainView) -> None:
+    def __init__(self, model: DatabaseManager, view: MainView) -> None:
         self.model = model
         self.view = view
         self.frame = self.view.pages["ingredientsPage"]
@@ -16,4 +16,6 @@ class IngredientsController(PageController):
         self.frame.cancel_btn.config(command=self._cancel)
         
     def _cancel(self) -> None:
-        print("Cancel button clicked")
+        # This cannot be done because it would require the database manager
+        self.view.pages["recipesPage"].refresh_page(self.model.get_all_recipes())
+        self.view.raise_page("recipesPage")

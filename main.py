@@ -17,9 +17,8 @@ if __name__ == "__main__":
     )
     # Create an instance of the tkinter app window and run it and create the model
     recipe_manager = DatabaseManager(db_connection)
-    ingredients_manager = IngredientsManager(db_connection)
     # Create the CookBookApp
-    app = CookBookApp([recipe_manager, ingredients_manager])
+    app = CookBookApp(recipe_manager)
     # Start the app
     app.start_app()
     # Close the database connection after the app is closed
