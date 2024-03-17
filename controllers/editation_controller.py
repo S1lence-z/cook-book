@@ -19,9 +19,9 @@ class EditationController(PageController):
         self.model = model
         self.view = view
         self.frame = self.view.pages["editRecipe"]
-        self.__setup_page()
+        self._setup_page()
 
-    def __setup_page(self):
+    def _setup_page(self):
         """
         Sets up the editation page.
         """

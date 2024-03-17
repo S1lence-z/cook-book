@@ -20,9 +20,9 @@ class RecipesController(PageController):
         self.model = model
         self.view = view
         self.frame = self.view.pages["recipesPage"]
-        self.__setup_page()
+        self._setup_page()
 
-    def __setup_page(self):
+    def _setup_page(self):
         """
         Set up the recipes page by binding buttons and refreshing the page.
         """

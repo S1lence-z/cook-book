@@ -7,7 +7,7 @@ class PageController(ABC):
     """Abstract base class for page controllers."""
 
     @abstractmethod
-    def __setup_page(self) -> None:
+    def _setup_page(self) -> None:
         """Sets up the whole page."""
         pass
     

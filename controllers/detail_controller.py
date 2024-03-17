@@ -15,9 +15,9 @@ class DetailController(PageController):
         self.model = model
         self.view = view
         self.frame = self.view.pages["detailRecipe"]
-        self.__setup_page()
+        self._setup_page()
         
-    def __setup_page(self) -> None:
+    def _setup_page(self) -> None:
         """
         Sets up the detail page by binding the buttons.
         """

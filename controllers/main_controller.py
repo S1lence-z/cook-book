@@ -22,12 +22,12 @@ class MainController:
         Returns:
             list: A list of all controllers.
         """
-        home_controller = RecipesController(self.database_manager, self.view)
+        recipes_controller = RecipesController(self.database_manager, self.view)
         editation_controller = EditationController(self.database_manager, self.view)
         addition_controller = AdditionController(self.database_manager, self.view)
         detail_controller = DetailController(self.database_manager, self.view)
         ingredients_controller = IngredientsController(self.database_manager, self.view)
-        return [home_controller, editation_controller, addition_controller, detail_controller, ingredients_controller]
+        return [recipes_controller, editation_controller, addition_controller, detail_controller, ingredients_controller]
     
     def start_mainloop(self):
         """
