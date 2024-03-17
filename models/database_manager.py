@@ -16,7 +16,7 @@ class DatabaseManager:
             "AddRecipe": "INSERT INTO recipes (title, description, prep_time, cook_time, instructions, category) VALUES (%s, %s, %s, %s, %s, %s);",
             "DeleteRecipeById": "DELETE FROM recipes WHERE recipe_id = %s;",
             "UpdateRecipe": "UPDATE recipes SET title = %s, description = %s, prep_time = %s, cook_time = %s, instructions = %s, category = %s WHERE recipe_id = %s;",
-            "GetIngredientsByRecipeId": "SELECT * FROM ingredients WHERE recipe_id = ?"
+            "GetIngredientsByRecipeId": "SELECT * FROM ingredients WHERE recipe_id = %s;"
         }
         
     def get_all_recipes(self) -> list[Recipe]:
@@ -117,7 +117,7 @@ class DatabaseManager:
             A list of Ingredient objects representing all the ingredients for a recipe in the database.
         """
         all_ingredients = []
-        self.cursor.execute(self.queries["GetAllIngredients"], (recipe_id,))
+        self.cursor.execute(self.queries["GetIngredientsByRecipeId"], (recipe_id,))
         all_ingredients_raw = self.cursor.fetchall()
         for ingredient in all_ingredients_raw:
             id, recipe_id, name, quantity, calories = ingredient
