@@ -18,19 +18,31 @@ class DetailController(PageController):
         self.__setup_page()
         
     def __setup_page(self) -> None:
+        """
+        Sets up the detail page by binding the buttons.
+        """
         self._bind_buttons()
     
     def _bind_buttons(self) -> None:
+        """
+        Binds the button commands to their respective functions.
+        """
         self.frame.back_btn.config(command=self._go_back)
         self.frame.edit_btn.config(command=self._edit_recipe)
         self.frame.show_ingredients_btn.config(command=self._show_ingredients)
         
     def _go_back(self) -> None:
+        """
+        Clears the page, refreshes the recipes page, and raises it to the top.
+        """
         self.frame.clear_page()
         self.view.pages["recipesPage"].refresh_page(self.model.get_all_recipes())
         self.view.raise_page("recipesPage")
         
     def _edit_recipe(self) -> None:
+        """
+        Retrieves the recipe to edit, sets it in the edit page, and raises the edit page to the top.
+        """
         recipe_id = self.frame._recipe_to_display.id
         recipe_to_edit = self.model.get_recipe_by_id(recipe_id)
         edit_page = self.view.pages["editRecipe"]
@@ -38,6 +50,9 @@ class DetailController(PageController):
         self.view.raise_page("editRecipe")
         
     def _show_ingredients(self) -> None:
+        """
+        Retrieves the current recipe's ingredients, sets them in the ingredients page, and raises the ingredients page to the top.
+        """
         current_recipe_id = self.frame._recipe_to_display.id
         current_recipe_title = self.frame._recipe_to_display.title
         recipe_ingredients = self.model.get_ingredients_by_recipe_id(current_recipe_id)

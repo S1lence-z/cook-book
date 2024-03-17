@@ -5,6 +5,13 @@ from controllers import *
 
 class MainController:
     def __init__(self, model: DatabaseManager, view: MainView) -> None:
+        """
+        Initialize the MainController.
+
+        Args:
+            model (DatabaseManager): The database manager.
+            view (MainView): The main view.
+        """
         self.database_manager = model
         self.view = view
         self.page_controllers = self._init_page_controllers()
@@ -23,5 +30,8 @@ class MainController:
         return [home_controller, editation_controller, addition_controller, detail_controller, ingredients_controller]
     
     def start_mainloop(self):
+        """
+        Start the main loop of the application.
+        """
         self.view.raise_page("recipesPage")
         self.view.start_mainloop()
