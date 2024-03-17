@@ -14,6 +14,12 @@ class EditRecipePage(tk.Frame, Page):
     """
 
     def __init__(self, *args, **kwargs) -> None:
+        """Initialize the EditRecipePage class.
+
+        Args:
+            *args: Variable length argument list.
+            **kwargs: Arbitrary keyword arguments.
+        """
         super().__init__(*args, **kwargs)
         self._recipe_to_edit: Recipe
         self._format_frame()
@@ -114,7 +120,7 @@ class EditRecipePage(tk.Frame, Page):
 
         Returns:
             list: A list containing the edited recipe details in the following order:
-                [recipe_id, title, description, prep_time, cook_time, instructions]
+                [recipe_id, title, description, prep_time, cook_time, instructions, category]
         """
         recipe_id = self._recipe_to_edit.id
         title = self.title_entry.get()

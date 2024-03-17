@@ -56,6 +56,7 @@ class IngredientsPage(tk.Frame, Page):
 
         Args:
             ingredients (list[Ingredient]): The ingredients to display.
+            recipe_name (str): The name of the recipe.
         """
         self._ingredients_to_display = ingredients
         self._fill_the_ingredients_page(recipe_name)
@@ -71,7 +72,7 @@ class IngredientsPage(tk.Frame, Page):
         Fill the ingredients page with the given recipe.
 
         Args:
-            recipe (Recipe): The recipe to fill the page with.
+            recipe_name (str): The name of the recipe.
         """
         self.ingredients_list_label.config(text=f"Ingredients of {recipe_name}")
         self.ingredients_list.populate(self._ingredients_to_display)

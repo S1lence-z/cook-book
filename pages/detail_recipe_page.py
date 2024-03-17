@@ -4,19 +4,29 @@ import ttkbootstrap as tkb
 from custom import *
 
 class DetailRecipePage(tk.Frame, Page):
+    """A class representing the detail recipe page."""
+
     def __init__(self, *args, **kwargs) -> None:
+        """Initialize the DetailRecipePage class.
+
+        Args:
+            *args: Variable length argument list.
+            **kwargs: Arbitrary keyword arguments.
+        """
         super().__init__(*args, **kwargs)
         self._recipe_to_display: Recipe
         self._format_frame()
         self._create_ui()
-        
+
     def _format_frame(self) -> None:
+        """Format the frame."""
         for i in range(3):
             self.grid_columnconfigure(i, weight=1)
         for i in range(7):
             self.grid_rowconfigure(i, weight=1)
-        
+
     def _create_ui(self) -> None:
+        """Create the user interface."""
         self.font = ("Arial", 12)
         self.header = tk.Label(self, text="Recipe Detail Page", font=self.font + ("bold",))
         self.header.grid(row=0, column=0, columnspan=3, pady=10)
@@ -59,19 +69,26 @@ class DetailRecipePage(tk.Frame, Page):
         # Edit button
         self.edit_btn = tkb.Button(self, text="Edit", bootstyle=tkb.SUCCESS) # type: ignore
         self.edit_btn.grid(row=7, column=2, pady=10, padx=10, sticky="nsew")
-        
+
     def set_recipe_to_display(self, recipe: Recipe):
+        """Set the recipe to display.
+
+        Args:
+            recipe (Recipe): The recipe to display.
+        """
         self._recipe_to_display = recipe
         self._fill_the_display_page()
-        
+
     def clear_page(self):
+        """Clear the page."""
         self.title_value.config(text="")
         self.description_value.config(text="")
         self.prep_time_value.config(text="")
         self.cook_time_value.config(text="")
         self.instructions_value.config(text="")
-        
+
     def _fill_the_display_page(self):
+        """Fill the display page with recipe details."""
         self.title_value.config(text=self._recipe_to_display.title)
         self.description_value.config(text=self._recipe_to_display.description)
         self.prep_time_value.config(text=f"{self._recipe_to_display.prep_time} minutes")

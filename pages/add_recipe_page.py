@@ -2,8 +2,6 @@ import tkinter as tk
 import ttkbootstrap as tkb
 from custom import *
 
-# add_recipe_page.py
-
 class AddRecipePage(tk.Frame, Page):
     """
     A class representing the Add Recipe Page.
