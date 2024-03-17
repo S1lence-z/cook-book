@@ -57,11 +57,6 @@ class DatabaseManager:
 
         Args:
             title: The title of the recipe.
-            description: The description of the recipe.
-            prep_time: The preparation time of the recipe.
-            cook_time: The cooking time of the recipe.
-            instructions: The instructions of the recipe.
-            category: The category of the recipe.
         """
         recipe_data = (title, "", 0, 0, "", "None")
         self.cursor.execute(self.queries["AddRecipe"], recipe_data)
@@ -112,6 +107,9 @@ class DatabaseManager:
     def get_ingredients_by_recipe_id(self, recipe_id: int) -> list[Ingredient]:
         """
         Retrieves all ingredients of a recipe from the database.
+
+        Args:
+            recipe_id: The ID of the recipe.
 
         Returns:
             A list of Ingredient objects representing all the ingredients for a recipe in the database.
