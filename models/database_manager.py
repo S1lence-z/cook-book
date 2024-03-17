@@ -111,10 +111,10 @@ class DatabaseManager:
         
     def get_ingredients_by_recipe_id(self, recipe_id: int) -> list[Ingredient]:
         """
-        Retrieves all ingredients from the database.
+        Retrieves all ingredients of a recipe from the database.
 
         Returns:
-            A list of Ingredient objects representing all the ingredients in the database.
+            A list of Ingredient objects representing all the ingredients for a recipe in the database.
         """
         all_ingredients = []
         self.cursor.execute(self.queries["GetAllIngredients"], (recipe_id,))
