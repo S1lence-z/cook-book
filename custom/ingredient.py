@@ -4,8 +4,11 @@ class Ingredient:
         Initializes an Ingredient object.
 
         Args:
-            id: The ingredient's ID.
-            name: The ingredient's name.
+            ing_id (int): The ingredient's ID.
+            recipe_id (int): The ID of the recipe this ingredient belongs to.
+            name (str): The ingredient's name.
+            quantity (str): The quantity of the ingredient.
+            calories (int): The number of calories in the ingredient.
         """
         self.ingredient_id = ing_id
         self.recipe_id = recipe_id

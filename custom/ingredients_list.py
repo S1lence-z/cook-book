@@ -1,8 +1,6 @@
 import tkinter as tk
 from custom.ingredient import Ingredient
 
-# recipe_list.py
-
 class IngredientsList(tk.Listbox):
     """
     A custom Listbox widget for displaying ingredients.

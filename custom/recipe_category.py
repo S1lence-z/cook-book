@@ -1,6 +1,10 @@
 from enum import Enum
 
 class RecipeCategory(Enum):
+    """
+    Enum class representing different recipe categories.
+    """
+
     MAIN_COURSE = 'Main Course'
     DESSERT = 'Dessert'
     APPETIZER = 'Appetizer'
@@ -17,7 +21,7 @@ class RecipeCategory(Enum):
         Returns the RecipeCategory enum value from a string value.
         
         Args:
-            value: The string value of the RecipeCategory.
+            value (str): The string value of the RecipeCategory.
             
         Returns:
             RecipeCategory: The RecipeCategory enum value.
@@ -28,12 +32,12 @@ class RecipeCategory(Enum):
         return cls.NONE
     
     @classmethod
-    def validate_recipe_category(cls, value: str):
+    def validate_recipe_category(cls, value: str) -> bool:
         """
         Validates the string value of the RecipeCategory.
         
         Args:
-            value: The string value of the RecipeCategory.
+            value (str): The string value of the RecipeCategory.
             
         Returns:
             bool: True if the value is a valid RecipeCategory, False otherwise.

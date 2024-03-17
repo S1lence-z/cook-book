@@ -1,4 +1,3 @@
-# recipe_list.py
 import tkinter as tk
 from custom.recipe import Recipe
 

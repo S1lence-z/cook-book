@@ -1,7 +1,4 @@
 import tkinter as tk
-import ttkbootstrap as tkb
-
-# search_bar.py
 
 class SearchBar(tk.Entry):
     """A custom search bar widget."""
