@@ -1,4 +1,6 @@
+from calendar import c
 import tkinter as tk
+from unicodedata import category
 import ttkbootstrap as tkb
 from custom import *
 
@@ -58,6 +60,12 @@ class EditRecipePage(tk.Frame, Page):
         self.instructions_label.grid(row=5, column=0, sticky="nsew", padx=10, pady=5)
         self.instructions_text = tk.Text(self, height=10)
         self.instructions_text.grid(row=5, column=1, columnspan=3, sticky="nsew", padx=10, pady=5)
+        
+        # Category
+        self.category_label = tk.Label(self, text="Category", font=("Arial", 12))
+        self.category_label.grid(row=4, column=0, sticky="nsew", padx=10, pady=5)
+        self.category_entry = tk.Entry(self)
+        self.category_entry.grid(row=4, column=1, columnspan=3, sticky="nsew", padx=10, pady=5)
 
         # Save button
         self.save_btn = tkb.Button(self, text="Save", bootstyle=tkb.SUCCESS) # type: ignore
@@ -111,4 +119,5 @@ class EditRecipePage(tk.Frame, Page):
         prep_time = self.prep_time_entry.get()
         cook_time = self.cook_time_entry.get()
         instructions = self.instructions_text.get("1.0", "end-1c")
-        return [recipe_id, title, description, prep_time, cook_time, instructions]
+        category = self.category_entry.get()
+        return [recipe_id, title, description, prep_time, cook_time, instructions, category]

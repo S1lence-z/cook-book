@@ -19,7 +19,7 @@ class EditationController(PageController):
     
     def _save_edited_recipe(self):
         edited_recipe = self.frame.get_edited_recipe()
-        self.model.update_recipe(edited_recipe[0], edited_recipe[1], edited_recipe[2], edited_recipe[3], edited_recipe[4], edited_recipe[5])
+        self.model.update_recipe(edited_recipe[0], edited_recipe[1], edited_recipe[2], edited_recipe[3], edited_recipe[4], edited_recipe[5], edited_recipe[6])
         self.view.pages["home"].refresh_page(self.model.get_all_recipes())
         self.view.raise_page("home")
     

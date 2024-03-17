@@ -13,7 +13,7 @@ class DatabaseManager:
         self.queries = {
             "GetAllRecipes": "SELECT * FROM recipes;",
             "GetRecipeById": "SELECT * FROM recipes WHERE recipe_id = %s;",
-            "AddRecipe": "INSERT INTO recipes (title, description, prep_time, cook_time, instructions, category) VALUES (%s, %s, %s, %s, %s);",
+            "AddRecipe": "INSERT INTO recipes (title, description, prep_time, cook_time, instructions, category) VALUES (%s, %s, %s, %s, %s, %s);",
             "DeleteRecipeById": "DELETE FROM recipes WHERE recipe_id = %s;",
             "UpdateRecipe": "UPDATE recipes SET title = %s, description = %s, prep_time = %s, cook_time = %s, instructions = %s, category = %s WHERE recipe_id = %s;"
         }
@@ -56,8 +56,13 @@ class DatabaseManager:
 
         Args:
             title: The title of the recipe.
+            description: The description of the recipe.
+            prep_time: The preparation time of the recipe.
+            cook_time: The cooking time of the recipe.
+            instructions: The instructions of the recipe.
+            category: The category of the recipe.
         """
-        recipe_data = (title, "", 0, 0, "")
+        recipe_data = (title, "", 0, 0, "", "None")
         self.cursor.execute(self.queries["AddRecipe"], recipe_data)
         self.db_connection.commit()
         print(f"{self.cursor.rowcount} row added.")
@@ -84,7 +89,7 @@ class DatabaseManager:
         self.db_connection.commit()
         print(f"{self.cursor.rowcount} row deleted.")
         
-    def update_recipe(self, id: int, title: str, description: str, prep_time: str, cook_time: str, instructions: str):
+    def update_recipe(self, id: int, title: str, description: str, prep_time: str, cook_time: str, instructions: str, category: str):
         """
         Updates a recipe in the database.
 
@@ -95,8 +100,10 @@ class DatabaseManager:
             prep_time: The new preparation time of the recipe.
             cook_time: The new cooking time of the recipe.
             instructions: The new instructions of the recipe.
+            category: The new category of the recipe.
         """
-        recipe_data = (title, description, prep_time, cook_time, instructions, id)
+        valid_category = category.capitalize() if RecipeCategory.validate_recipe_category(category) else "None"
+        recipe_data = (title, description, prep_time, cook_time, instructions, valid_category, id)
         self.cursor.execute(self.queries["UpdateRecipe"], recipe_data)
         self.db_connection.commit()
         print(f"{self.cursor.rowcount} row updated.")

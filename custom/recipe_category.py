@@ -26,3 +26,19 @@ class RecipeCategory(Enum):
             if category.value.lower() == value.lower():
                 return category
         return cls.NONE
+    
+    @classmethod
+    def validate_recipe_category(cls, value: str):
+        """
+        Validates the string value of the RecipeCategory.
+        
+        Args:
+            value: The string value of the RecipeCategory.
+            
+        Returns:
+            bool: True if the value is a valid RecipeCategory, False otherwise.
+        """
+        for category in cls:
+            if category.value.lower() == value.lower():
+                return True
+        return False
