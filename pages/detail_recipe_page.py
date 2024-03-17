@@ -40,20 +40,25 @@ class DetailRecipePage(tk.Frame, Page):
         self.cook_time_label.grid(row=4, column=0, sticky="nsew", padx=10, pady=5)
         self.cook_time_value = tk.Label(self, font=self.font)
         self.cook_time_value.grid(row=4, column=1, sticky="nsew", padx=10, pady=5)
+        # Category
+        self.category_label = tk.Label(self, text="Category", font=self.font + ("bold",))
+        self.category_label.grid(row=5, column=0, sticky="nsew", padx=10, pady=5)
+        self.category_value = tk.Label(self, font=self.font)
+        self.category_value.grid(row=5, column=1, sticky="nsew", padx=10, pady=5)
         # Instructions
         self.instructions_label = tk.Label(self, text="Instructions", font=self.font + ("bold",))
-        self.instructions_label.grid(row=5, column=0, sticky="nsew", padx=10, pady=5)
+        self.instructions_label.grid(row=6, column=0, sticky="nsew", padx=10, pady=5)
         self.instructions_value = tk.Label(self, font=self.font)
-        self.instructions_value.grid(row=5, column=1, sticky="nsew", padx=10, pady=5)
+        self.instructions_value.grid(row=6, column=1, sticky="nsew", padx=10, pady=5)
         # Back button
         self.back_btn = tkb.Button(self, text="Back", bootstyle=tkb.DANGER) # type: ignore
-        self.back_btn.grid(row=6, column=0, pady=10, padx=10, sticky="nsew")
+        self.back_btn.grid(row=7, column=0, pady=10, padx=10, sticky="nsew")
         # Show ingredients button
         self.show_ingredients_btn = tkb.Button(self, text="Show Ingredients", bootstyle=tkb.INFO) # type: ignore
-        self.show_ingredients_btn.grid(row=6, column=1, pady=10, padx=10, sticky="nsew")
+        self.show_ingredients_btn.grid(row=7, column=1, pady=10, padx=10, sticky="nsew")
         # Edit button
         self.edit_btn = tkb.Button(self, text="Edit", bootstyle=tkb.SUCCESS) # type: ignore
-        self.edit_btn.grid(row=6, column=2, pady=10, padx=10, sticky="nsew")
+        self.edit_btn.grid(row=7, column=2, pady=10, padx=10, sticky="nsew")
         
     def set_recipe_to_display(self, recipe: Recipe):
         self._recipe_to_display = recipe
@@ -72,3 +77,4 @@ class DetailRecipePage(tk.Frame, Page):
         self.prep_time_value.config(text=f"{self._recipe_to_display.prep_time} minutes")
         self.cook_time_value.config(text=f"{self._recipe_to_display.cook_time} minutes")
         self.instructions_value.config(text=self._recipe_to_display.instructions)
+        self.category_value.config(text=self._recipe_to_display.category.value)
