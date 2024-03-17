@@ -13,7 +13,7 @@ class CookBookApp:
             model (DatabaseManager): Instance of the DatabaseManager model class
         """
         self._model = model
-        self._app_window = self._create_app_window("CookBook", 1280, 720, False, "darkly")
+        self._app_window = self._create_app_window("CookBook", 1280, 720, True, "darkly")
         self._view_controller = MainView(self._app_window)
         self._main_controller = MainController(self._model, self._view_controller)
         
