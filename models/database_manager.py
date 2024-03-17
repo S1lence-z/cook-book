@@ -13,9 +13,9 @@ class DatabaseManager:
         self.queries = {
             "GetAllRecipes": "SELECT * FROM recipes;",
             "GetRecipeById": "SELECT * FROM recipes WHERE recipe_id = %s;",
-            "AddRecipe": "INSERT INTO recipes (title, _description, prep_time, cook_time, instructions) VALUES (%s, %s, %s, %s, %s);",
+            "AddRecipe": "INSERT INTO recipes (title, description, prep_time, cook_time, instructions, category) VALUES (%s, %s, %s, %s, %s);",
             "DeleteRecipeById": "DELETE FROM recipes WHERE recipe_id = %s;",
-            "UpdateRecipe": "UPDATE recipes SET title = %s, _description = %s, prep_time = %s, cook_time = %s, instructions = %s WHERE recipe_id = %s;"
+            "UpdateRecipe": "UPDATE recipes SET title = %s, description = %s, prep_time = %s, cook_time = %s, instructions = %s, category = %s WHERE recipe_id = %s;"
         }
         
     def get_all_recipes(self) -> list[Recipe]:
@@ -29,8 +29,9 @@ class DatabaseManager:
         self.cursor.execute(self.queries["GetAllRecipes"])
         all_recipes_raw = self.cursor.fetchall()
         for recipe in all_recipes_raw:
-            id, title, description, prep_time, cook_time, instructions = recipe
-            all_recipes.append(Recipe(id, title, description, prep_time, cook_time, instructions))
+            id, title, description, prep_time, cook_time, instructions, category = recipe
+            category_enum = RecipeCategory.get_recipe_category(category)
+            all_recipes.append(Recipe(id, title, description, prep_time, cook_time, instructions, category_enum))
         return all_recipes
     
     def get_recipe_by_id(self, id: int) -> Recipe:
@@ -45,8 +46,9 @@ class DatabaseManager:
         """
         self.cursor.execute(self.queries["GetRecipeById"], (id,))
         recipe = self.cursor.fetchall()
-        id, title, description, prep_time, cook_time, instructions = recipe[0]
-        return Recipe(id, title, description, prep_time, cook_time, instructions)
+        id, title, description, prep_time, cook_time, instructions, category = recipe[0]
+        category_enum = RecipeCategory.get_recipe_category(category)
+        return Recipe(id, title, description, prep_time, cook_time, instructions, category_enum)
             
     def add_recipe(self, title: str):
         """
