@@ -27,8 +27,8 @@ class DetailController(PageController):
         
     def _go_back(self) -> None:
         self.frame.clear_page()
-        self.view.pages["home"].refresh_page(self.model.get_all_recipes())
-        self.view.raise_page("home")
+        self.view.pages["recipesPage"].refresh_page(self.model.get_all_recipes())
+        self.view.raise_page("recipesPage")
         
     def _edit_recipe(self) -> None:
         recipe_id = self.frame._recipe_to_display.id

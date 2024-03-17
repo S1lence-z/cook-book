@@ -1,14 +1,14 @@
-# home_controller.py
+# recipes_controller.py
 import tkinter as tk
 from models.database_manager import DatabaseManager
 from views.main_view import MainView
 from controllers import *
 
-class HomeController(PageController):
+class RecipesController(PageController):
     def __init__(self, model: DatabaseManager, view: MainView) -> None:
         self.model = model
         self.view = view
-        self.frame = self.view.pages["home"]
+        self.frame = self.view.pages["recipesPage"]
         self.__setup_page()
         
     def __setup_page(self):

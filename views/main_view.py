@@ -12,7 +12,7 @@ class MainView:
         self.window = window
         self.pages = {}
         # Add pages
-        self._add_page("home", HomePage)
+        self._add_page("recipesPage", RecipesPage)
         self._add_page("editRecipe", EditRecipePage)
         self._add_page("addRecipe", AddRecipePage)
         self._add_page("detailRecipe", DetailRecipePage)

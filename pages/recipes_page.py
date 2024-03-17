@@ -2,7 +2,7 @@ import tkinter as tk
 import ttkbootstrap as tkb
 from custom import *
 
-class HomePage(tk.Frame, Page):
+class RecipesPage(tk.Frame, Page):
     def __init__(self, *args, **kwargs) -> None:
         super().__init__(*args, **kwargs)
         self._format_frame()
@@ -21,7 +21,7 @@ class HomePage(tk.Frame, Page):
         font_settings = (font_family, font_size)
         
         # Header label
-        self.header = tkb.Label(self, text="Home Page", font=(font_family, 24), bootstyle=tkb.ACTIVE, anchor="center") # type: ignore
+        self.header = tkb.Label(self, text="Recipes Page", font=(font_family, 24), bootstyle=tkb.ACTIVE, anchor="center") # type: ignore
         self.header.grid(row=0, column=0, columnspan=3, sticky="nsew", padx=10, pady=5)
         
         # Search bar

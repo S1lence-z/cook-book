@@ -27,4 +27,4 @@ class AdditionController(PageController):
         self.view.raise_page("editRecipe")
     
     def cancel(self):
-        self.view.raise_page("home")
+        self.view.raise_page("recipesPage")
