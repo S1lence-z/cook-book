@@ -27,13 +27,10 @@ class AddRecipePage(tk.Frame, Page):
         """
         Format the frame layout.
         """
-        # Center the content
-        self.grid_rowconfigure(0, weight=1)
-        self.grid_rowconfigure(2, weight=1)
-        # Configure column weights to make buttons split equally
-        self.grid_columnconfigure(0, weight=1)
-        self.grid_columnconfigure(1, weight=1)
-        self.grid_columnconfigure(2, weight=1)
+        for i in range(2):
+            self.grid_columnconfigure(i, weight=1)
+        for i in range(3):
+            self.grid_rowconfigure(i, weight=1)
     
     def _create_ui(self) -> None:
         """

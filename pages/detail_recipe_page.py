@@ -11,17 +11,13 @@ class DetailRecipePage(tk.Frame, Page):
         self._create_ui()
         
     def _format_frame(self) -> None:
-        # Center the content
-        self.grid_rowconfigure(0, weight=1)
-        self.grid_rowconfigure(6, weight=1)
-        self.grid_columnconfigure(0, weight=1)
-        # Configure column weights to make buttons split equally
-        self.grid_columnconfigure(0, weight=1)
-        self.grid_columnconfigure(1, weight=1)
-        self.grid_columnconfigure(2, weight=1)
+        for i in range(3):
+            self.grid_columnconfigure(i, weight=1)
+        for i in range(7):
+            self.grid_rowconfigure(i, weight=1)
         
     def _create_ui(self) -> None:
-        self.font = ("Arial", 16)
+        self.font = ("Arial", 12)
         self.header = tk.Label(self, text="Recipe Detail Page", font=self.font + ("bold",))
         self.header.grid(row=0, column=0, columnspan=3, pady=10)
         # Title
