@@ -7,6 +7,9 @@ class MainView:
         """
         Initializes the MainView class.
 
+        Args:
+            window (AppWindow): The application window.
+
         Creates an application window, initializes the pages dictionary, and adds pages to it.
         """
         self.window = window
