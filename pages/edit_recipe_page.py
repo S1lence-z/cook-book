@@ -95,8 +95,6 @@ class EditRecipePage(tk.Frame, Page):
         self.cook_time_entry.delete(0, tk.END)
         # Clear the instructions text.
         self.instructions_text.delete('1.0', tk.END)
-        # Clear the category entry
-        self.category_entry.delete(0, tk.END)
             
     def _fill_the_edit_page(self) -> None:
         """Fills the edit page with the recipe's current values."""
@@ -107,7 +105,6 @@ class EditRecipePage(tk.Frame, Page):
         self.prep_time_entry.insert(0, str(self._recipe_to_edit.prep_time))
         self.cook_time_entry.insert(0, str(self._recipe_to_edit.cook_time))
         self.instructions_text.insert(tk.END, self._recipe_to_edit.instructions)
-        self.category_entry.insert(0, self._recipe_to_edit.category.value)
         
     def get_edited_recipe(self):
         """Gets the edited recipe details from the input fields.
