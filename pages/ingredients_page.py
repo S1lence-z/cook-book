@@ -18,7 +18,8 @@ class IngredientsPage(tk.Frame, Page):
             **kwargs: Arbitrary keyword arguments.
         """
         super().__init__(*args, **kwargs)
-        self._ingredients_to_display: list[Ingredient]
+        self._recipe_title: str = ""
+        self._ingredients_to_display: list[Ingredient] = []
         self._format_frame()
         self._create_ui()
         
@@ -55,11 +56,12 @@ class IngredientsPage(tk.Frame, Page):
         Set the ingredients to display.
 
         Args:
-            ingredients (list[Ingredient]): The ingredients to display.
-            recipe_name (str): The name of the recipe.
+            ingredients: The ingredients to display.
+            recipe_name: The name of the recipe.
         """
         self._ingredients_to_display = ingredients
-        self._fill_the_ingredients_page(recipe_name)
+        self._recipe_title = recipe_name
+        self._fill_the_ingredients_page()
         
     def clear_page(self) -> None:
         """
@@ -67,12 +69,27 @@ class IngredientsPage(tk.Frame, Page):
         """
         self.ingredients_list.clear()
         
-    def _fill_the_ingredients_page(self, recipe_name: str) -> None:
+    def _fill_the_ingredients_page(self) -> None:
         """
         Fill the ingredients page with the given recipe.
-
-        Args:
-            recipe_name (str): The name of the recipe.
         """
-        self.ingredients_list_label.config(text=f"Ingredients of {recipe_name}")
+        self.ingredients_list_label.config(text=f"Ingredients of {self._recipe_title}")
         self.ingredients_list.populate(self._ingredients_to_display)
+        
+    def get_ingredients_list(self) -> list[Ingredient]:
+        """
+        Get the ingredients list.
+
+        Returns:
+            The ingredients list.
+        """
+        return self._ingredients_to_display
+    
+    def get_recipe_title(self) -> str:
+        """
+        Get the recipe title.
+
+        Returns:
+            The recipe title.
+        """
+        return self._recipe_title
