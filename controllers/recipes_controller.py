@@ -33,10 +33,10 @@ class RecipesController(PageController):
         """
         Bind the buttons on the recipes page to their respective functions.
         """
-        self.frame.add_btn.config(command=self._add_recipe)
-        self.frame.delete_btn.config(command=self._delete_recipe, state=tk.DISABLED)
-        self.frame.edit_btn.config(command=self._edit_recipe, state=tk.DISABLED)
-        self.frame.detail_btn.config(command=self._show_detail_recipe, state=tk.DISABLED)
+        self.frame.add_btn.configure(command=self._add_recipe)
+        self.frame.delete_btn.configure(command=self._delete_recipe, state=tk.DISABLED)
+        self.frame.edit_btn.configure(command=self._edit_recipe, state=tk.DISABLED)
+        self.frame.detail_btn.configure(command=self._show_detail_recipe, state=tk.DISABLED)
         self.frame.recipe_list.bind("<<ListboxSelect>>", self.frame.update_buttons_visibility)
         self.frame.search_bar.bind("<KeyRelease>", self._search_recipes)
 

@@ -32,8 +32,8 @@ class IngredientsController(PageController):
         """
         Binds the buttons to their respective functions.
         """
-        self.frame.cancel_btn.config(command=self._cancel)
-        self.frame.generate_pdf_btn.config(command=self._generate_pdf)
+        self.frame.cancel_btn.configure(command=self._cancel)
+        self.frame.generate_pdf_btn.configure(command=self._generate_pdf)
         
     def _cancel(self) -> None:
         """

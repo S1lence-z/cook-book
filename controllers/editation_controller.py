@@ -31,8 +31,8 @@ class EditationController(PageController):
         """
         Binds the buttons to their respective functions.
         """
-        self.frame.save_btn.config(command=self._save_edited_recipe)
-        self.frame.cancel_btn.config(command=self._cancel)
+        self.frame.save_btn.configure(command=self._save_edited_recipe)
+        self.frame.cancel_btn.configure(command=self._cancel)
 
     def _save_edited_recipe(self):
         """
