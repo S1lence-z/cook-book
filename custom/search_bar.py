@@ -1,6 +1,6 @@
-import tkinter as tk
+import customtkinter as tkc
 
-class SearchBar(tk.Entry):
+class SearchBar(tkc.CTkEntry):
     """A custom search bar widget."""
 
     def __init__(self, *args, **kwargs) -> None:
