@@ -27,9 +27,9 @@ class DetailController(PageController):
         """
         Binds the button commands to their respective functions.
         """
-        self.frame.back_btn.config(command=self._go_back)
-        self.frame.edit_btn.config(command=self._edit_recipe)
-        self.frame.show_ingredients_btn.config(command=self._show_ingredients)
+        self.frame.back_btn.configure(command=self._go_back)
+        self.frame.edit_btn.configure(command=self._edit_recipe)
+        self.frame.show_ingredients_btn.configure(command=self._show_ingredients)
         
     def _go_back(self) -> None:
         """
