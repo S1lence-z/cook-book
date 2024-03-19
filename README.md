@@ -4,16 +4,44 @@
 This is a simple recipe manager app. You can add your custom recipes along with their ingredients and then you can generate a PDF file containing all the ingredients, so you can easily keep track of you recipes and their preparation process.
 
 ## Table of Contents
+- [Prerequisites](#prerequisites)
 - [Installation](#installation)
 - [Usage](#usage)
 - [Contributing](#contributing)
 - [License](#license)
 
+## Prerequisites
+Before running the CookBook application, ensure you have the following libraries installed:
+
+- **Tkinter**: A standard GUI library for Python.
+- **customtkinter**: A library to create modern and customizable GUIs based on Tkinter.
+- **MySQL Connector/Python (mysql-connector-python)**: A library to connect your application to a MySQL database.
+
+### Download necessary libraries
+To install these libraries, use the following commands:
+
+1. Tkinter (usually comes pre-installed with Python, but in case it's not):
+   ```
+   pip install tkinter
+   ```
+
+2. Customtkinter:
+    ```
+    pip install customtkinter
+    ```
+
+3. MySQL connector for Python:
+    ```
+    pip install mysql-connector-python
+    ```
+
+Ensure these installations are successful before proceeding to the installation of the CookBook application.
+
 ## Installation
 ### To download the repository, follow these steps:
 
 1. Clone this repository to your local machine
-   ```bash
+   ```
    git clone https://github.com/S1lence-z/cook-book.git
    ```
 2. Go to the downloaded directory in the folder from which you start the command above
