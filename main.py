@@ -1,9 +1,6 @@
-from ast import In
 from db.db_login import HOST, USER, PASSWORD, DATABASE
 from cook_book_app import CookBookApp
 from models.database_manager import DatabaseManager
-
-# main.py
 import mysql.connector
 
 if __name__ == "__main__":
