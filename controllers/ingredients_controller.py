@@ -34,6 +34,7 @@ class IngredientsController(PageController):
         """
         self.frame.cancel_btn.configure(command=self._cancel)
         self.frame.generate_pdf_btn.configure(command=self._generate_pdf)
+        self.frame.add_ingredient_btn.configure(command=self._add_ingredient)
         
     def _cancel(self) -> None:
         """
@@ -50,3 +51,9 @@ class IngredientsController(PageController):
         ingredients_list = self.frame.get_ingredients_list()
         recipe_title = self.frame.get_recipe_title()
         self._pdf_generator.generate_pdf(ingredients_list, recipe_title)
+        
+    def _add_ingredient(self) -> None:
+        """
+        Adds a new ingredient to the recipe.
+        """
+        self.view.raise_page("addIngredientPage")
