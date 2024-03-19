@@ -44,13 +44,16 @@ Ensure these installations are successful before proceeding to the installation 
    ```
    git clone https://github.com/S1lence-z/cook-book.git
    ```
+
 2. Go to the downloaded directory in the folder from which you start the command above
 
 ### To start the program, follow either these steps:
 
 1. Open the cloned directory in your favorite IDE and start the main.py file
 
-2. Alternatively, you can navigate to the cloned directory in your command line and run the following command:
+2. Change you login credentials in the db_login.py file to your local databse
+
+3. Alternatively, you can navigate to the cloned directory in your command line and run the following command:
     ```
     python main.py
     ```
