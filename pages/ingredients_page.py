@@ -33,23 +33,38 @@ class IngredientsPage(tkc.CTkFrame, Page):
     
     def _create_ui(self) -> None:
         """
-        Create the user interface elements.
+        Create the user interface elements for the Ingredients Page with a modern look.
         """
-        # Header
-        self.header = tkc.CTkLabel(self, text="Ingredients Page", font=("Arial", 24), anchor="center")
-        self.header.grid(row=0, column=0, columnspan=2, sticky="nsew", padx=10, pady=5)
+        # Font and color settings
+        font_family = "Segoe UI"
+        base_font_size = 18
+        header_font_size = 28
+        primary_color = "#4A90E2"  # Blue shade for primary actions
+        font_settings = (font_family, base_font_size)
+        header_font_settings = (font_family, header_font_size)
+
+        # Header label
+        self.header = tkc.CTkLabel(self, text="Ingredients Page", font=header_font_settings)
+        self.header.grid(row=0, column=0, columnspan=2, sticky="nsew", padx=20, pady=10)
+
         # Ingredients List
-        self.ingredients_list_label = tkc.CTkLabel(self, text="Ingredients of", font=("Arial", 16), anchor="center")
-        self.ingredients_list_label.grid(row=1, column=0, columnspan=2, sticky="nsew", padx=10, pady=5)
-        self.ingredients_list = IngredientsList(self, font=("Arial", 12))
-        self.ingredients_list.grid(row=2, column=0, columnspan=2, sticky="nsew", padx=10, pady=5)
-        # Generate PDF button
-        self.generate_pdf_btn = tkc.CTkButton(self, text="Generate PDF")
-        self.generate_pdf_btn.grid(row=3, column=0, sticky="ew", padx=10, pady=5, ipady=15)
-        # Cancel button
-        self.cancel_btn = tkc.CTkButton(self, text="Cancel")
-        self.cancel_btn.grid(row=3, column=1, sticky="ew", padx=10, pady=5, ipady=15)
-        
+        self.ingredients_list_label = tkc.CTkLabel(self, text="Ingredients of", font=(font_family, 16))
+        self.ingredients_list_label.grid(row=1, column=0, columnspan=2, sticky="nsew", padx=20, pady=10)
+        self.ingredients_list = IngredientsList(self, font=font_settings)
+        self.ingredients_list.grid(row=2, column=0, columnspan=2, sticky="nsew", padx=20, pady=10)
+
+        # Sidebar frame for buttons
+        self.sidebar_frame = tkc.CTkFrame(self)
+        self.sidebar_frame.grid(row=0, column=2, rowspan=4, sticky="nsew", padx=20, pady=10)
+
+        # Generate PDF button in sidebar
+        self.generate_pdf_btn = tkc.CTkButton(self.sidebar_frame, text="Generate PDF", font=font_settings, fg_color=primary_color)
+        self.generate_pdf_btn.grid(row=0, column=0, sticky="nsew", padx=10, pady=10)
+
+        # Cancel button in sidebar
+        self.cancel_btn = tkc.CTkButton(self.sidebar_frame, text="Cancel", font=font_settings, fg_color="red")  # Assuming cancel is a danger action
+        self.cancel_btn.grid(row=1, column=0, sticky="nsew", padx=10, pady=10)
+
     def set_ingredients_to_display(self, ingredients: list[Ingredient], recipe_name: str) -> None:
         """
         Set the ingredients to display.
