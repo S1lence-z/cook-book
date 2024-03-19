@@ -78,15 +78,14 @@ class DetailRecipePage(tkc.CTkFrame, Page):
         self.sidebar_frame.grid(row=0, column=3, rowspan=8, sticky="nsew", padx=20, pady=10)
 
         # Action buttons in sidebar
-        self.back_btn = tkc.CTkButton(self.sidebar_frame, text="Back", font=font_settings, fg_color=primary_color)
-        self.back_btn.grid(row=0, column=0, sticky="nsew", padx=10, pady=10)
-
-        self.show_ingredients_btn = tkc.CTkButton(self.sidebar_frame, text="Show Ingredients", font=font_settings, fg_color=primary_color)
+        self.edit_btn = tkc.CTkButton(self.sidebar_frame, text="Edit", font=font_settings, fg_color="blue")
+        self.edit_btn.grid(row=0, column=0, sticky="nsew", padx=10, pady=10)
+        
+        self.show_ingredients_btn = tkc.CTkButton(self.sidebar_frame, text="Show Ingredients", font=font_settings, fg_color="blue")
         self.show_ingredients_btn.grid(row=1, column=0, sticky="nsew", padx=10, pady=10)
-
-        self.edit_btn = tkc.CTkButton(self.sidebar_frame, text="Edit", font=font_settings, fg_color=primary_color)
-        self.edit_btn.grid(row=2, column=0, sticky="nsew", padx=10, pady=10)
-
+        
+        self.back_btn = tkc.CTkButton(self.sidebar_frame, text="Back", font=font_settings, fg_color="red")
+        self.back_btn.grid(row=2, column=0, sticky="nsew", padx=10, pady=10)
 
     def set_recipe_to_display(self, recipe: Recipe):
         """Set the recipe to display.

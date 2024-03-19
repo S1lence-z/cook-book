@@ -35,8 +35,6 @@ class EditRecipePage(tkc.CTkFrame, Page):
         font_family = "Segoe UI"
         base_font_size = 18
         header_font_size = 28
-        primary_color = "#4A90E2"  # Blue for primary actions
-        danger_color = "#FF6B6B"  # Red for danger actions
         font_settings = (font_family, base_font_size)
         header_font_settings = (font_family, header_font_size)
 
@@ -85,11 +83,11 @@ class EditRecipePage(tkc.CTkFrame, Page):
         self.sidebar_frame.grid(row=0, column=4, rowspan=7, sticky="nsew", padx=20, pady=10)
 
         # Save button in sidebar
-        self.save_btn = tkc.CTkButton(self.sidebar_frame, text="Save", font=font_settings, fg_color=primary_color)
+        self.save_btn = tkc.CTkButton(self.sidebar_frame, text="Save", font=font_settings, fg_color="green")
         self.save_btn.grid(row=0, column=0, sticky="nsew", padx=10, pady=10)
 
         # Cancel button in sidebar
-        self.cancel_btn = tkc.CTkButton(self.sidebar_frame, text="Cancel", font=font_settings, fg_color=danger_color)
+        self.cancel_btn = tkc.CTkButton(self.sidebar_frame, text="Cancel", font=font_settings, fg_color="red")
         self.cancel_btn.grid(row=1, column=0, sticky="nsew", padx=10, pady=10)
 
 

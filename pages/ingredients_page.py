@@ -58,11 +58,11 @@ class IngredientsPage(tkc.CTkFrame, Page):
         self.sidebar_frame.grid(row=0, column=2, rowspan=4, sticky="nsew", padx=20, pady=10)
 
         # Generate PDF button in sidebar
-        self.generate_pdf_btn = tkc.CTkButton(self.sidebar_frame, text="Generate PDF", font=font_settings, fg_color=primary_color)
+        self.generate_pdf_btn = tkc.CTkButton(self.sidebar_frame, text="Generate PDF", font=font_settings, fg_color="green")
         self.generate_pdf_btn.grid(row=0, column=0, sticky="nsew", padx=10, pady=10)
 
         # Cancel button in sidebar
-        self.cancel_btn = tkc.CTkButton(self.sidebar_frame, text="Cancel", font=font_settings, fg_color="red")  # Assuming cancel is a danger action
+        self.cancel_btn = tkc.CTkButton(self.sidebar_frame, text="Cancel", font=font_settings, fg_color="red")
         self.cancel_btn.grid(row=1, column=0, sticky="nsew", padx=10, pady=10)
 
     def set_ingredients_to_display(self, ingredients: list[Ingredient], recipe_name: str) -> None:
