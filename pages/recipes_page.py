@@ -39,8 +39,6 @@ class RecipesPage(tkc.CTkFrame, Page):
         header_font_size = 28
         font_settings = (font_family, base_font_size)
         header_font_settings = (font_family, header_font_size)
-        primary_color = "#4A90E2"
-        danger_color = "#FF6B6B"
 
         # Header label
         self.header = tkc.CTkLabel(self, text="Recipes Page", font=header_font_settings)
@@ -64,13 +62,13 @@ class RecipesPage(tkc.CTkFrame, Page):
         self.add_btn = tkc.CTkButton(self.sidebar_frame, text="Add Recipe", font=font_settings, fg_color="green")
         self.add_btn.grid(row=0, column=0, sticky="nsew", padx=10, pady=10)
 
-        self.delete_btn = tkc.CTkButton(self.sidebar_frame, text="Delete Recipe", font=font_settings, fg_color=danger_color)
+        self.delete_btn = tkc.CTkButton(self.sidebar_frame, text="Delete Recipe", font=font_settings, fg_color="red")
         self.delete_btn.grid(row=1, column=0, sticky="nsew", padx=10, pady=10)
 
-        self.edit_btn = tkc.CTkButton(self.sidebar_frame, text="Edit Recipe", font=font_settings, fg_color=primary_color)
+        self.edit_btn = tkc.CTkButton(self.sidebar_frame, text="Edit Recipe", font=font_settings, fg_color="blue")
         self.edit_btn.grid(row=2, column=0, sticky="nsew", padx=10, pady=10)
 
-        self.detail_btn = tkc.CTkButton(self.sidebar_frame, text="Show Recipe", font=font_settings, fg_color=primary_color)
+        self.detail_btn = tkc.CTkButton(self.sidebar_frame, text="Show Recipe", font=font_settings, fg_color="blue")
         self.detail_btn.grid(row=3, column=0, sticky="nsew", padx=10, pady=10)
 
     def update_buttons_visibility(self, event: str) -> None:

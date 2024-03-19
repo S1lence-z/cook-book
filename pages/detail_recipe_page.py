@@ -29,7 +29,6 @@ class DetailRecipePage(tkc.CTkFrame, Page):
         font_family = "Segoe UI"
         base_font_size = 18
         header_font_size = 28
-        primary_color = "#4A90E2"  # Blue shade for primary actions
         font_settings = (font_family, base_font_size)
         header_font_settings = (font_family, header_font_size, "bold")
 
