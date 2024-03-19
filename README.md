@@ -51,7 +51,7 @@ Ensure these installations are successful before proceeding to the installation 
 
 1. Open the cloned directory in your favorite IDE and start the main.py file
 
-2. Change you login credentials in the db_login.py file to your local databse
+2. Change your login credentials in the db_login.py file to your local databse
 
 3. Alternatively, you can navigate to the cloned directory in your command line and run the following command:
     ```
