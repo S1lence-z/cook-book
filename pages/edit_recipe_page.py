@@ -30,31 +30,31 @@ class EditRecipePage(tkc.CTkFrame, Page):
             self.grid_rowconfigure(i, weight=1)
 
     def _create_ui(self) -> None:
-        """Creates the user interface elements for the Edit Recipe Page with a modern look."""
+        """Creates the user interface elements for the Edit Recipe Page with a modern look, including a sidebar."""
         # Font and color settings
         font_family = "Segoe UI"
         base_font_size = 18
         header_font_size = 28
-        primary_color = "#4A90E2"
-        danger_color = "#FF6B6B"
+        primary_color = "#4A90E2"  # Blue for primary actions
+        danger_color = "#FF6B6B"  # Red for danger actions
         font_settings = (font_family, base_font_size)
         header_font_settings = (font_family, header_font_size)
 
         # Header label
         self.header = tkc.CTkLabel(self, text="Edit Recipe Page", font=header_font_settings)
-        self.header.grid(row=0, column=0, columnspan=4, sticky="nsew", padx=20, pady=10)
+        self.header.grid(row=0, column=0, columnspan=3, sticky="nsew", padx=20, pady=10)
 
         # Title
         self.title_label = tkc.CTkLabel(self, text="Title", font=font_settings)
         self.title_label.grid(row=1, column=0, sticky="e", padx=20, pady=10)
         self.title_entry = tkc.CTkEntry(self, font=font_settings)
-        self.title_entry.grid(row=1, column=1, columnspan=3, sticky="ew", padx=20, pady=10)
+        self.title_entry.grid(row=1, column=1, columnspan=2, sticky="ew", padx=20, pady=10)
 
         # Description
         self.description_label = tkc.CTkLabel(self, text="Description", font=font_settings)
         self.description_label.grid(row=2, column=0, sticky="e", padx=20, pady=10)
         self.description_text = tkc.CTkTextbox(self, height=10, font=font_settings)
-        self.description_text.grid(row=2, column=1, columnspan=3, sticky="nsew", padx=20, pady=10)
+        self.description_text.grid(row=2, column=1, columnspan=2, sticky="nsew", padx=20, pady=10)
 
         # Prep Time
         self.prep_time_label = tkc.CTkLabel(self, text="Prep Time (minutes)", font=font_settings)
@@ -72,20 +72,25 @@ class EditRecipePage(tkc.CTkFrame, Page):
         self.category_label = tkc.CTkLabel(self, text="Category", font=font_settings)
         self.category_label.grid(row=4, column=0, sticky="e", padx=20, pady=10)
         self.category_entry = tkc.CTkEntry(self, font=font_settings)
-        self.category_entry.grid(row=4, column=1, columnspan=3, sticky="ew", padx=20, pady=10)
+        self.category_entry.grid(row=4, column=1, columnspan=2, sticky="ew", padx=20, pady=10)
 
         # Instructions
         self.instructions_label = tkc.CTkLabel(self, text="Instructions", font=font_settings)
         self.instructions_label.grid(row=5, column=0, sticky="e", padx=20, pady=10)
         self.instructions_text = tkc.CTkTextbox(self, height=10, font=font_settings)
-        self.instructions_text.grid(row=5, column=1, columnspan=3, sticky="nsew", padx=20, pady=10)
+        self.instructions_text.grid(row=5, column=1, columnspan=2, sticky="nsew", padx=20, pady=10)
 
-        # Save and Cancel buttons
-        self.save_btn = tkc.CTkButton(self, text="Save", font=font_settings, fg_color=primary_color)
-        self.save_btn.grid(row=6, column=1, columnspan=2, sticky="nsew", padx=20, pady=10)
+        # Sidebar frame for action buttons
+        self.sidebar_frame = tkc.CTkFrame(self)
+        self.sidebar_frame.grid(row=0, column=4, rowspan=7, sticky="nsew", padx=20, pady=10)
 
-        self.cancel_btn = tkc.CTkButton(self, text="Cancel", font=font_settings, fg_color=danger_color)
-        self.cancel_btn.grid(row=6, column=3, sticky="nsew", padx=20, pady=10)
+        # Save button in sidebar
+        self.save_btn = tkc.CTkButton(self.sidebar_frame, text="Save", font=font_settings, fg_color=primary_color)
+        self.save_btn.grid(row=0, column=0, sticky="nsew", padx=10, pady=10)
+
+        # Cancel button in sidebar
+        self.cancel_btn = tkc.CTkButton(self.sidebar_frame, text="Cancel", font=font_settings, fg_color=danger_color)
+        self.cancel_btn.grid(row=1, column=0, sticky="nsew", padx=10, pady=10)
 
 
     def set_recipe_to_edit(self, recipe: Recipe):
