@@ -1,12 +1,11 @@
-import tkinter as tk
-import ttkbootstrap as tkb
+import customtkinter as tkc
 from custom import *
 
-class AddRecipePage(tk.Frame, Page):
+class AddRecipePage(tkc.CTkFrame, Page):
     """
     A class representing the Add Recipe Page.
 
-    This class inherits from tk.Frame and Page classes.
+    This class inherits from tkc.CTkFrame and Page classes.
     """
 
     def __init__(self, *args, **kwargs) -> None:
@@ -35,20 +34,20 @@ class AddRecipePage(tk.Frame, Page):
         Create the user interface elements.
         """
         # Header
-        self.header = tkb.Label(self, text="Add Recipe Page", font=("Arial", 24), bootstyle=tkb.ACTIVE, anchor="center") # type: ignore
+        self.header = tkc.CTkLabel(self, text="Add Recipe Page", font=("Arial", 24), anchor="center") # type: ignore
         self.header.grid(row=0, column=0, columnspan=3, sticky="nsew", padx=10, pady=5)
 
         # Title
-        self.title_label = tk.Label(self, text="Title", font=("Arial", 12))
+        self.title_label = tkc.CTkLabel(self, text="Title", font=("Arial", 12))
         self.title_label.grid(row=1, column=0, sticky="nsew", padx=10, pady=5)
-        self.title_entry = tk.Entry(self)
+        self.title_entry = tkc.CTkEntry(self)
         self.title_entry.grid(row=1, column=1, columnspan=3, sticky="nsew", padx=10, pady=5)
 
         # Add button
-        self.add_btn = tkb.Button(self, text="Add", bootstyle=tkb.SUCCESS) # type: ignore
+        self.add_btn = tkc.CTkButton(self, text="Add")
         self.add_btn.grid(row=2, column=1, sticky="ew", padx=10, pady=5, ipady=15)
         # Cancel button
-        self.cancel_btn = tkb.Button(self, text="Cancel", bootstyle=tkb.DANGER) # type: ignore
+        self.cancel_btn = tkc.CTkButton(self, text="Cancel")
         self.cancel_btn.grid(row=2, column=2, sticky="ew", padx=10, pady=5, ipady=15)
         
     def _clear_add_page(self) -> None:
@@ -56,7 +55,7 @@ class AddRecipePage(tk.Frame, Page):
         Clear the input fields on the Add Recipe Page.
         """
         # Clear the title entry
-        self.title_entry.delete(0, tk.END)
+        self.title_entry.delete(0, tkc.END)
         
     def get_added_recipe(self) -> str:
         """

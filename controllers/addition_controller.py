@@ -31,8 +31,8 @@ class AdditionController(PageController):
         """
         Binds the buttons to their respective functions.
         """
-        self.frame.add_btn.config(command=self.edit_added_recipe)
-        self.frame.cancel_btn.config(command=self.cancel)
+        self.frame.add_btn.configure(command=self.edit_added_recipe)
+        self.frame.cancel_btn.configure(command=self.cancel)
 
     def edit_added_recipe(self):
         """
