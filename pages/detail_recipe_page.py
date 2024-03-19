@@ -24,49 +24,69 @@ class DetailRecipePage(tkc.CTkFrame, Page):
             self.grid_rowconfigure(i, weight=1)
 
     def _create_ui(self) -> None:
-        """Create the user interface."""
-        self.font = ("Arial", 12)
-        self.header = tkc.CTkLabel(self, text="Recipe Detail Page", font=self.font + ("bold",))
-        self.header.grid(row=0, column=0, columnspan=3, pady=10)
+        """Create the user interface for the Recipe Detail Page with a modern look, including a sidebar."""
+        # Font and color settings
+        font_family = "Segoe UI"
+        base_font_size = 18
+        header_font_size = 28
+        primary_color = "#4A90E2"  # Blue shade for primary actions
+        font_settings = (font_family, base_font_size)
+        header_font_settings = (font_family, header_font_size, "bold")
+
+        # Header label
+        self.header = tkc.CTkLabel(self, text="Recipe Detail Page", font=header_font_settings)
+        self.header.grid(row=0, column=0, columnspan=4, sticky="nsew", padx=20, pady=10)
+
         # Title
-        self.title_label = tkc.CTkLabel(self, text="Title", font=self.font + ("bold",))
-        self.title_label.grid(row=1, column=0, sticky="nsew", padx=10, pady=5)
-        self.title_value = tkc.CTkLabel(self, font=self.font)
-        self.title_value.grid(row=1, column=1, sticky="nsew", padx=10, pady=5)
+        self.title_label = tkc.CTkLabel(self, text="Title", font=header_font_settings)
+        self.title_label.grid(row=1, column=0, sticky="e", padx=20, pady=10)
+        self.title_value = tkc.CTkLabel(self, font=font_settings)
+        self.title_value.grid(row=1, column=1, columnspan=2, sticky="ew", padx=20, pady=10)
+
         # Description
-        self.description_label = tkc.CTkLabel(self, text="Description", font=self.font + ("bold",))
-        self.description_label.grid(row=2, column=0, sticky="nsew", padx=10, pady=5)
-        self.description_value = tkc.CTkLabel(self, font=self.font)
-        self.description_value.grid(row=2, column=1, sticky="nsew", padx=10, pady=5)
+        self.description_label = tkc.CTkLabel(self, text="Description", font=header_font_settings)
+        self.description_label.grid(row=2, column=0, sticky="e", padx=20, pady=10)
+        self.description_value = tkc.CTkLabel(self, font=font_settings)
+        self.description_value.grid(row=2, column=1, columnspan=2, sticky="ew", padx=20, pady=10)
+
         # Prep Time
-        self.prep_time_label = tkc.CTkLabel(self, text="Prep Time", font=self.font + ("bold",))
-        self.prep_time_label.grid(row=3, column=0, sticky="nsew", padx=10, pady=5)
-        self.prep_time_value = tkc.CTkLabel(self, font=self.font)
-        self.prep_time_value.grid(row=3, column=1, sticky="nsew", padx=10, pady=5)
+        self.prep_time_label = tkc.CTkLabel(self, text="Prep Time", font=header_font_settings)
+        self.prep_time_label.grid(row=3, column=0, sticky="e", padx=20, pady=10)
+        self.prep_time_value = tkc.CTkLabel(self, font=font_settings)
+        self.prep_time_value.grid(row=3, column=1, sticky="ew", padx=20, pady=10)
+
         # Cook Time
-        self.cook_time_label = tkc.CTkLabel(self, text="Cook Time", font=self.font + ("bold",))
-        self.cook_time_label.grid(row=4, column=0, sticky="nsew", padx=10, pady=5)
-        self.cook_time_value = tkc.CTkLabel(self, font=self.font)
-        self.cook_time_value.grid(row=4, column=1, sticky="nsew", padx=10, pady=5)
+        self.cook_time_label = tkc.CTkLabel(self, text="Cook Time", font=header_font_settings)
+        self.cook_time_label.grid(row=4, column=0, sticky="e", padx=20, pady=10)
+        self.cook_time_value = tkc.CTkLabel(self, font=font_settings)
+        self.cook_time_value.grid(row=4, column=1, sticky="ew", padx=20, pady=10)
+
         # Category
-        self.category_label = tkc.CTkLabel(self, text="Category", font=self.font + ("bold",))
-        self.category_label.grid(row=5, column=0, sticky="nsew", padx=10, pady=5)
-        self.category_value = tkc.CTkLabel(self, font=self.font)
-        self.category_value.grid(row=5, column=1, sticky="nsew", padx=10, pady=5)
+        self.category_label = tkc.CTkLabel(self, text="Category", font=header_font_settings)
+        self.category_label.grid(row=5, column=0, sticky="e", padx=20, pady=10)
+        self.category_value = tkc.CTkLabel(self, font=font_settings)
+        self.category_value.grid(row=5, column=1, sticky="ew", padx=20, pady=10)
+
         # Instructions
-        self.instructions_label = tkc.CTkLabel(self, text="Instructions", font=self.font + ("bold",))
-        self.instructions_label.grid(row=6, column=0, sticky="nsew", padx=10, pady=5)
-        self.instructions_value = tkc.CTkLabel(self, font=self.font)
-        self.instructions_value.grid(row=6, column=1, sticky="nsew", padx=10, pady=5)
-        # Back button
-        self.back_btn = tkc.CTkButton(self, text="Back")
-        self.back_btn.grid(row=7, column=0, pady=10, padx=10, sticky="nsew")
-        # Show ingredients button
-        self.show_ingredients_btn = tkc.CTkButton(self, text="Show Ingredients")
-        self.show_ingredients_btn.grid(row=7, column=1, pady=10, padx=10, sticky="nsew")
-        # Edit button
-        self.edit_btn = tkc.CTkButton(self, text="Edit")
-        self.edit_btn.grid(row=7, column=2, pady=10, padx=10, sticky="nsew")
+        self.instructions_label = tkc.CTkLabel(self, text="Instructions", font=header_font_settings)
+        self.instructions_label.grid(row=6, column=0, sticky="e", padx=20, pady=10)
+        self.instructions_value = tkc.CTkLabel(self, font=font_settings)
+        self.instructions_value.grid(row=6, column=1, columnspan=2, sticky="ew", padx=20, pady=10)
+
+        # Sidebar frame for buttons
+        self.sidebar_frame = tkc.CTkFrame(self)
+        self.sidebar_frame.grid(row=0, column=3, rowspan=8, sticky="nsew", padx=20, pady=10)
+
+        # Action buttons in sidebar
+        self.back_btn = tkc.CTkButton(self.sidebar_frame, text="Back", font=font_settings, fg_color=primary_color)
+        self.back_btn.grid(row=0, column=0, sticky="nsew", padx=10, pady=10)
+
+        self.show_ingredients_btn = tkc.CTkButton(self.sidebar_frame, text="Show Ingredients", font=font_settings, fg_color=primary_color)
+        self.show_ingredients_btn.grid(row=1, column=0, sticky="nsew", padx=10, pady=10)
+
+        self.edit_btn = tkc.CTkButton(self.sidebar_frame, text="Edit", font=font_settings, fg_color=primary_color)
+        self.edit_btn.grid(row=2, column=0, sticky="nsew", padx=10, pady=10)
+
 
     def set_recipe_to_display(self, recipe: Recipe):
         """Set the recipe to display.
