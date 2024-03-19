@@ -31,42 +31,47 @@ class RecipesPage(tkc.CTkFrame, Page):
         """
         Create the user interface.
 
-        Sets up the header label, search bar, recipe list, and buttons.
+        Sets up the header label, search bar, recipe list, buttons, and sidebar with a modern look.
         """
-        # Font settings
-        font_family = "Arial"
-        font_size = 22
-        font_settings = (font_family, font_size)
+        # Font and color settings
+        font_family = "Segoe UI"
+        base_font_size = 18
+        header_font_size = 28
+        font_settings = (font_family, base_font_size)
+        header_font_settings = (font_family, header_font_size)
+        primary_color = "#4A90E2"
+        danger_color = "#FF6B6B"
 
         # Header label
-        self.header = tkc.CTkLabel(self, text="Recipes Page", font=(font_family, 24)) # type: ignore
-        self.header.grid(row=0, column=0, columnspan=3, sticky="nsew", padx=10, pady=5)
+        self.header = tkc.CTkLabel(self, text="Recipes Page", font=header_font_settings)
+        self.header.grid(row=0, column=0, columnspan=4, sticky="nsew", padx=20, pady=10)
 
         # Search bar
-        self.search_bar_label = tkc.CTkLabel(self, text="Search by title:", font=font_settings) # type: ignore
-        self.search_bar_label.grid(row=1, column=0, padx=10, pady=5)
+        self.search_bar_label = tkc.CTkLabel(self, text="Search by title:", font=header_font_settings)
+        self.search_bar_label.grid(row=1, column=0, sticky="", padx=20, pady=10)
         self.search_bar = SearchBar(self, font=font_settings)
-        self.search_bar.grid(row=1, column=1, columnspan=2, sticky="nsew", padx=10, pady=5)
+        self.search_bar.grid(row=1, column=1, columnspan=3, sticky="ew", padx=20, pady=10)
 
         # Recipe list
-        self.recipe_list = RecipeList(self, font=(font_family, 18))
-        self.recipe_list.grid(row=2, column=0, columnspan=3, sticky="nsew", padx=10, pady=5)
+        self.recipe_list = RecipeList(self, font=(font_family, 16))
+        self.recipe_list.grid(row=2, column=0, columnspan=4, sticky="nsew", padx=20, pady=10)
 
-        # Add Recipe button
-        self.add_btn = tkc.CTkButton(self, text="Add Recipe")
-        self.add_btn.grid(row=3, column=0, sticky="nsew", padx=10, pady=5, ipady=15)
+        # Sidebar frame for buttons
+        self.sidebar_frame = tkc.CTkFrame(self)
+        self.sidebar_frame.grid(row=0, column=4, rowspan=4, sticky="nsew", padx=20, pady=10)
 
-        # Delete Recipe button
-        self.delete_btn = tkc.CTkButton(self, text="Delete Recipe")
-        self.delete_btn.grid(row=3, column=1, sticky="nsew", padx=10, pady=5, ipady=15)
+        # Sidebar buttons
+        self.add_btn = tkc.CTkButton(self.sidebar_frame, text="Add Recipe", font=font_settings, fg_color="green")
+        self.add_btn.grid(row=0, column=0, sticky="nsew", padx=10, pady=10)
 
-        # Edit Recipe button
-        self.edit_btn = tkc.CTkButton(self, text="Edit Recipe")
-        self.edit_btn.grid(row=3, column=2, sticky="nsew", padx=10, pady=5, ipady=15)
+        self.delete_btn = tkc.CTkButton(self.sidebar_frame, text="Delete Recipe", font=font_settings, fg_color=danger_color)
+        self.delete_btn.grid(row=1, column=0, sticky="nsew", padx=10, pady=10)
 
-        # Show Recipe button
-        self.detail_btn = tkc.CTkButton(self, text="Show Recipe")
-        self.detail_btn.grid(row=4, column=0, columnspan=3, sticky="nsew", padx=10, pady=5, ipady=15)
+        self.edit_btn = tkc.CTkButton(self.sidebar_frame, text="Edit Recipe", font=font_settings, fg_color=primary_color)
+        self.edit_btn.grid(row=2, column=0, sticky="nsew", padx=10, pady=10)
+
+        self.detail_btn = tkc.CTkButton(self.sidebar_frame, text="Show Recipe", font=font_settings, fg_color=primary_color)
+        self.detail_btn.grid(row=3, column=0, sticky="nsew", padx=10, pady=10)
 
     def update_buttons_visibility(self, event: str) -> None:
         """
