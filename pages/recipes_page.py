@@ -74,7 +74,6 @@ class RecipesPage(tkc.CTkFrame, Page):
 
         Args:
             event (str): The event that triggered the update.
-
         """
         delete_btn = self.delete_btn
         edit_btn = self.edit_btn
@@ -95,7 +94,6 @@ class RecipesPage(tkc.CTkFrame, Page):
 
         Args:
             new_list (list[Recipe]): The new list of recipes.
-
         """
         self.recipe_list.clear()
         self.recipe_list.populate(new_list)
@@ -112,7 +110,6 @@ class RecipesPage(tkc.CTkFrame, Page):
 
         Args:
             all_recipes (list[Recipe]): The list of all recipes.
-
         """
         self._clear_search_bar()
         self._update_recipe_list(all_recipes)
