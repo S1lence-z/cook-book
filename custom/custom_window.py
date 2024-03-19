@@ -30,7 +30,7 @@ class AppWindow(tkc.CTk):
         self.height = height
         self.create_title(title)
         self.set_window(width, height, resizable)
-        tkc.set_default_color_theme(theme)
+        tkc.set_default_color_theme(theme) if theme else print("No theme specified.")
         
     def set_window(self, width: int, height: int, resizable: bool) -> None:
         """Sets the window size and resizability settings.
