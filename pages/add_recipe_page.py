@@ -31,24 +31,36 @@ class AddRecipePage(tkc.CTkFrame, Page):
     
     def _create_ui(self) -> None:
         """
-        Create the user interface elements.
+        Create the user interface elements for the 'Add Recipe Page' with a modern look.
         """
-        # Header
-        self.header = tkc.CTkLabel(self, text="Add Recipe Page", font=("Arial", 24), anchor="center") # type: ignore
-        self.header.grid(row=0, column=0, columnspan=3, sticky="nsew", padx=10, pady=5)
+        # Font and color settings
+        font_family = "Segoe UI"
+        base_font_size = 18
+        header_font_size = 28
+        font_settings = (font_family, base_font_size)
+        header_font_settings = (font_family, header_font_size)
 
-        # Title
-        self.title_label = tkc.CTkLabel(self, text="Title", font=("Arial", 12))
-        self.title_label.grid(row=1, column=0, sticky="nsew", padx=10, pady=5)
-        self.title_entry = tkc.CTkEntry(self)
-        self.title_entry.grid(row=1, column=1, columnspan=3, sticky="nsew", padx=10, pady=5)
+        # Header label
+        self.header = tkc.CTkLabel(self, text="Add Recipe Page", font=header_font_settings)
+        self.header.grid(row=0, column=0, columnspan=4, sticky="nsew", padx=20, pady=10)
 
-        # Add button
-        self.add_btn = tkc.CTkButton(self, text="Add")
-        self.add_btn.grid(row=2, column=1, sticky="ew", padx=10, pady=5, ipady=15)
-        # Cancel button
-        self.cancel_btn = tkc.CTkButton(self, text="Cancel")
-        self.cancel_btn.grid(row=2, column=2, sticky="ew", padx=10, pady=5, ipady=15)
+        # Title entry section
+        self.title_label = tkc.CTkLabel(self, text="Title", font=font_settings)
+        self.title_label.grid(row=1, column=0, sticky="e", padx=20, pady=10)
+        self.title_entry = tkc.CTkEntry(self, font=font_settings)
+        self.title_entry.grid(row=1, column=1, columnspan=3, sticky="ew", padx=20, pady=10)
+
+        # Sidebar frame for buttons
+        self.sidebar_frame = tkc.CTkFrame(self)
+        self.sidebar_frame.grid(row=0, column=4, rowspan=3, sticky="nsew", padx=20, pady=10)
+
+        # Add button in sidebar to maintain layout consistency
+        self.add_btn = tkc.CTkButton(self.sidebar_frame, text="Add", font=font_settings, fg_color="green")
+        self.add_btn.grid(row=0, column=0, sticky="nsew", padx=10, pady=10)
+
+        # Cancel button in sidebar
+        self.cancel_btn = tkc.CTkButton(self.sidebar_frame, text="Cancel", font=font_settings, fg_color="red")  # Assuming cancel is a secondary/danger action
+        self.cancel_btn.grid(row=1, column=0, sticky="nsew", padx=10, pady=10)
         
     def _clear_add_page(self) -> None:
         """
