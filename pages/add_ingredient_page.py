@@ -26,14 +26,14 @@ class AddIngredientPage(tkc.CTkFrame, Page):
         """
         Format the frame layout.
         """
-        for i in range(2):
-            self.grid_columnconfigure(i, weight=1)
         for i in range(3):
+            self.grid_columnconfigure(i, weight=1)
+        for i in range(4):
             self.grid_rowconfigure(i, weight=1)
     
     def _create_ui(self) -> None:
         """
-        Create the user interface elements for the 'Add Ingredient Page' with a modern look.
+        Creates the user interface elements for the 'Add Ingredient Page' with a modern look.
         """
         # Font and color settings
         font_family = "Segoe UI"
@@ -44,29 +44,29 @@ class AddIngredientPage(tkc.CTkFrame, Page):
 
         # Header label
         self.header = tkc.CTkLabel(self, text="Add Ingredient Page", font=header_font_settings)
-        self.header.grid(row=0, column=0, columnspan=4, sticky="nsew", padx=20, pady=10)
+        self.header.grid(row=0, column=0, columnspan=3, sticky="ew", padx=20, pady=10)
 
         # Name
-        self.title_label = tkc.CTkLabel(self, text="Name", font=font_settings)
-        self.title_label.grid(row=1, column=0, sticky="nsew", padx=20, pady=10)
-        self.title_entry = tkc.CTkEntry(self, font=font_settings)
-        self.title_entry.grid(row=1, column=1, columnspan=3, sticky="nsew", padx=20, pady=10)
+        self.name_label = tkc.CTkLabel(self, text="Name", font=font_settings)
+        self.name_label.grid(row=1, column=0, sticky="e", padx=20, pady=10)
+        self.name_entry = tkc.CTkEntry(self, font=font_settings)
+        self.name_entry.grid(row=1, column=1, columnspan=2, sticky="ew", padx=20, pady=10)
         
         # Quantity
         self.quantity_label = tkc.CTkLabel(self, text="Quantity", font=font_settings)
-        self.quantity_label.grid(row=2, column=0, sticky="nsew", padx=20, pady=10)
+        self.quantity_label.grid(row=2, column=0, sticky="e", padx=20, pady=10)
         self.quantity_entry = tkc.CTkEntry(self, font=font_settings)
-        self.quantity_entry.grid(row=2, column=1, columnspan=3, sticky="nsew", padx=20, pady=10)
+        self.quantity_entry.grid(row=2, column=1, columnspan=2, sticky="ew", padx=20, pady=10)
         
         # Calories
         self.calories_label = tkc.CTkLabel(self, text="Calories", font=font_settings)
-        self.calories_label.grid(row=3, column=0, sticky="nsew", padx=20, pady=10)
+        self.calories_label.grid(row=3, column=0, sticky="e", padx=20, pady=10)
         self.calories_entry = tkc.CTkEntry(self, font=font_settings)
-        self.calories_entry.grid(row=3, column=1, columnspan=3, sticky="nsew", padx=20, pady=10)
+        self.calories_entry.grid(row=3, column=1, columnspan=2, sticky="ew", padx=20, pady=10)
 
-        # Sidebar frame for buttons
+        # Sidebar frame for action buttons
         self.sidebar_frame = tkc.CTkFrame(self)
-        self.sidebar_frame.grid(row=0, column=4, rowspan=4, sticky="nsew", padx=20, pady=10)
+        self.sidebar_frame.grid(row=0, column=3, rowspan=4, sticky="nsew", padx=20, pady=10)
 
         # Save button
         self.add_btn = tkc.CTkButton(self.sidebar_frame, text="Save", font=font_settings, fg_color="green")
@@ -92,7 +92,7 @@ class AddIngredientPage(tkc.CTkFrame, Page):
         return self._recipe.id
         
     def get_added_ingredient(self) -> list:
-        name = self.title_entry.get()
+        name = self.name_entry.get()
         quantity = self.quantity_entry.get()
         calories = self.calories_entry.get()
         return [name, quantity, calories]
@@ -101,7 +101,7 @@ class AddIngredientPage(tkc.CTkFrame, Page):
         """
         Clear the page.
         """
-        self.title_entry.delete(0, tkc.END)
+        self.name_entry.delete(0, tkc.END)
         self.quantity_entry.delete(0, tkc.END)
         self.calories_entry.delete(0, tkc.END)
         
