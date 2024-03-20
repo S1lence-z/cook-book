@@ -7,3 +7,4 @@ from custom.search_bar import SearchBar
 from custom.recipe_category import RecipeCategory
 from custom.ingredient import Ingredient
 from custom.ingredients_list import IngredientsList
+from custom.warning_box import CustomWarningBox
