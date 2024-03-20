@@ -70,7 +70,7 @@ class DatabaseManager:
         Retrieves the ID of the last inserted recipe.
 
         Returns:
-            int: The ID of the last inserted recipe.
+            The ID of the last inserted recipe.
         """
         self.cursor.execute("SELECT LAST_INSERT_ID();")
         last_inserted_id = self.cursor.fetchall()
@@ -142,6 +142,9 @@ class DatabaseManager:
     def delete_ingredient_by_id(self, id: int):
         """
         Deletes an ingredient from the database by its ID.
+
+        Args:
+            id: The ID of the ingredient to delete.
         """
         self.cursor.execute(self.queries["DeleteIngredientById"], (id,))
         self.db_connection.commit()
