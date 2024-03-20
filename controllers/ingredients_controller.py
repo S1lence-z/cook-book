@@ -56,4 +56,5 @@ class IngredientsController(PageController):
         """
         Adds a new ingredient to the recipe.
         """
-        self.view.raise_page("addIngredientPage")
+        self.view.pages["addIngredient"].refresh_page(self.frame.get_recipe_id())
+        self.view.raise_page("addIngredient")

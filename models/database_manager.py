@@ -133,7 +133,7 @@ class DatabaseManager:
             quantity: The quantity of the ingredient.
             calories: The calories of the ingredient.
         """
-        ingredient_data = (name, quantity, calories)
+        ingredient_data = (recipe_id, name, quantity, calories)
         self.cursor.execute(self.queries["AddIngredient"], ingredient_data)
         self.db_connection.commit()
         print(f"{self.cursor.rowcount} row added.")

@@ -18,6 +18,7 @@ class IngredientsPage(tkc.CTkFrame, Page):
         """
         super().__init__(*args, **kwargs)
         self._recipe_title: str = ""
+        self._recipe_id: int
         self._ingredients_to_display: list[Ingredient] = []
         self._format_frame()
         self._create_ui()
@@ -78,6 +79,7 @@ class IngredientsPage(tkc.CTkFrame, Page):
         """
         self._ingredients_to_display = ingredients
         self._recipe_title = recipe_name
+        self._recipe_id = ingredients[0].recipe_id
         self._fill_the_ingredients_page()
         
     def clear_page(self) -> None:
@@ -110,3 +112,20 @@ class IngredientsPage(tkc.CTkFrame, Page):
             The recipe title.
         """
         return self._recipe_title
+    
+    def get_recipe_id(self) -> int:
+        """
+        Get the recipe id.
+
+        Returns:
+            The recipe id.
+        """
+        return self._recipe_id
+    
+    def refresh_page(self, ingredients_list: list[Ingredient]) -> None:
+        """
+        Refresh the page.
+        """
+        self.clear_page()
+        print(self.ingredients_list.children)
+        self.set_ingredients_to_display(ingredients_list, self._recipe_title)
