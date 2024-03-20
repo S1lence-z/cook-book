@@ -16,7 +16,7 @@ class Page(ABC):
         pass
     
     @abstractmethod
-    def _refresh_page(self) -> None:
+    def refresh_page(self) -> None:
         """
         Abstract method to refresh the page.
         """
