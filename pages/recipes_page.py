@@ -61,15 +61,18 @@ class RecipesPage(tkc.CTkFrame, Page):
         # Sidebar buttons
         self.add_btn = tkc.CTkButton(self.sidebar_frame, text="Add Recipe", font=font_settings, fg_color="green")
         self.add_btn.grid(row=0, column=0, sticky="nsew", padx=10, pady=10)
+        
+        self.add_ingredient_btn = tkc.CTkButton(self.sidebar_frame, text="Add Ingredient", font=font_settings, fg_color="green")
+        self.add_ingredient_btn.grid(row=1, column=0, sticky="nsew", padx=10, pady=10)
 
         self.delete_btn = tkc.CTkButton(self.sidebar_frame, text="Delete Recipe", font=font_settings, fg_color="red")
-        self.delete_btn.grid(row=1, column=0, sticky="nsew", padx=10, pady=10)
+        self.delete_btn.grid(row=2, column=0, sticky="nsew", padx=10, pady=10)
 
         self.edit_btn = tkc.CTkButton(self.sidebar_frame, text="Edit Recipe", font=font_settings, fg_color="blue")
-        self.edit_btn.grid(row=2, column=0, sticky="nsew", padx=10, pady=10)
+        self.edit_btn.grid(row=3, column=0, sticky="nsew", padx=10, pady=10)
 
         self.detail_btn = tkc.CTkButton(self.sidebar_frame, text="Show Recipe", font=font_settings, fg_color="blue")
-        self.detail_btn.grid(row=3, column=0, sticky="nsew", padx=10, pady=10)
+        self.detail_btn.grid(row=4, column=0, sticky="nsew", padx=10, pady=10)
 
     def update_buttons_visibility(self, event: str) -> None:
         """
@@ -82,7 +85,8 @@ class RecipesPage(tkc.CTkFrame, Page):
         edit_btn = self.edit_btn
         detail_btn = self.detail_btn
         recipe_list = self.recipe_list
-        buttons_to_update = [delete_btn, edit_btn, detail_btn]
+        add_ingredient_btn = self.add_ingredient_btn
+        buttons_to_update = [delete_btn, edit_btn, detail_btn, add_ingredient_btn]
         # Enable selected buttons if a recipe is selected, else disable it
         for button in buttons_to_update:
             try:

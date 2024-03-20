@@ -32,16 +32,16 @@ class IngredientsController(PageController):
         """
         Binds the buttons to their respective functions.
         """
-        self.frame.cancel_btn.configure(command=self._cancel)
+        self.frame.cancel_btn.configure(command=self._go_back)
         self.frame.generate_pdf_btn.configure(command=self._generate_pdf)
         self.frame.add_ingredient_btn.configure(command=self._add_ingredient)
         
-    def _cancel(self) -> None:
+    def _go_back(self) -> None:
         """
         Clears the page and refreshes the recipes page.
         """
-        self.view.pages["recipesPage"].refresh_page(self.model.get_all_recipes())
-        self.view.raise_page("recipesPage")
+        self.view.pages["detailRecipe"].refresh_page(self.frame.get_recipe())
+        self.view.raise_page("detailRecipe")
         
     def _generate_pdf(self) -> None:
         """

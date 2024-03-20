@@ -1,4 +1,3 @@
-# recipes_controller.py
 import tkinter as tk
 from models.database_manager import DatabaseManager
 from views.main_view import MainView
@@ -37,6 +36,7 @@ class RecipesController(PageController):
         self.frame.delete_btn.configure(command=self._delete_recipe, state=tk.DISABLED)
         self.frame.edit_btn.configure(command=self._edit_recipe, state=tk.DISABLED)
         self.frame.detail_btn.configure(command=self._show_detail_recipe, state=tk.DISABLED)
+        self.frame.add_ingredient_btn.configure(command=self._add_ingredient)
         self.frame.recipe_list.bind("<<ListboxSelect>>", self.frame.update_buttons_visibility)
         self.frame.search_bar.bind("<KeyRelease>", self._search_recipes)
 
@@ -81,3 +81,12 @@ class RecipesController(PageController):
         search_query = self.frame.search_bar.get_query()
         self.frame.recipe_list.filter_recipes(search_query)
         self.frame.update_buttons_visibility("<<ListboxSelect>>")
+        
+    def _add_ingredient(self) -> None:
+        """
+        Open the add ingredient page with the selected recipe pre-filled.
+        """
+        selected_recipe_id = self.frame.recipe_list.curselection()
+        recipe_to_add_ingredient = self.model.get_recipe_by_id(selected_recipe_id)
+        self.view.pages["addIngredient"].refresh_page(recipe_to_add_ingredient)
+        self.view.raise_page("addIngredient")

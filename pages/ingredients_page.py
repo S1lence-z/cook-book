@@ -65,7 +65,7 @@ class IngredientsPage(tkc.CTkFrame, Page):
         self.generate_pdf_btn.grid(row=1, column=0, sticky="nsew", padx=10, pady=10)
 
         # Cancel button in sidebar
-        self.cancel_btn = tkc.CTkButton(self.sidebar_frame, text="Cancel", font=font_settings, fg_color="red")
+        self.cancel_btn = tkc.CTkButton(self.sidebar_frame, text="Back", font=font_settings, fg_color="red")
         self.cancel_btn.grid(row=2, column=0, sticky="nsew", padx=10, pady=10)
 
     def _set_ingredients_to_display(self, ingredients: list[Ingredient]) -> None:

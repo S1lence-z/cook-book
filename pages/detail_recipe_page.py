@@ -77,14 +77,17 @@ class DetailRecipePage(tkc.CTkFrame, Page):
         self.sidebar_frame.grid(row=0, column=3, rowspan=8, sticky="nsew", padx=20, pady=10)
 
         # Action buttons in sidebar
+        self.add_ingredient_btn = tkc.CTkButton(self.sidebar_frame, text="Add Ingredient", font=font_settings, fg_color="green")
+        self.add_ingredient_btn.grid(row=0, column=0, sticky="nsew", padx=10, pady=10)
+        
         self.edit_btn = tkc.CTkButton(self.sidebar_frame, text="Edit", font=font_settings, fg_color="blue")
-        self.edit_btn.grid(row=0, column=0, sticky="nsew", padx=10, pady=10)
+        self.edit_btn.grid(row=1, column=0, sticky="nsew", padx=10, pady=10)
         
         self.show_ingredients_btn = tkc.CTkButton(self.sidebar_frame, text="Show Ingredients", font=font_settings, fg_color="blue")
-        self.show_ingredients_btn.grid(row=1, column=0, sticky="nsew", padx=10, pady=10)
+        self.show_ingredients_btn.grid(row=2, column=0, sticky="nsew", padx=10, pady=10)
         
         self.back_btn = tkc.CTkButton(self.sidebar_frame, text="Back", font=font_settings, fg_color="red")
-        self.back_btn.grid(row=2, column=0, sticky="nsew", padx=10, pady=10)
+        self.back_btn.grid(row=3, column=0, sticky="nsew", padx=10, pady=10)
 
     def _set_recipe_to_display(self, recipe: Recipe):
         """Set the recipe to display.
@@ -111,6 +114,14 @@ class DetailRecipePage(tkc.CTkFrame, Page):
         self.cook_time_value.configure(text=f"{self._recipe_to_display.cook_time} minutes")
         self.instructions_value.configure(text=self._recipe_to_display.instructions)
         self.category_value.configure(text=self._recipe_to_display.category.value)
+        
+    def get_recipe(self) -> Recipe:
+        """Get the recipe to display.
+
+        Returns:
+            Recipe: The recipe to display.
+        """
+        return self._recipe_to_display
         
     def refresh_page(self, recipe_to_display: Recipe):
         """Refresh the page."""

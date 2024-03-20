@@ -30,6 +30,7 @@ class DetailController(PageController):
         self.frame.back_btn.configure(command=self._go_back)
         self.frame.edit_btn.configure(command=self._edit_recipe)
         self.frame.show_ingredients_btn.configure(command=self._show_ingredients)
+        self.frame.add_ingredient_btn.configure(command=self._add_ingredient)
         
     def _go_back(self) -> None:
         """
@@ -53,5 +54,12 @@ class DetailController(PageController):
         """
         current_recipe_id = self.frame._recipe_to_display.id
         recipe_ingredients = self.model.get_ingredients_by_recipe_id(current_recipe_id)
-        self.view.pages["ingredientsPage"].refresh_page(recipe_ingredients, self.frame._recipe_to_display)
+        self.view.pages["ingredientsPage"].refresh_page(recipe_ingredients, self.frame.get_recipe())
         self.view.raise_page("ingredientsPage")
+        
+    def _add_ingredient(self) -> None:
+        """
+        Sets the current recipe in the add ingredient page and raises the add ingredient page to the top.
+        """
+        self.view.pages["addIngredient"].refresh_page(self.frame.get_recipe())
+        self.view.raise_page("addIngredient")
