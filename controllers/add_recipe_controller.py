@@ -31,10 +31,10 @@ class AdditionController(PageController):
         """
         Binds the buttons to their respective functions.
         """
-        self.frame.add_btn.configure(command=self.edit_added_recipe)
-        self.frame.cancel_btn.configure(command=self.cancel)
+        self.frame.add_btn.configure(command=self._edit_added_recipe)
+        self.frame.cancel_btn.configure(command=self._cancel)
 
-    def edit_added_recipe(self):
+    def _edit_added_recipe(self):
         """
         Edits the added recipe.
         """
@@ -42,11 +42,10 @@ class AdditionController(PageController):
         self.model.add_recipe(added_recipe_title)
         added_recipe_id = self.model.get_last_inserted_recipe_id()
         recipe_to_edit = self.model.get_recipe_by_id(added_recipe_id)
-        edit_page = self.view.pages["editRecipe"]
-        edit_page.set_recipe_to_edit(recipe_to_edit)
+        self.view.pages["editRecipe"].refresh_page(recipe_to_edit)
         self.view.raise_page("editRecipe")
 
-    def cancel(self):
+    def _cancel(self):
         """
         Cancels the addition and goes back to the recipes page.
         """

@@ -35,7 +35,6 @@ class DetailController(PageController):
         """
         Clears the page, refreshes the recipes page, and raises it to the top.
         """
-        self.frame.clear_page()
         self.view.pages["recipesPage"].refresh_page(self.model.get_all_recipes())
         self.view.raise_page("recipesPage")
         
@@ -45,8 +44,7 @@ class DetailController(PageController):
         """
         recipe_id = self.frame._recipe_to_display.id
         recipe_to_edit = self.model.get_recipe_by_id(recipe_id)
-        edit_page = self.view.pages["editRecipe"]
-        edit_page.set_recipe_to_edit(recipe_to_edit)
+        self.view.pages["editRecipe"].refresh_page(recipe_to_edit)
         self.view.raise_page("editRecipe")
         
     def _show_ingredients(self) -> None:
@@ -54,7 +52,6 @@ class DetailController(PageController):
         Retrieves the current recipe's ingredients, sets them in the ingredients page, and raises the ingredients page to the top.
         """
         current_recipe_id = self.frame._recipe_to_display.id
-        current_recipe_title = self.frame._recipe_to_display.title
         recipe_ingredients = self.model.get_ingredients_by_recipe_id(current_recipe_id)
-        self.view.pages["ingredientsPage"].set_ingredients_to_display(recipe_ingredients, current_recipe_title)
+        self.view.pages["ingredientsPage"].refresh_page(recipe_ingredients, self.frame._recipe_to_display)
         self.view.raise_page("ingredientsPage")
