@@ -27,7 +27,8 @@ class MainController:
         addition_controller = AdditionController(self.database_manager, self.view)
         detail_controller = DetailController(self.database_manager, self.view)
         ingredients_controller = IngredientsController(self.database_manager, self.view)
-        return [recipes_controller, editation_controller, addition_controller, detail_controller, ingredients_controller]
+        add_ingredients_controller = AddIngredientController(self.database_manager, self.view)
+        return [recipes_controller, editation_controller, addition_controller, detail_controller, ingredients_controller, add_ingredients_controller]
     
     def start_mainloop(self):
         """
