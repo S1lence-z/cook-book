@@ -17,6 +17,25 @@ Before running the CookBook application, ensure you have the following libraries
 - **customtkinter**: A library to create modern and customizable GUIs based on Tkinter.
 - **MySQL Connector/Python (mysql-connector-python)**: A library to connect your application to a MySQL database.
 
+### Install MySQL on Your PC
+1. **Download MySQL Community Server**:
+
+    - Visit the MySQL official website and navigate to the downloads section for the MySQL Community Server.
+    - Choose the version that is compatible with your operating system and download it.
+
+2. **Install MySQL**:
+
+    - Execute the downloaded installer.
+    - Follow the prompts in the installation wizard. Choose a setup type like "Full", "Custom", or "Server Only". "Full" or "Server Only" is recommended for most users.
+    - During the installation, set up the root password and create user accounts if necessary.
+    - Configure the MySQL Server, such as setting the port (default is 3306) and deciding whether it should run as a Windows service.
+
+3. **Verify MySQL Installation**:
+
+    - Open a command prompt or terminal.
+    - Type mysql -u root -p and press Enter.
+    - Enter the root password when prompted. If you access the MySQL shell successfully, the installation is confirmed.
+
 ### Download necessary libraries
 To install these libraries, use the following commands:
 
@@ -53,7 +72,9 @@ Ensure these installations are successful before proceeding to the installation 
 
 2. Open the db folder and create the database and two tables as in the file: CookBookDB.session.sql. You can also populate it with the testing data
 
-3. Change your login credentials in the db_login.py file to your local databse
+3. Create a file called db_login.py in the db folder and create the following constants:
+
+![db_login.py](./docs/db_login_example.png)
 
 4. Alternatively, you can navigate to the cloned directory in your command line and run the following command:
     ```
