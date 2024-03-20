@@ -3,7 +3,7 @@ from models.database_manager import DatabaseManager
 from views.main_view import MainView
 from controllers import *
 
-class AdditionController(PageController):
+class AddRecipeController(PageController):
     """
     Controller class for the addition page.
     """

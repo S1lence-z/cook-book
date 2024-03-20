@@ -2,7 +2,7 @@ from models.database_manager import DatabaseManager
 from views.main_view import MainView
 from controllers import *
 
-class EditationController(PageController):
+class EditRecipeController(PageController):
     """
     Controller class for the editation page.
     """

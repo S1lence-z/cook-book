@@ -23,8 +23,8 @@ class MainController:
             list: A list of all controllers.
         """
         recipes_controller = RecipesController(self.database_manager, self.view)
-        editation_controller = EditationController(self.database_manager, self.view)
-        addition_controller = AdditionController(self.database_manager, self.view)
+        editation_controller = EditRecipeController(self.database_manager, self.view)
+        addition_controller = AddRecipeController(self.database_manager, self.view)
         detail_controller = DetailController(self.database_manager, self.view)
         ingredients_controller = IngredientsController(self.database_manager, self.view)
         add_ingredients_controller = AddIngredientController(self.database_manager, self.view)
