@@ -38,13 +38,26 @@ class IngredientsList(tk.Listbox):
         """
         index_of_selected_item = super().curselection()
         ingredient = self._shown_ingredients[index_of_selected_item[0]]
-        return ingredient.id
+        return ingredient.ingredient_id
 
     def clear(self) -> None:
         """
         Clear the IngredientsList.
         """
+        self._clear_shown_ingredients()
         self.delete(0, tk.END)
+        
+    def _add_to_shown_ingredients(self, ingredient: Ingredient) -> None:
+        """
+        Add an ingredient to the list of shown ingredients.
+        """
+        self._shown_ingredients.append(ingredient)
+        
+    def _clear_shown_ingredients(self) -> None:
+        """
+        Clear the list of shown ingredients.
+        """
+        self._shown_ingredients.clear()
 
     def _insert(self, item: Ingredient) -> None:
         """
@@ -54,3 +67,4 @@ class IngredientsList(tk.Listbox):
             item (Ingredient): The ingredient to insert.
         """
         self.insert(tk.END, item.name)
+        self._add_to_shown_ingredients(item)

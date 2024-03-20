@@ -18,6 +18,7 @@ class DatabaseManager:
             "UpdateRecipe": "UPDATE recipes SET title = %s, description = %s, prep_time = %s, cook_time = %s, instructions = %s, category = %s WHERE recipe_id = %s;",
             "GetIngredientsByRecipeId": "SELECT * FROM ingredients WHERE recipe_id = %s;",
             "AddIngredient": "INSERT INTO ingredients (recipe_id, name, quantity, calories) VALUES (%s, %s, %s, %s);",
+            "DeleteIngredientById": "DELETE FROM ingredients WHERE ingredient_id = %s;"
         }
         
     def get_all_recipes(self) -> list[Recipe]:
@@ -137,3 +138,11 @@ class DatabaseManager:
         self.cursor.execute(self.queries["AddIngredient"], ingredient_data)
         self.db_connection.commit()
         print(f"{self.cursor.rowcount} row added.")
+        
+    def delete_ingredient_by_id(self, id: int):
+        """
+        Deletes an ingredient from the database by its ID.
+        """
+        self.cursor.execute(self.queries["DeleteIngredientById"], (id,))
+        self.db_connection.commit()
+        print(f"{self.cursor.rowcount} row deleted.")

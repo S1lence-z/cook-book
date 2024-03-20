@@ -28,7 +28,7 @@ class IngredientsPage(tkc.CTkFrame, Page):
         """
         for i in range(2):
             self.grid_columnconfigure(i, weight=1)
-        for i in range(4):
+        for i in range(5):
             self.grid_rowconfigure(i, weight=1)
     
     def _create_ui(self) -> None:
@@ -59,14 +59,18 @@ class IngredientsPage(tkc.CTkFrame, Page):
         # Button to add a new ingredient
         self.add_ingredient_btn = tkc.CTkButton(self.sidebar_frame, text="Add Ingredient", font=font_settings, fg_color="blue")
         self.add_ingredient_btn.grid(row=0, column=0, sticky="nsew", padx=10, pady=10)
+        
+        # Delete ingredient
+        self.delete_ingredient_btn = tkc.CTkButton(self.sidebar_frame, text="Delete", font=font_settings, fg_color="red")
+        self.delete_ingredient_btn.grid(row=1, column=0, sticky="nsew", padx=10, pady=10)
 
         # Generate PDF button in sidebar
         self.generate_pdf_btn = tkc.CTkButton(self.sidebar_frame, text="Generate PDF", font=font_settings, fg_color="green")
-        self.generate_pdf_btn.grid(row=1, column=0, sticky="nsew", padx=10, pady=10)
+        self.generate_pdf_btn.grid(row=2, column=0, sticky="nsew", padx=10, pady=10)
 
         # Cancel button in sidebar
         self.cancel_btn = tkc.CTkButton(self.sidebar_frame, text="Back", font=font_settings, fg_color="red")
-        self.cancel_btn.grid(row=2, column=0, sticky="nsew", padx=10, pady=10)
+        self.cancel_btn.grid(row=3, column=0, sticky="nsew", padx=10, pady=10)
 
     def _set_ingredients_to_display(self, ingredients: list[Ingredient]) -> None:
         """
@@ -104,6 +108,24 @@ class IngredientsPage(tkc.CTkFrame, Page):
     def get_recipe(self) -> Recipe:
         return self._recipe
     
+    def update_buttons_visibility(self, event: str) -> None:
+        """
+        Update the visibility of buttons.
+
+        Args:
+            event (str): The event that triggered the update.
+        """
+        delete_btn = self.delete_ingredient_btn
+        ingredient_list = self.ingredients_list
+        buttons_to_update = [delete_btn]
+        # Enable selected buttons if a recipe is selected, else disable it
+        for button in buttons_to_update:
+            try:
+                button.configure(state=tkc.NORMAL) if ingredient_list.curselection() else button.configure(state=tkc.DISABLED)
+            except IndexError:
+                button.configure(state=tkc.DISABLED)
+                ingredient_list.selection_clear(0, tkc.END)
+    
     def refresh_page(self, recipe_ingredients: list[Ingredient], recipe: Recipe) -> None:
         """
         Refresh the page.
@@ -112,3 +134,4 @@ class IngredientsPage(tkc.CTkFrame, Page):
         self._set_recipe(recipe)
         self._set_ingredients_to_display(recipe_ingredients)
         self._fill_the_ingredients_page()
+        self.update_buttons_visibility("refresh")
