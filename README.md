@@ -49,11 +49,13 @@ Ensure these installations are successful before proceeding to the installation 
 
 ### To start the program, follow either these steps:
 
-1. Open the cloned directory in your favorite IDE and start the main.py file
+1. Open the cloned directory in your favorite IDE
 
-2. Change your login credentials in the db_login.py file to your local databse
+2. Open the db folder and create the database, two tables as in the file: CookBookDB.session.sql. You can also populate it with the testing data
 
-3. Alternatively, you can navigate to the cloned directory in your command line and run the following command:
+3. Change your login credentials in the db_login.py file to your local databse
+
+4. Alternatively, you can navigate to the cloned directory in your command line and run the following command:
     ```
     python main.py
     ```
