@@ -50,6 +50,9 @@ class IngredientsList(tk.Listbox):
     def _add_to_shown_ingredients(self, ingredient: Ingredient) -> None:
         """
         Add an ingredient to the list of shown ingredients.
+
+        Args:
+            ingredient (Ingredient): The ingredient to add.
         """
         self._shown_ingredients.append(ingredient)
         

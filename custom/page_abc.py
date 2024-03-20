@@ -1,6 +1,3 @@
-# page_abstract_class.py
-from abc import ABC, abstractmethod
-
 from abc import ABC, abstractmethod
 
 class Page(ABC):

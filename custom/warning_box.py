@@ -1,7 +1,5 @@
 import tkinter as tk
 
-import tkinter as tk
-
 class CustomWarningBox:
     """
     A custom warning box class for displaying warning messages.
@@ -10,6 +8,8 @@ class CustomWarningBox:
         root (tk.Tk): The root Tkinter window.
         title (str): The title of the warning box.
         message (str): The message to be displayed in the warning box.
+        width (str): The width of the warning box.
+        height (str): The height of the warning box.
     """
 
     def __init__(self, root: tk.Tk, title: str, message: str, width: str, height: str) -> None:
@@ -20,6 +20,8 @@ class CustomWarningBox:
             root (tk.Tk): The root Tkinter window.
             title (str): The title of the warning box.
             message (str): The message to be displayed in the warning box.
+            width (str): The width of the warning box.
+            height (str): The height of the warning box.
         """
         self.root = root
         self.title = title

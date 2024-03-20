@@ -1,4 +1,3 @@
-# recipe.py
 from custom.recipe_category import RecipeCategory
 
 class Recipe:

@@ -1,6 +1,3 @@
-# page_controller_abc.py
-from abc import ABC, abstractmethod
-
 from abc import ABC, abstractmethod
 
 class PageController(ABC):
@@ -8,10 +5,16 @@ class PageController(ABC):
 
     @abstractmethod
     def _setup_page(self) -> None:
-        """Sets up the whole page."""
+        """Sets up the whole page.
+        
+        This method should be implemented by subclasses to set up the entire page.
+        """
         pass
     
     @abstractmethod
     def _bind_buttons(self) -> None:
-        """Binds methods to buttons for their functionality."""
+        """Binds methods to buttons for their functionality.
+        
+        This method should be implemented by subclasses to bind methods to buttons for their functionality.
+        """
         pass

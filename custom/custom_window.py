@@ -4,11 +4,11 @@ class AppWindow(tkc.CTk):
     """AppWindow is a customizable Tkinter window.
 
     Args:
-        title (str): Sets the window title.
-        width (int): Sets the Tkinter window width.
-        height (int): Sets the Tkinter window height.
+        title (str): The title of the window.
+        width (int): The width of the window.
+        height (int): The height of the window.
         resizable (bool): Flag to enable or disable resizability.
-        theme (str): Sets the theme for the window.
+        theme (str): The theme for the window.
 
     Attributes:
         width (int): The width of the window.
@@ -16,14 +16,14 @@ class AppWindow(tkc.CTk):
     """
 
     def __init__(self, title: str, width: int, height: int, resizable: bool, theme: str) -> None:
-        """Initializes the AppWindow class with given parameters.
+        """Initializes the AppWindow class with the given parameters.
 
         Args:
-            title (str): Sets the window title.
-            width (int): Sets the Tkinter window width.
-            height (int): Sets the Tkinter window height.
+            title (str): The title of the window.
+            width (int): The width of the window.
+            height (int): The height of the window.
             resizable (bool): Flag to enable or disable resizability.
-            theme (str): Sets the theme for the window.
+            theme (str): The theme for the window.
         """
         super().__init__()
         self.width = width
@@ -37,8 +37,8 @@ class AppWindow(tkc.CTk):
         """Sets the window size and resizability settings.
 
         Args:
-            width (int): Width of the window.
-            height (int): Height of the window.
+            width (int): The width of the window.
+            height (int): The height of the window.
             resizable (bool): True if the window is resizable; False otherwise.
         """
         self.geometry(f"{width}x{height}")
