@@ -1,3 +1,4 @@
+import re
 import customtkinter as tkc
 from custom import *
 
@@ -17,7 +18,7 @@ class AddIngredientPage(tkc.CTkFrame, Page):
             **kwargs: Arbitrary keyword arguments.
         """
         super().__init__(*args, **kwargs)
-        self._recipe_id: int
+        self._recipe: Recipe
         self._format_frame()
         self._create_ui()
         
@@ -75,18 +76,28 @@ class AddIngredientPage(tkc.CTkFrame, Page):
         self.cancel_btn = tkc.CTkButton(self.sidebar_frame, text="Cancel", font=font_settings, fg_color="red")
         self.cancel_btn.grid(row=1, column=0, sticky="nsew", padx=10, pady=10)
         
-    def _set_recipe_id(self, recipe_id: int) -> None:
-        self._recipe_id = recipe_id
+    def _set_recipe(self, recipe: Recipe) -> None:
+        """
+        Set the recipe title.
+
+        Args:
+            recipe: The recipe title.
+        """
+        self._recipe = recipe
+        
+    def get_recipe(self) -> Recipe:
+        return self._recipe
+    
+    def get_recipe_id(self) -> int:
+        return self._recipe.id
         
     def get_added_ingredient(self) -> list:
-        recipe_id = self._recipe_id
-        title = self.title_entry.get()
+        name = self.title_entry.get()
         quantity = self.quantity_entry.get()
         calories = self.calories_entry.get()
-        self.clear_page()
-        return [recipe_id, title, quantity, calories]
+        return [name, quantity, calories]
     
-    def clear_page(self) -> None:
+    def _clear_page(self) -> None:
         """
         Clear the page.
         """
@@ -94,10 +105,9 @@ class AddIngredientPage(tkc.CTkFrame, Page):
         self.quantity_entry.delete(0, tkc.END)
         self.calories_entry.delete(0, tkc.END)
         
-    def refresh_page(self, recipe_id: int) -> None:
+    def refresh_page(self, recipe: Recipe) -> None:
         """
         Refresh the page.
         """
-        self.clear_page()
-        self._set_recipe_id(recipe_id)
-        
+        self._clear_page()
+        self._set_recipe(recipe)

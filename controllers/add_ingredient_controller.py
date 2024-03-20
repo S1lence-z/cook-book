@@ -1,3 +1,4 @@
+from audioop import add
 from models.database_manager import DatabaseManager
 from views.main_view import MainView
 from controllers import *
@@ -17,11 +18,13 @@ class AddIngredientController(PageController):
         self.frame.cancel_btn.configure(command=self._cancel)
         
     def _save_ingredient(self) -> None:
-        recipe_id, name, quantity, calories = self.frame.get_added_ingredient()
-        self.model.add_ingredient(int(recipe_id), name, quantity, calories)
-        all_ingredients = self.model.get_ingredients_by_recipe_id(int(recipe_id))
-        self.view.pages["ingredientsPage"].refresh_page(all_ingredients)
+        added_ingredient = self.frame.get_added_ingredient()
+        added_ingredient_recipe_id = self.frame.get_recipe_id()
+        self.model.add_ingredient(added_ingredient_recipe_id, added_ingredient[0], added_ingredient[1], added_ingredient[2])
+        self.view.pages["ingredientsPage"].refresh_page(self.model.get_ingredients_by_recipe_id(added_ingredient_recipe_id), self.frame.get_recipe())
         self.view.raise_page("ingredientsPage")
     
     def _cancel(self):
+        added_ingredient_recipe_id = self.frame.get_recipe_id()
+        self.view.pages["ingredientsPage"].refresh_page(self.model.get_ingredients_by_recipe_id(added_ingredient_recipe_id), self.frame.get_recipe())
         self.view.raise_page("ingredientsPage")
