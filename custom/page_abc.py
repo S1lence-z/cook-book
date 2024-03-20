@@ -14,3 +14,10 @@ class Page(ABC):
         Abstract method to create the user interface for the page.
         """
         pass
+    
+    @abstractmethod
+    def _refresh_page(self) -> None:
+        """
+        Abstract method to refresh the page.
+        """
+        pass
