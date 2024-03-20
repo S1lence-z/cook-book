@@ -16,7 +16,8 @@ class DatabaseManager:
             "AddRecipe": "INSERT INTO recipes (title, description, prep_time, cook_time, instructions, category) VALUES (%s, %s, %s, %s, %s, %s);",
             "DeleteRecipeById": "DELETE FROM recipes WHERE recipe_id = %s;",
             "UpdateRecipe": "UPDATE recipes SET title = %s, description = %s, prep_time = %s, cook_time = %s, instructions = %s, category = %s WHERE recipe_id = %s;",
-            "GetIngredientsByRecipeId": "SELECT * FROM ingredients WHERE recipe_id = %s;"
+            "GetIngredientsByRecipeId": "SELECT * FROM ingredients WHERE recipe_id = %s;",
+            "AddIngredient": "INSERT INTO ingredients (name, quantity, calories) VALUES (%s, %s, %s);",
         }
         
     def get_all_recipes(self) -> list[Recipe]:
@@ -121,3 +122,18 @@ class DatabaseManager:
             id, recipe_id, name, quantity, calories = ingredient
             all_ingredients.append(Ingredient(id, recipe_id, name, quantity, calories))
         return all_ingredients
+    
+    def add_ingredient(self, name: str, quantity: str, calories: int):
+        """
+        Adds a new ingredient to the database.
+
+        Args:
+            recipe_id: The ID of the recipe.
+            name: The name of the ingredient.
+            quantity: The quantity of the ingredient.
+            calories: The calories of the ingredient.
+        """
+        ingredient_data = (name, quantity, calories)
+        self.cursor.execute(self.queries["AddIngredient"], ingredient_data)
+        self.db_connection.commit()
+        print(f"{self.cursor.rowcount} row added.")
