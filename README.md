@@ -51,7 +51,7 @@ Ensure these installations are successful before proceeding to the installation 
 
 1. Open the cloned directory in your favorite IDE
 
-2. Open the db folder and create the database, two tables as in the file: CookBookDB.session.sql. You can also populate it with the testing data
+2. Open the db folder and create the database and two tables as in the file: CookBookDB.session.sql. You can also populate it with the testing data
 
 3. Change your login credentials in the db_login.py file to your local databse
 
