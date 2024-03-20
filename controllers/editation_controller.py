@@ -1,4 +1,3 @@
-# editation_controller.py
 from models.database_manager import DatabaseManager
 from views.main_view import MainView
 from controllers import *
