@@ -23,6 +23,12 @@ class AddRecipePage(tkc.CTkFrame, Page):
     def _format_frame(self) -> None:
         """
         Format the frame layout.
+
+        This method configures the grid layout of the frame by setting the weight of the columns and rows.
+        The weight determines how the extra space is distributed among the columns and rows.
+
+        Returns:
+            None
         """
         for i in range(2):
             self.grid_columnconfigure(i, weight=1)
@@ -80,4 +86,7 @@ class AddRecipePage(tkc.CTkFrame, Page):
         return title
     
     def refresh_page(self) -> None:
+        """
+        Refresh the Add Recipe Page by clearing the input fields.
+        """
         self._clear_add_page()

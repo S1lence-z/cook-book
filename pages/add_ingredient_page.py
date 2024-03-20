@@ -78,20 +78,38 @@ class AddIngredientPage(tkc.CTkFrame, Page):
         
     def _set_recipe(self, recipe: Recipe) -> None:
         """
-        Set the recipe title.
+        Set the recipe for the AddIngredientPage.
 
         Args:
-            recipe: The recipe title.
+            recipe: The recipe object.
         """
         self._recipe = recipe
         
     def get_recipe(self) -> Recipe:
+        """
+        Get the recipe object.
+
+        Returns:
+            The recipe object.
+        """
         return self._recipe
     
     def get_recipe_id(self) -> int:
+        """
+        Get the recipe ID.
+
+        Returns:
+            The recipe ID.
+        """
         return self._recipe.id
         
     def get_added_ingredient(self) -> list:
+        """
+        Get the added ingredient details.
+
+        Returns:
+            A list containing the name, quantity, and calories of the added ingredient.
+        """
         name = self.name_entry.get()
         quantity = self.quantity_entry.get()
         calories = self.calories_entry.get()
@@ -107,7 +125,10 @@ class AddIngredientPage(tkc.CTkFrame, Page):
         
     def refresh_page(self, recipe: Recipe) -> None:
         """
-        Refresh the page.
+        Refresh the page with a new recipe.
+
+        Args:
+            recipe: The new recipe object.
         """
         self._clear_page()
         self._set_recipe(recipe)

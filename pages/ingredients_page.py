@@ -78,7 +78,6 @@ class IngredientsPage(tkc.CTkFrame, Page):
 
         Args:
             ingredients: The ingredients to display.
-            recipe_name: The name of the recipe.
         """
         self._recipe_ingredients = ingredients
         
@@ -106,9 +105,21 @@ class IngredientsPage(tkc.CTkFrame, Page):
         self.ingredients_list.populate(self._recipe_ingredients)
         
     def get_recipe(self) -> Recipe:
+        """
+        Get the recipe.
+
+        Returns:
+            The recipe.
+        """
         return self._recipe
     
     def get_ingredients_list(self) -> list[Ingredient]:
+        """
+        Get the list of ingredients.
+
+        Returns:
+            The list of ingredients.
+        """
         return self._recipe_ingredients
     
     def update_buttons_visibility(self, event: str) -> None:
@@ -132,6 +143,10 @@ class IngredientsPage(tkc.CTkFrame, Page):
     def refresh_page(self, recipe_ingredients: list[Ingredient], recipe: Recipe) -> None:
         """
         Refresh the page.
+
+        Args:
+            recipe_ingredients: The ingredients of the recipe.
+            recipe: The recipe.
         """
         self._clear_page()
         self._set_recipe(recipe)

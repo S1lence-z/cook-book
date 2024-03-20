@@ -124,7 +124,11 @@ class DetailRecipePage(tkc.CTkFrame, Page):
         return self._recipe_to_display
         
     def refresh_page(self, recipe_to_display: Recipe):
-        """Refresh the page."""
+        """Refresh the page.
+
+        Args:
+            recipe_to_display (Recipe): The recipe to display.
+        """
         self._clear_page()
         self._set_recipe_to_display(recipe_to_display)
         self._fill_the_display_page()
