@@ -39,13 +39,13 @@ class DetailRecipePage(tkc.CTkFrame, Page):
         # Title
         self.title_label = tkc.CTkLabel(self, text="Title", font=header_font_settings)
         self.title_label.grid(row=1, column=0, sticky="e", padx=20, pady=10)
-        self.title_value = tkc.CTkLabel(self, font=font_settings)
+        self.title_value = tkc.CTkLabel(self, font=font_settings, wraplength=850)
         self.title_value.grid(row=1, column=1, columnspan=2, sticky="ew", padx=20, pady=10)
 
         # Description
         self.description_label = tkc.CTkLabel(self, text="Description", font=header_font_settings)
         self.description_label.grid(row=2, column=0, sticky="e", padx=20, pady=10)
-        self.description_value = tkc.CTkLabel(self, font=font_settings)
+        self.description_value = tkc.CTkLabel(self, font=font_settings, wraplength=850)
         self.description_value.grid(row=2, column=1, columnspan=2, sticky="ew", padx=20, pady=10)
 
         # Prep Time
@@ -69,7 +69,7 @@ class DetailRecipePage(tkc.CTkFrame, Page):
         # Instructions
         self.instructions_label = tkc.CTkLabel(self, text="Instructions", font=header_font_settings)
         self.instructions_label.grid(row=6, column=0, sticky="e", padx=20, pady=10)
-        self.instructions_value = tkc.CTkLabel(self, font=font_settings)
+        self.instructions_value = tkc.CTkLabel(self, font=font_settings, wraplength=850)
         self.instructions_value.grid(row=6, column=1, columnspan=2, sticky="ew", padx=20, pady=10)
 
         # Sidebar frame for buttons
