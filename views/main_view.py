@@ -20,6 +20,7 @@ class MainView:
         self._add_page("addRecipe", AddRecipePage)
         self._add_page("detailRecipe", DetailRecipePage)
         self._add_page("ingredientsPage", IngredientsPage)
+        self._add_page("addIngredient", AddIngredientPage)
         
     def _add_page(self, name: str, page) -> None:
         """ 
