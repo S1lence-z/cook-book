@@ -1,4 +1,3 @@
-# view_controller.py
 from custom import *
 from pages import *
 
@@ -10,7 +9,7 @@ class MainView:
         Args:
             window (AppWindow): The application window.
 
-        Creates an application window, initializes the pages dictionary, and adds pages to it.
+        Creates an instance of the MainView class, initializes the pages dictionary, and adds pages to it.
         """
         self.window = window
         self.pages = {}
@@ -28,23 +27,23 @@ class MainView:
 
         Args:
             name (str): The name of the page.
-            page (str): The name of the class of the page.
+            page (str): The class of the page.
         """
         self.pages[name] = page(self.window)
         self.pages[name].grid(row=0, column=0, sticky="nsew")
     
     def raise_page(self, page_name: str) -> None:
         """ 
-        Takes the page name as an argument and shows the page in the window while hiding all others.
+        Raises a specific page in the window while hiding all others.
 
         Args:
-            page_name (str): Name of the page from the all_pages dictionary keys.
+            page_name (str): The name of the page to be raised.
         """
         page = self.pages[page_name]
         page.tkraise()
     
     def start_mainloop(self):
         """ 
-        Start the mainloop of the Tkinter window.
+        Starts the mainloop of the Tkinter window.
         """
         self.window.mainloop()
