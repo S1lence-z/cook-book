@@ -12,7 +12,7 @@ class CustomWarningBox:
         message (str): The message to be displayed in the warning box.
     """
 
-    def __init__(self, root: tk.Tk, title: str, message: str) -> None:
+    def __init__(self, root: tk.Tk, title: str, message: str, width: str, height: str) -> None:
         """
         Initializes a new instance of the CustomWarningBox class.
 
@@ -24,6 +24,8 @@ class CustomWarningBox:
         self.root = root
         self.title = title
         self.message = message
+        self.width = width
+        self.height = height
 
     def show(self) -> None:
         """
@@ -31,7 +33,7 @@ class CustomWarningBox:
         """
         self.window = tk.Toplevel(self.root)
         self.window.title(self.title)
-        self.window.geometry("300x100")
+        self.window.geometry(f"{self.width}x{self.height}")
         self.window.resizable(False, False)
 
         self.label = tk.Label(self.window, text=self.message, font=("Arial", 12))
