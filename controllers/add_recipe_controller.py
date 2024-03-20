@@ -50,4 +50,5 @@ class AdditionController(PageController):
         """
         Cancels the addition and goes back to the recipes page.
         """
+        self.view.pages["recipesPage"].refresh_page(self.model.get_all_recipes())
         self.view.raise_page("recipesPage")

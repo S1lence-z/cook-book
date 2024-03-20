@@ -86,7 +86,7 @@ class DetailRecipePage(tkc.CTkFrame, Page):
         self.back_btn = tkc.CTkButton(self.sidebar_frame, text="Back", font=font_settings, fg_color="red")
         self.back_btn.grid(row=2, column=0, sticky="nsew", padx=10, pady=10)
 
-    def set_recipe_to_display(self, recipe: Recipe):
+    def _set_recipe_to_display(self, recipe: Recipe):
         """Set the recipe to display.
 
         Args:
@@ -95,7 +95,7 @@ class DetailRecipePage(tkc.CTkFrame, Page):
         self._recipe_to_display = recipe
         self._fill_the_display_page()
 
-    def clear_page(self):
+    def _clear_page(self):
         """Clear the page."""
         self.title_value.configure(text="")
         self.description_value.configure(text="")
@@ -111,3 +111,9 @@ class DetailRecipePage(tkc.CTkFrame, Page):
         self.cook_time_value.configure(text=f"{self._recipe_to_display.cook_time} minutes")
         self.instructions_value.configure(text=self._recipe_to_display.instructions)
         self.category_value.configure(text=self._recipe_to_display.category.value)
+        
+    def refresh_page(self, recipe_to_display: Recipe):
+        """Refresh the page."""
+        self._clear_page()
+        self._set_recipe_to_display(recipe_to_display)
+        self._fill_the_display_page()

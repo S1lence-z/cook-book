@@ -77,8 +77,7 @@ class AddRecipePage(tkc.CTkFrame, Page):
             str: The title of the added recipe.
         """
         title = self.title_entry.get()
-        self._clear_add_page()
         return title
     
     def refresh_page(self) -> None:
-        return super().refresh_page()
+        self._clear_add_page()

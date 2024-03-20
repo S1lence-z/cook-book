@@ -44,6 +44,7 @@ class RecipesController(PageController):
         """
         Open the add recipe page.
         """
+        self.view.pages["addRecipe"].refresh_page()
         self.view.raise_page("addRecipe")
 
     def _delete_recipe(self) -> None:
@@ -61,8 +62,7 @@ class RecipesController(PageController):
         """
         selected_recipe_id = self.frame.recipe_list.curselection()
         recipe_to_edit = self.model.get_recipe_by_id(selected_recipe_id)
-        edit_page = self.view.pages["editRecipe"]
-        edit_page.set_recipe_to_edit(recipe_to_edit)
+        self.view.pages["editRecipe"].refresh_page(recipe_to_edit)
         self.view.raise_page("editRecipe")
 
     def _show_detail_recipe(self) -> None:
@@ -71,8 +71,7 @@ class RecipesController(PageController):
         """
         selected_recipe_id = self.frame.recipe_list.curselection()
         recipe_to_display = self.model.get_recipe_by_id(selected_recipe_id)
-        detail_page = self.view.pages["detailRecipe"]
-        detail_page.set_recipe_to_display(recipe_to_display)
+        self.view.pages["detailRecipe"].refresh_page(recipe_to_display)
         self.view.raise_page("detailRecipe")
 
     def _search_recipes(self, event) -> None:

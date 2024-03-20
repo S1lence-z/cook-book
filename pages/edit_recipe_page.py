@@ -91,16 +91,15 @@ class EditRecipePage(tkc.CTkFrame, Page):
         self.cancel_btn.grid(row=1, column=0, sticky="nsew", padx=10, pady=10)
 
 
-    def set_recipe_to_edit(self, recipe: Recipe):
+    def _set_recipe_to_edit(self, recipe: Recipe):
         """Sets the recipe to be edited.
 
         Args:
             recipe (Recipe): The recipe object to be edited.
         """
         self._recipe_to_edit = recipe
-        self._fill_the_edit_page()
         
-    def _clear_edit_page(self):
+    def _clear_page(self):
         """Clears the edit page by resetting the input fields."""
         # Clear the title entry
         self.title_entry.delete(0, tkc.END)
@@ -117,7 +116,7 @@ class EditRecipePage(tkc.CTkFrame, Page):
             
     def _fill_the_edit_page(self) -> None:
         """Fills the edit page with the recipe's current values."""
-        self._clear_edit_page()
+        self._clear_page()
         # Fill the form with the recipe's current values
         self.title_entry.insert(0, self._recipe_to_edit.title)
         self.description_text.insert(tkc.END, self._recipe_to_edit.description)
@@ -141,3 +140,9 @@ class EditRecipePage(tkc.CTkFrame, Page):
         instructions = self.instructions_text.get("1.0", "end-1c")
         category = self.category_entry.get()
         return [recipe_id, title, description, prep_time, cook_time, instructions, category]
+    
+    def refresh_page(self, recipe_to_edit: Recipe) -> None:
+        """Refreshes the edit page by clearing the input fields."""
+        self._clear_page()
+        self._set_recipe_to_edit(recipe_to_edit)
+        self._fill_the_edit_page()
