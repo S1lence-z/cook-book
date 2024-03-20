@@ -74,7 +74,7 @@ Ensure these installations are successful before proceeding to the installation 
 
 3. Create a file called db_login.py in the db folder and create the following constants:
 
-![db_login.py](./docs/db_login_example.png)
+    ![db_login.py](./docs/db_login_example.png)
 
 4. Alternatively, you can navigate to the cloned directory in your command line and run the following command:
     ```
