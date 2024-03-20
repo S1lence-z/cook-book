@@ -5,7 +5,7 @@ from controllers import *
 
 class RecipesController(PageController):
     """
-    Controller class for managing recipes page.
+    Controller class for managing the recipes page.
     """
 
     def __init__(self, model: DatabaseManager, view: MainView) -> None:

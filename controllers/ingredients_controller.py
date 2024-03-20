@@ -5,7 +5,7 @@ from pdf_converter.pdf_generator import PdfGenerator
 
 class IngredientsController(PageController):
     """
-    Controller class for managing ingredients page.
+    Controller class for managing the ingredients page.
     """
 
     def __init__(self, model: DatabaseManager, view: MainView) -> None:

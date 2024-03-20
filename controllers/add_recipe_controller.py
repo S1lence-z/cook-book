@@ -1,4 +1,3 @@
-# addition_controller.py
 from models.database_manager import DatabaseManager
 from views.main_view import MainView
 from controllers import *
@@ -11,7 +10,7 @@ class AddRecipeController(PageController):
 
     def __init__(self, model: DatabaseManager, view: MainView) -> None:
         """
-        Initializes an instance of the AdditionController class.
+        Initializes an instance of the AddRecipeController class.
 
         Args:
             model (DatabaseManager): The database manager.

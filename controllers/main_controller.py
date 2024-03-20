@@ -1,4 +1,3 @@
-# main_controller.py
 from models.database_manager import DatabaseManager
 from views.main_view import MainView
 from controllers import *
@@ -17,10 +16,11 @@ class MainController:
         self.page_controllers = self._init_page_controllers()
     
     def _init_page_controllers(self) -> list[PageController]:
-        """ Initialize all controllers.
+        """ 
+        Initialize all page controllers.
 
         Returns:
-            list: A list of all controllers.
+            list: A list of all page controllers.
         """
         recipes_controller = RecipesController(self.database_manager, self.view)
         editation_controller = EditRecipeController(self.database_manager, self.view)

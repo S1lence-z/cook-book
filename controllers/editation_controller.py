@@ -11,7 +11,7 @@ class EditRecipeController(PageController):
 
     def __init__(self, model: DatabaseManager, view: MainView) -> None:
         """
-        Initializes the EditationController.
+        Initializes the EditRecipeController.
 
         Args:
             model (DatabaseManager): The database manager.
