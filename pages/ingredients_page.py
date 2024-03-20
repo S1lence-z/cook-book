@@ -108,6 +108,9 @@ class IngredientsPage(tkc.CTkFrame, Page):
     def get_recipe(self) -> Recipe:
         return self._recipe
     
+    def get_ingredients_list(self) -> list[Ingredient]:
+        return self._recipe_ingredients
+    
     def update_buttons_visibility(self, event: str) -> None:
         """
         Update the visibility of buttons.

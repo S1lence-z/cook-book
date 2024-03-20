@@ -50,7 +50,7 @@ class IngredientsController(PageController):
         Generates a PDF file with the ingredients.
         """
         ingredients_list = self.frame.get_ingredients_list()
-        recipe_title = self.frame.get_recipe_title()
+        recipe_title = self.frame.get_recipe().title
         self._pdf_generator.generate_pdf(ingredients_list, recipe_title)
         
     def _add_ingredient(self) -> None:
