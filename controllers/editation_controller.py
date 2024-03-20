@@ -1,6 +1,7 @@
 from models.database_manager import DatabaseManager
 from views.main_view import MainView
 from controllers import *
+from custom.recipe_category import RecipeCategory
 
 class EditRecipeController(PageController):
     """
@@ -32,6 +33,19 @@ class EditRecipeController(PageController):
         """
         self.frame.save_btn.configure(command=self._save_edited_recipe)
         self.frame.cancel_btn.configure(command=self._cancel)
+        self.frame.category_options.configure(values=self._get_recipe_categories())
+        
+    def _get_recipe_categories(self) -> list[RecipeCategory]:
+        """
+        Gets the recipe categories from the database.
+
+        Returns:
+            list[RecipeCategory]: The recipe categories.
+        """
+        all_categories = []
+        for category in RecipeCategory:
+            all_categories.append(category.value)
+        return all_categories
 
     def _save_edited_recipe(self):
         """

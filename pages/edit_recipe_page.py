@@ -69,8 +69,8 @@ class EditRecipePage(tkc.CTkFrame, Page):
         # Category
         self.category_label = tkc.CTkLabel(self, text="Category", font=font_settings)
         self.category_label.grid(row=4, column=0, sticky="e", padx=20, pady=10)
-        self.category_entry = tkc.CTkEntry(self, font=font_settings)
-        self.category_entry.grid(row=4, column=1, columnspan=2, sticky="ew", padx=20, pady=10)
+        self.category_options = tkc.CTkComboBox(self, font=font_settings)
+        self.category_options.grid(row=4, column=1, columnspan=2, sticky="ew", padx=20, pady=10)
 
         # Instructions
         self.instructions_label = tkc.CTkLabel(self, text="Instructions", font=font_settings)
@@ -112,7 +112,7 @@ class EditRecipePage(tkc.CTkFrame, Page):
         # Clear the instructions text.
         self.instructions_text.delete('1.0', tkc.END)
         # Clear the category entry
-        self.category_entry.delete(0, tkc.END)
+        # self.category_entry.delete(0, tkc.END)
             
     def _fill_the_edit_page(self) -> None:
         """Fills the edit page with the recipe's current values."""
@@ -123,7 +123,7 @@ class EditRecipePage(tkc.CTkFrame, Page):
         self.prep_time_entry.insert(0, str(self._recipe_to_edit.prep_time))
         self.cook_time_entry.insert(0, str(self._recipe_to_edit.cook_time))
         self.instructions_text.insert(tkc.END, self._recipe_to_edit.instructions)
-        self.category_entry.insert(0, self._recipe_to_edit.category.value)
+        self.category_options.set(self._recipe_to_edit.category.value)
         
     def get_edited_recipe(self):
         """Gets the edited recipe details from the input fields.
@@ -138,7 +138,7 @@ class EditRecipePage(tkc.CTkFrame, Page):
         prep_time = self.prep_time_entry.get()
         cook_time = self.cook_time_entry.get()
         instructions = self.instructions_text.get("1.0", "end-1c")
-        category = self.category_entry.get()
+        category = self.category_options.get()
         return [recipe_id, title, description, prep_time, cook_time, instructions, category]
     
     def refresh_page(self, recipe_to_edit: Recipe) -> None:
