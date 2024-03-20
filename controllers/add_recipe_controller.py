@@ -2,6 +2,7 @@
 from models.database_manager import DatabaseManager
 from views.main_view import MainView
 from controllers import *
+from custom.warning_box import CustomWarningBox
 
 class AddRecipeController(PageController):
     """
@@ -39,6 +40,10 @@ class AddRecipeController(PageController):
         Edits the added recipe.
         """
         added_recipe_title = self.frame.get_added_recipe()
+        if not added_recipe_title:
+            warning = CustomWarningBox(self.frame, "Invalid Input", "Please enter a title for the recipe.", "300", "200")
+            warning.show()
+            return
         self.model.add_recipe(added_recipe_title)
         added_recipe_id = self.model.get_last_inserted_recipe_id()
         recipe_to_edit = self.model.get_recipe_by_id(added_recipe_id)

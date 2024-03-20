@@ -2,6 +2,7 @@ from models.database_manager import DatabaseManager
 from views.main_view import MainView
 from controllers import *
 from custom.recipe_category import RecipeCategory
+from custom.warning_box import CustomWarningBox
 
 class EditRecipeController(PageController):
     """
@@ -51,8 +52,18 @@ class EditRecipeController(PageController):
         """
         Saves the edited recipe.
         """
-        edited_recipe = self.frame.get_edited_recipe()
-        self.model.update_recipe(*edited_recipe)
+        recipe_id, title, description, prep_time, cook_time, instructions, category = self.frame.get_edited_recipe()
+        if not title:
+            warning = CustomWarningBox(self.frame, "Invalid Input", "Please enter a title for the recipe.", "300", "200")
+            warning.show()
+            return
+        
+        if not prep_time.isdigit() or not cook_time.isdigit():
+            warning = CustomWarningBox(self.frame, "Invalid Input", "Please enter a valid number for prep time and cook time.", "400", "100")
+            warning.show()
+            return
+        
+        self.model.update_recipe(recipe_id, title, description, prep_time, cook_time, instructions, category)
         self.view.pages["recipesPage"].refresh_page(self.model.get_all_recipes())
         self.view.raise_page("recipesPage")
 

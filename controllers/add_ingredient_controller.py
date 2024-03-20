@@ -2,6 +2,7 @@ from audioop import add
 from models.database_manager import DatabaseManager
 from views.main_view import MainView
 from controllers import *
+from custom.warning_box import CustomWarningBox
 
 class AddIngredientController(PageController):
     def __init__(self, model: DatabaseManager, view: MainView) -> None:
@@ -18,9 +19,13 @@ class AddIngredientController(PageController):
         self.frame.cancel_btn.configure(command=self._cancel)
         
     def _save_ingredient(self) -> None:
-        added_ingredient = self.frame.get_added_ingredient()
+        name, quantity, calories = self.frame.get_added_ingredient()
+        if not calories.isdigit():
+            warning = CustomWarningBox(self.frame, "Invalid Input", "Please enter a valid number for calories.", "300", "200")
+            warning.show()
+            return
         added_ingredient_recipe_id = self.frame.get_recipe_id()
-        self.model.add_ingredient(added_ingredient_recipe_id, added_ingredient[0], added_ingredient[1], added_ingredient[2])
+        self.model.add_ingredient(added_ingredient_recipe_id, name, quantity, calories)
         self.view.pages["ingredientsPage"].refresh_page(self.model.get_ingredients_by_recipe_id(added_ingredient_recipe_id), self.frame.get_recipe())
         self.view.raise_page("ingredientsPage")
     
