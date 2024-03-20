@@ -17,9 +17,8 @@ class IngredientsPage(tkc.CTkFrame, Page):
             **kwargs: Arbitrary keyword arguments.
         """
         super().__init__(*args, **kwargs)
-        self._recipe_title: str = ""
-        self._recipe_id: int
-        self._ingredients_to_display: list[Ingredient] = []
+        self._recipe: Recipe
+        self._recipe_ingredients: list[Ingredient] = []
         self._format_frame()
         self._create_ui()
         
@@ -69,7 +68,7 @@ class IngredientsPage(tkc.CTkFrame, Page):
         self.cancel_btn = tkc.CTkButton(self.sidebar_frame, text="Cancel", font=font_settings, fg_color="red")
         self.cancel_btn.grid(row=2, column=0, sticky="nsew", padx=10, pady=10)
 
-    def set_ingredients_to_display(self, ingredients: list[Ingredient], recipe_name: str) -> None:
+    def _set_ingredients_to_display(self, ingredients: list[Ingredient]) -> None:
         """
         Set the ingredients to display.
 
@@ -77,55 +76,39 @@ class IngredientsPage(tkc.CTkFrame, Page):
             ingredients: The ingredients to display.
             recipe_name: The name of the recipe.
         """
-        self._ingredients_to_display = ingredients
-        self._recipe_title = recipe_name
-        self._recipe_id = ingredients[0].recipe_id
-        self._fill_the_ingredients_page()
+        self._recipe_ingredients = ingredients
         
-    def clear_page(self) -> None:
+    def _set_recipe(self, recipe: Recipe) -> None:
+        """
+        Set the recipe title.
+
+        Args:
+            recipe: The recipe title.
+        """
+        self._recipe = recipe
+        
+    def _clear_page(self) -> None:
         """
         Clear the page.
         """
+        self.ingredients_list_label.configure(text=f"Ingredients of NOT SET")
         self.ingredients_list.clear()
         
     def _fill_the_ingredients_page(self) -> None:
         """
         Fill the ingredients page with the given recipe.
         """
-        self.ingredients_list_label.configure(text=f"Ingredients of {self._recipe_title}")
-        self.ingredients_list.populate(self._ingredients_to_display)
+        self.ingredients_list_label.configure(text=f"Ingredients of {self._recipe.title}")
+        self.ingredients_list.populate(self._recipe_ingredients)
         
-    def get_ingredients_list(self) -> list[Ingredient]:
-        """
-        Get the ingredients list.
-
-        Returns:
-            The ingredients list.
-        """
-        return self._ingredients_to_display
+    def get_recipe(self) -> Recipe:
+        return self._recipe
     
-    def get_recipe_title(self) -> str:
-        """
-        Get the recipe title.
-
-        Returns:
-            The recipe title.
-        """
-        return self._recipe_title
-    
-    def get_recipe_id(self) -> int:
-        """
-        Get the recipe id.
-
-        Returns:
-            The recipe id.
-        """
-        return self._recipe_id
-    
-    def refresh_page(self, ingredients_list: list[Ingredient]) -> None:
+    def refresh_page(self, recipe_ingredients: list[Ingredient], recipe: Recipe) -> None:
         """
         Refresh the page.
         """
-        self.clear_page()
-        print(self.ingredients_list.children)
-        self.set_ingredients_to_display(ingredients_list, self._recipe_title)
+        self._clear_page()
+        self._set_recipe(recipe)
+        self._set_ingredients_to_display(recipe_ingredients)
+        self._fill_the_ingredients_page()

@@ -40,7 +40,6 @@ class IngredientsController(PageController):
         """
         Clears the page and refreshes the recipes page.
         """
-        self.frame.clear_page()
         self.view.pages["recipesPage"].refresh_page(self.model.get_all_recipes())
         self.view.raise_page("recipesPage")
         
@@ -56,5 +55,5 @@ class IngredientsController(PageController):
         """
         Adds a new ingredient to the recipe.
         """
-        self.view.pages["addIngredient"].refresh_page(self.frame.get_recipe_id())
+        self.view.pages["addIngredient"].refresh_page(self.frame.get_recipe())
         self.view.raise_page("addIngredient")
