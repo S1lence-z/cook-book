@@ -1,4 +1,3 @@
-import re
 import customtkinter as tkc
 from custom import *
 
