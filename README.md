@@ -85,27 +85,27 @@ Ensure these installations are successful before proceeding to the installation 
 ### Recipes page:
 This page shows a list of all the recipes. You can view, edit, or delete a recipe from this page.
 
-[Recipes page](./docs/recipes_page.png)
+![Recipes page](./docs/recipes_page.png)
 
 ### Edit recipe page:
 This page allows you to edit the details of a specific recipe. You can modify the recipe name, ingredients, and instructions.
 
-[Edit recipe page](./docs/edit_recipe_page.png)
+![Edit recipe page](./docs/edit_recipe_page.png)
 
 ### Recipe detail page:
 This page displays the detailed information of a specific recipe. It includes the recipe name, ingredients, instructions, and an image of the dish.
 
-[Recipe detail page](./docs/recipe_detail_page.png)
+![Recipe detail page](./docs/recipe_detail_page.png)
 
 ### Ingredients page:
 This page lists all the ingredients used in the recipes. You can add, edit, or delete ingredients from this page.
 
-[Ingredients page](./docs/ingredients_page.png)
+![Ingredients page](./docs/ingredients_page.png)
 
 ### Generate PDF window:
 This window allows you to generate a PDF file containing all the ingredients of your recipes. It helps you keep track of the ingredients needed for your recipes.
 
-[Generate PDF window](./docs/generate_pdf_window.png)
+![Generate PDF window](./docs/generate_pdf_window.png)
 
 ## Contributing
 Explain how others can contribute to your project. Include guidelines for submitting pull requests or reporting issues.
