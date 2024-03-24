@@ -63,7 +63,6 @@ class DatabaseManager:
         recipe_data = (title, "", 0, 0, "", "None")
         self.cursor.execute(self.queries["AddRecipe"], recipe_data)
         self.db_connection.commit()
-        print(f"{self.cursor.rowcount} row added.")
         
     def get_last_inserted_recipe_id(self) -> int:
         """
@@ -84,7 +83,6 @@ class DatabaseManager:
         """
         self.cursor.execute(self.queries["DeleteRecipeById"], (id,))
         self.db_connection.commit()
-        print(f"{self.cursor.rowcount} row deleted.")
         
     def update_recipe(self, id: int, title: str, description: str, prep_time: str, cook_time: str, instructions: str, category: str):
         """
@@ -103,7 +101,6 @@ class DatabaseManager:
         recipe_data = (title, description, prep_time, cook_time, instructions, valid_category, id)
         self.cursor.execute(self.queries["UpdateRecipe"], recipe_data)
         self.db_connection.commit()
-        print(f"{self.cursor.rowcount} row updated.")
         
     def get_ingredients_by_recipe_id(self, recipe_id: int) -> list[Ingredient]:
         """
@@ -136,7 +133,6 @@ class DatabaseManager:
         ingredient_data = (recipe_id, name, quantity, calories)
         self.cursor.execute(self.queries["AddIngredient"], ingredient_data)
         self.db_connection.commit()
-        print(f"{self.cursor.rowcount} row added.")
         
     def delete_ingredient_by_id(self, id: int):
         """
@@ -147,4 +143,3 @@ class DatabaseManager:
         """
         self.cursor.execute(self.queries["DeleteIngredientById"], (id,))
         self.db_connection.commit()
-        print(f"{self.cursor.rowcount} row deleted.")
