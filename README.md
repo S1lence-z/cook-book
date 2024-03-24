@@ -11,13 +11,13 @@ This is a simple recipe manager app. You can add your custom recipes along with 
 - [License](#license)
 
 ## Prerequisites
-Before running the CookBook application, ensure you have the following libraries installed:
+Before running the CookBook application, ensure you have the following libraries installed, especially tkinter and custom tkinter **MySQL Connector is NOT REQUIRED**, the app uses sqlite3:
 
 - **Tkinter**: A standard GUI library for Python.
 - **customtkinter**: A library to create modern and customizable GUIs based on Tkinter.
 - **MySQL Connector/Python (mysql-connector-python)**: A library to connect your application to a MySQL database.
 
-### Install MySQL on Your PC
+### OPTIONAL: Install MySQL on Your PC
 1. **Download MySQL Community Server**:
 
     - Visit the MySQL official website and navigate to the downloads section for the MySQL Community Server.
@@ -49,7 +49,7 @@ To install these libraries, use the following commands:
     pip install customtkinter
     ```
 
-3. MySQL connector for Python:
+3. OPTIONAL: MySQL connector for Python:
     ```
     pip install mysql-connector-python
     ```
@@ -66,7 +66,19 @@ Ensure these installations are successful before proceeding to the installation 
 
 2. Go to the downloaded directory in the folder from which you start the command above
 
-### To start the program, follow either these steps:
+### How to start the program:
+
+**Without MySQL Connector:**
+
+1. Open the cloned directory in your favorite IDE
+
+2. Navigate to the cloned directory in your command line and run the following command:
+    ```
+    python main.py
+    ```
+
+
+**With MySQL Connector:**
 
 1. Open the cloned directory in your favorite IDE
 
@@ -76,7 +88,7 @@ Ensure these installations are successful before proceeding to the installation 
 
     ![db_login.py](./docs/db_login_example.png)
 
-4. Alternatively, you can navigate to the cloned directory in your command line and run the following command:
+4. Navigate to the cloned directory in your command line and run the following command:
     ```
     python main.py
     ```
