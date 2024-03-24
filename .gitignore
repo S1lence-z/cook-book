@@ -3,3 +3,9 @@ __pycache__
 
 # Ignore db login file (sensititive info)
 db_login.py
+
+# Ignore script to populate db (sensititive info)
+populate_db.py
+
+# Ignore my db file
+main.db
