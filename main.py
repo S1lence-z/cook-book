@@ -1,18 +1,12 @@
-from db.db_login import HOST, USER, PASSWORD, DATABASE
 from cook_book_app import CookBookApp
 from models.database_manager import DatabaseManager
-import mysql.connector
+import sqlite3
 
 if __name__ == "__main__":
     """Main entry point of the program."""
     
     # Connect to the database
-    db_connection = mysql.connector.connect(
-        host = HOST,  # Database host
-        user = USER,  # Database username
-        password = PASSWORD,  # Database password
-        database = DATABASE  # Database name
-    )
+    db_connection = sqlite3.connect("./db/main.db")
     
     # Create an instance of the database manager
     recipe_manager = DatabaseManager(db_connection)

@@ -12,13 +12,13 @@ class DatabaseManager:
         self.cursor = db_connection.cursor()
         self.queries = {
             "GetAllRecipes": "SELECT * FROM recipes;",
-            "GetRecipeById": "SELECT * FROM recipes WHERE recipe_id = %s;",
-            "AddRecipe": "INSERT INTO recipes (title, description, prep_time, cook_time, instructions, category) VALUES (%s, %s, %s, %s, %s, %s);",
-            "DeleteRecipeById": "DELETE FROM recipes WHERE recipe_id = %s;",
-            "UpdateRecipe": "UPDATE recipes SET title = %s, description = %s, prep_time = %s, cook_time = %s, instructions = %s, category = %s WHERE recipe_id = %s;",
-            "GetIngredientsByRecipeId": "SELECT * FROM ingredients WHERE recipe_id = %s;",
-            "AddIngredient": "INSERT INTO ingredients (recipe_id, name, quantity, calories) VALUES (%s, %s, %s, %s);",
-            "DeleteIngredientById": "DELETE FROM ingredients WHERE ingredient_id = %s;"
+            "GetRecipeById": "SELECT * FROM recipes WHERE recipe_id = ?;",
+            "AddRecipe": "INSERT INTO recipes (title, description, prep_time, cook_time, instructions, category) VALUES (?, ?, ?, ?, ?, ?);",
+            "DeleteRecipeById": "DELETE FROM recipes WHERE recipe_id = ?;",
+            "UpdateRecipe": "UPDATE recipes SET title = ?, description = ?, prep_time = ?, cook_time = ?, instructions = ?, category = ? WHERE recipe_id = ?;",
+            "GetIngredientsByRecipeId": "SELECT * FROM ingredients WHERE recipe_id = ?;",
+            "AddIngredient": "INSERT INTO ingredients (recipe_id, name, quantity, calories) VALUES (?, ?, ?, ?);",
+            "DeleteIngredientById": "DELETE FROM ingredients WHERE ingredient_id = ?;"
         }
         
     def get_all_recipes(self) -> list[Recipe]:
@@ -72,9 +72,8 @@ class DatabaseManager:
         Returns:
             The ID of the last inserted recipe.
         """
-        self.cursor.execute("SELECT LAST_INSERT_ID();")
-        last_inserted_id = self.cursor.fetchall()
-        return last_inserted_id[0][0]
+        last_inserted_id = self.cursor.lastrowid
+        return last_inserted_id
         
     def delete_recipe_by_id(self, id: int):
         """
