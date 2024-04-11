@@ -3,6 +3,12 @@
 ## Description
 This is a simple recipe manager app. You can add your custom recipes along with their ingredients and then you can generate a PDF file containing all the ingredients, so you can easily keep track of you recipes and their preparation process.
 
+## TODO List
+- [ ] Upgrade to a more modern GUI
+- [ ] Add custom food categories
+- [ ] Add choosing recipes by category
+- [ ] Add searching by ingredients
+
 ## Table of Contents
 - [Prerequisites](#prerequisites)
 - [Installation](#installation)
