@@ -5,6 +5,7 @@ This is a simple recipe manager app. You can add your custom recipes along with 
 
 ## TODO List
 - [ ] Upgrade to a more modern GUI (PyQT)
+- [ ] Package the app to one executable file
 - [ ] Add custom food categories
 - [ ] Add choosing recipes by category
 - [ ] Add searching by ingredients
