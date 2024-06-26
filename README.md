@@ -4,7 +4,7 @@
 This is a simple recipe manager app. You can add your custom recipes along with their ingredients and then you can generate a PDF file containing all the ingredients, so you can easily keep track of you recipes and their preparation process.
 
 ## TODO List
-- [ ] Upgrade to a more modern GUI (PyQT)
+- [ ] Add an API to provide pictures
 - [ ] Package the app to one executable file
 - [ ] Add custom food categories
 - [ ] Add choosing recipes by category
